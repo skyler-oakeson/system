@@ -6,5 +6,6 @@
     hyprlock
     hypridle
     hyprutils
+    waybar
   ];
 }
