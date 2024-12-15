@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, home, ... }:
+
 
 {
+  home.packages = with pkgs; [
+    kitty
+  ];
   programs.kitty = {
     enable = true;
     settings = {

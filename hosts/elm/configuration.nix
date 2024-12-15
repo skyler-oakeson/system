@@ -75,6 +75,9 @@
     neovim
     wget
     git
+    (pkgs.writeShellScriptBin "rebuild" ''
+      sudo nixos-rebuild switch --flake ~/.config/system/flake.nix  
+    '')
   ];
 
   environment.shells = with pkgs; [ zsh ];

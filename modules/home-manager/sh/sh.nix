@@ -1,6 +1,15 @@
 { config, pkgs, users, ... }:
 
 {
+  home.packages = with pkgs; [
+      zsh
+      (pkgs.writeShellScriptBin "rebuild" ''
+        cd ~/.config/system/flake.nix  
+        nixos-rebuild switch --flake .
+        git add --all
+        git commit -am ""
+      '')
+  ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
