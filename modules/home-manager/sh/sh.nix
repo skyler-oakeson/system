@@ -3,12 +3,35 @@
 {
   home.packages = with pkgs; [
       zsh
-      (pkgs.writeShellScriptBin "rebuild" ''
-        cd ~/.config/system/flake.nix  
-        nixos-rebuild switch --flake .
+      (pkgs.writeShellScriptBin "rebuild.sh" ''
+        pushd ~/.config/system/
         git add --all
-        git commit -am ""
-      '')
+
+        # Early return if no changes
+        if git diff --quiet '*.nix'; then
+            echo "No changes detected, exiting."
+            popd
+            exit 0
+        fi
+
+        # Autoformat your nix files
+        alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+
+        git diff -U0 '*.nix
+
+        echo "NixOS Rebuilding..."
+
+        # Rebuild, output simplified errors, log trackebacks, if error find the errors print them and return
+        sudo nixos-rebuild switch --flake . &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+
+        # Get current generation metadata
+        current=$(nixos-rebuild list-generations | grep current)
+
+        git commit -am "$current"
+
+        notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
+        exit 1
+        '')
   ];
   programs.zsh = {
     enable = true;

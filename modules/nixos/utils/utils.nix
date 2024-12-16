@@ -14,5 +14,6 @@
     tree
     gnumake
     libgccjit
+    alejandra
   ];
 }
