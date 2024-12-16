@@ -6,22 +6,19 @@
       (pkgs.writeShellScriptBin "rebuild" ''
         pushd /home/skyler/.config/system
 
-        git config --global user.email "skyler.oakeson@gmail.com"
-        git config --global user.name "skyler-oakeson"
-
         git add --all
 
-        Early return if no changes
-        if git diff --quiet '*.nix'; then
-            echo "No changes detected, exiting."
-            popd
-            exit 0
-        fi
+        # Early return if no changes
+        # if git diff --quiet '*.nix'; then
+        #     echo "No changes detected, exiting."
+        #     popd
+        #     exit 0
+        # fi
 
         # Autoformat your nix files
         # alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
 
-        git diff -U0 '*.nix
+        git diff -U0 '*.nix'
 
         echo "NixOS Rebuilding..."
 
