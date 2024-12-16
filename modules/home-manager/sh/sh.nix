@@ -5,6 +5,7 @@
       zsh
       (pkgs.writeShellScriptBin "rebuild" ''
         pushd /home/skyler/.config/system
+        whoami
 
         git add --all
 
@@ -22,8 +23,27 @@
 
         echo "NixOS Rebuilding..."
 
-        # Rebuild, output simplified errors, log trackebacks, if error find the errors print them and return
-        sudo nixos-rebuild switch --flake . &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+        # In my case I use flakes but here it checks whether it fails or not
+        # if sudo nixos-rebuild switch --flake ".#$1" &>.nixos-switch.log; then
+        if sudo nixos-rebuild switch --flake . &>.nixos-switch.log; then
+            echo -e "Done\n"
+        else
+            echo ""
+            cat .nixos-switch.log | grep --color error
+
+            # this is needed otherwise the script would not start next time telling you "no changes detected"
+            # (The weird patter is to include all subdirectories)
+            sudo git restore --staged ./**/*.nix
+
+            if read -p "Open log? (y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+                cat .nixos-switch.log | nvim - 	
+            fi
+
+            # Clean stuff and exit
+            shopt -u globstar
+            popd > /dev/null
+            exit 1
+        fi
 
         # Get current generation metadata
         current=$(nixos-rebuild list-generations | grep current)
