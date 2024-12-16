@@ -3,8 +3,8 @@
 {
   home.packages = with pkgs; [
       zsh
-      (pkgs.writeShellScriptBin "rebuild.sh" ''
-        pushd /home/skyler/.config/system
+      (pkgs.writeShellScriptBin "rebuild" ''
+        pushd ~/.config/system
         git add --all
 
         Early return if no changes
