@@ -10,7 +10,6 @@
     ../../modules/home-manager/terminals/kitty.nix
     ../../modules/home-manager/wm/hypr.nix
     ../../modules/home-manager/sh/sh.nix
-    ../../modules/home-manager/apps/apps.nix
   ];
 
   nixpkgs.config = {

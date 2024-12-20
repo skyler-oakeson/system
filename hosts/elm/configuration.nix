@@ -13,6 +13,7 @@
       ../../modules/nixos/wm/hypr.nix
       ../../modules/nixos/lang/lang.nix
       ../../modules/nixos/utils/utils.nix
+      ../../modules/nixos/apps/apps.nix
     ];
 
   # Bootloader.
