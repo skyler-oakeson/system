@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, ... }: 
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     steam
     firefox
     discord
