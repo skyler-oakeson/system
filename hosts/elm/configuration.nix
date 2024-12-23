@@ -11,7 +11,6 @@
       ./hardware-configuration.nix
       ../../modules/nixos/graphics/nvidia.nix
       ../../modules/nixos/wm/hypr.nix
-      ../../modules/nixos/lang/lang.nix
       ../../modules/nixos/utils/utils.nix
     ];
 

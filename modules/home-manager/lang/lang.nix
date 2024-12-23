@@ -7,7 +7,7 @@
 # ===============================================
 
 {
-  environment.systemPackages = with pkgs; [ 
+  home.packages = with pkgs; [ 
     ghc
     python39
     gcc
