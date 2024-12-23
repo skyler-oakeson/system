@@ -24,15 +24,45 @@
 
     settings = {
         dwindle = {
-            pseudotile = true;
-            preserve_split = true;
+            pseudotile = "yes";
+            preserve_split = "yes";
         };
 
         env = [
-
+            "MOZ_ENABLE_WAYLAND,1"
+            "XCURSOR_SIZE,24"
+            "QT_QPA_PLATFORMTHEME,qt6ct"
+            "WALLPAPER_PATH, /home/skyler/Pictures/red_distortion.jpg"
+            "QT_QPA_PLATFORM,wayland;xcb"
+            "QT_QPA_PLATFORMTHEME,qt6ct"
+            "QT_QPA_PLATFORMTHEME,qt5ct"
+            "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+            "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         ];
 
+        "$terminal" = "kitty";
+        "$fileManager" = "kitty ranger";
+        "$menu" = "wofi --width=30% --height=30% --show drun";
         "$mod" = "MOD4";
+
+        input = {
+            kb_layout = "us";
+            repeat_rate = 35;
+            repeat_delay = 400;
+
+            follow_mouse = 1;
+
+            touchpad = {
+                natural_scroll = "yes";
+                scroll_factor = .4;
+                disable_while_typing = true;
+                clickfinger_behavior = true;
+                tap-to-click = false;
+            };
+
+            sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
+        };
+
         binde = [
             # Volume button that allows press and hold, volume limited to 150%
             ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
