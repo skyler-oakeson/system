@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -8,5 +8,12 @@
 
     # Whether to enable hyprland-session.target on hyprland startup
     systemd.enable = true;
+
+    settings = {
+        "$mod" = "MOD4";
+        bind = [
+
+        ];
+    };
   };
 }
