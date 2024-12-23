@@ -17,7 +17,6 @@
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-    programs.hyprland.enable = true;
     nixosConfigurations = {
       elm = lib.nixosSystem {
 	    specialArgs = {inherit inputs;};
@@ -28,5 +27,4 @@
       };
     };
   };
-
 }
