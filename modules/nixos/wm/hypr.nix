@@ -2,14 +2,9 @@
 {
   environment.systemPackages = with pkgs; [ 
     hyprland
-    hyprpaper
-    hyprlock
-    hypridle
-    hyprutils
-    waybar
   ];
 
-  services.xserver.displayManager.sddm.enable = true; #This line enables sddm
+  services.displayManager.sddm.enable = true; #This line enables sddm
   services.xserver.enable = true; # Might need this for Xwayland  
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 
