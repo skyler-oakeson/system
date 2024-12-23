@@ -14,6 +14,6 @@
     tree
     gnumake
     libgccjit
-    xclip
+    wl-clipboard
   ];
 }
