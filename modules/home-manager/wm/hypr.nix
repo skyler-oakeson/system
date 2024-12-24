@@ -46,6 +46,8 @@
         "$menu" = "wofi --width=30% --height=30% --show drun";
         "$mod" = "MOD4";
 
+        "exec-once" = "hyprpaper";
+
         input = {
             kb_layout = "us";
             repeat_rate = 35;
