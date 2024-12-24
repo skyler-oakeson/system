@@ -34,7 +34,6 @@
             "MOZ_ENABLE_WAYLAND,1"
             "XCURSOR_SIZE,24"
             "QT_QPA_PLATFORMTHEME,qt6ct"
-            "WALLPAPER_PATH, /home/skyler/Pictures/red_distortion.jpg"
             "QT_QPA_PLATFORM,wayland;xcb"
             "QT_QPA_PLATFORMTHEME,qt6ct"
             "QT_QPA_PLATFORMTHEME,qt5ct"
@@ -133,7 +132,7 @@
             ];
         };
 
-        windowrulevw = [
+        windowrulev2 = [
             # Example windowrule v1
             # windowrule = float, ^(kitty)$
             # Example windowrule v2
@@ -160,9 +159,9 @@
         ];
 
         bindm = [
-            # Move/resize windows with mainMod + LMB/RMB and dragging
-            "$mainMod, mouse:272, movewindow"
-            "$mainMod, mouse:273, resizewindow"
+            # Move/resize windows with mod + LMB/RMB and dragging
+            "$mod, mouse:272, movewindow"
+            "$mod, mouse:273, resizewindow"
         ];
 
         bindl = [
