@@ -76,8 +76,8 @@
             gaps_in = 5;
             gaps_out = 10;
             border_size = 1;
-            "col.active_border" = "none";
-            "col.inactive_border" = "none";
+            "col.active_border" = "";
+            "col.inactive_border" = "";
             layout = "dwindle";
             resize_on_border = false;
             allow_tearing = false;
