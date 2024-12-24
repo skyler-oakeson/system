@@ -6,6 +6,7 @@
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
 
+
   imports = [
     ../../modules/home-manager/terminals/kitty.nix
     ../../modules/home-manager/wm/hypr.nix
