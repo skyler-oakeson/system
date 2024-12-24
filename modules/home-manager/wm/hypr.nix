@@ -17,10 +17,10 @@
     xwayland.enable = true;
 
     # Whether to enable hyprland-session.target on hyprland startup
-    # systemd = {
-    #     enable = true;
-    #     variables = ["--all"];
-    # };
+    systemd = {
+        enable = true;
+        variables = ["--all"];
+    };
 
     settings = {
         monitor=",3456x2234,auto,1";
