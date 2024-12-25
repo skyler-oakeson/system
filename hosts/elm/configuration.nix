@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      inputs.home-manager.nixosModules.default
+      # inputs.home-manager.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/graphics/nvidia.nix
       ../../modules/nixos/wm/hypr.nix
@@ -92,12 +92,12 @@
     pulse.enable = true;
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "skyler" = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs; };
+  #   users = {
+  #     "skyler" = import ./home.nix;
+  #   };
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -20,10 +20,20 @@
     nixosConfigurations = {
       elm = lib.nixosSystem {
 	    specialArgs = {inherit inputs;};
+        system = system;
 	    modules = [ 
-	      inputs.home-manager.nixosModules.default
+	      # inputs.home-manager.nixosModules.default
 	      ./hosts/elm/configuration.nix
 	    ];
+      };
+    };
+
+    homeConfigurations = {
+      skyler = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs;
+        modules = [
+	      ./hosts/elm/home.nix
+        ];
       };
     };
   };
