@@ -17,6 +17,7 @@
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+
     nixosConfigurations = {
       elm = lib.nixosSystem {
 	    specialArgs = {inherit inputs;};
@@ -31,6 +32,7 @@
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
+        extraSpecialArgs = { inherit inputs; };
         modules = [
 	      ./hosts/elm/home.nix
         ];
