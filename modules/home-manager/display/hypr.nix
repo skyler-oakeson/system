@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    hyprland
     hyprpaper
     hyprlock
     hypridle
@@ -51,6 +52,7 @@
         "exec-once" = [
             "hyprctl dispatch hyprpaper"
             "waybar"
+            "hyprctl setcursor Fuchsia-Pop 24"
         ];
 
         input = {

@@ -10,7 +10,6 @@
       # inputs.home-manager.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/graphics/nvidia.nix
-      ../../modules/nixos/wm/hypr.nix
       ../../modules/nixos/utils/utils.nix
     ];
 
@@ -71,7 +70,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
+    vim
     wget
     git
   ];
