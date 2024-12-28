@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [ 
     hyprland
-    hyprutils
   ];
 
   # services.displayManager.sddm.enable = true; #This line enables sddm

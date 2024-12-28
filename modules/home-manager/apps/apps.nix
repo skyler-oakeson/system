@@ -6,5 +6,6 @@
     firefox
     discord
     wofi
+    pywal
   ];
 }

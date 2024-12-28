@@ -13,6 +13,7 @@
     fzf
     tree
     gnumake
+    cmake
     libgccjit
     wl-clipboard
   ];

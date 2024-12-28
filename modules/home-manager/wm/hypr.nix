@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,6 +8,7 @@
     hyprcursor
     hyprutils
     waybar
+    inputs.hyprland-qtutils.packages."${pkgs.system}".default
   ];
 
 
@@ -33,6 +34,7 @@
         env = [
             "MOZ_ENABLE_WAYLAND,1"
             "XCURSOR_SIZE,24"
+            "NIXOS_OZONE_WL,1"
             # "QT_QPA_PLATFORMTHEME,qt6ct"
             # "QT_QPA_PLATFORM,wayland;xcb"
             # "QT_QPA_PLATFORMTHEME,qt6ct"
@@ -46,7 +48,10 @@
         "$menu" = "wofi --width=30% --height=30% --show drun";
         "$mod" = "MOD4";
 
-        "exec-once" = "hyprpaper";
+        "exec-once" = [
+            "hyprctl dispatch hyprpaper"
+            "waybar"
+        ];
 
         input = {
             kb_layout = "us";
@@ -180,6 +185,7 @@
             "$mod, E, exec, $fileManager"
             "$mod, V, togglefloating," 
             "$mod, SPACE, exec, pkill wofi || $menu"
+            "$mod, M, exec, hyprctl dispatch exit"
 
             "$mod, U, pseudo, # dwindle"
             "$mod, T, togglesplit, # dwindle"

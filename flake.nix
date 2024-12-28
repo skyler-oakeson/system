@@ -1,6 +1,6 @@
 {
 
-  description = "Nixos config flake";
+  description = "Nixos Config Flake";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
   };
 
-  outputs = {self, nixpkgs, home-manager, ...}@inputs: 
+  outputs = {self, nixpkgs, home-manager, hyprland-qtutils, ...}@inputs: 
     let
       inherit (self) outputs;
       system = "x86_64-linux";
@@ -20,7 +21,7 @@
 
     nixosConfigurations = {
       elm = lib.nixosSystem {
-	    specialArgs = {inherit inputs;};
+	    specialArgs = { inherit inputs; };
         system = system;
 	    modules = [ 
 	      # inputs.home-manager.nixosModules.default
@@ -31,7 +32,7 @@
 
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = { inherit inputs; };
         modules = [
 	      ./hosts/elm/home.nix
