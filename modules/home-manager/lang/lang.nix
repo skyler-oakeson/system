@@ -9,7 +9,7 @@
 {
   home.packages = with pkgs; [ 
     ghc
-    python3
+    # python3
     gcc
   ];
 }

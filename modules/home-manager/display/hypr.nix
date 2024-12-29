@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,13 +9,12 @@
     hyprcursor
     hyprutils
     waybar
-    inputs.hyprland-qtutils.packages."${pkgs.system}".default
+    inputs.hyprland-qtutils.packages."${system}".default
   ];
 
-
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = with pkgs; {
     enable = true;
-    package = pkgs.hyprland;
+    package = hyprland;
     xwayland.enable = true;
 
     # Whether to enable hyprland-session.target on hyprland startup
@@ -35,13 +34,14 @@
         env = [
             "MOZ_ENABLE_WAYLAND,1"
             "XCURSOR_SIZE,24"
+            "XCURSOR_THEME,Bibata-Modern-Ice"
             "NIXOS_OZONE_WL,1"
-            # "QT_QPA_PLATFORMTHEME,qt6ct"
-            # "QT_QPA_PLATFORM,wayland;xcb"
-            # "QT_QPA_PLATFORMTHEME,qt6ct"
-            # "QT_QPA_PLATFORMTHEME,qt5ct"
-            # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-            # "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+            "QT_QPA_PLATFORMTHEME,qt6ct"
+            "QT_QPA_PLATFORM,wayland;xcb"
+            "QT_QPA_PLATFORMTHEME,qt6ct"
+            "QT_QPA_PLATFORMTHEME,qt5ct"
+            "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+            "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         ];
 
         "$terminal" = "kitty";
@@ -50,9 +50,9 @@
         "$mod" = "MOD4";
 
         "exec-once" = [
-            "hyprctl dispatch hyprpaper"
+            "hyprctl hyprpaper"
             "waybar"
-            "hyprctl setcursor Fuchsia-Pop 24"
+            "hyprctl setcursor Bibata-Modern-Ice 24"
         ];
 
         input = {
@@ -79,18 +79,22 @@
             workspace_swipe_fingers = 4;
         };
 
-
         general = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             gaps_in = 5;
             gaps_out = 10;
             border_size = 1;
-            # "col.active_border" = "";
-            # "col.inactive_border" = "";
+            "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
+            "col.active_border" = "rgb(${config.colorScheme.palette.base05})";
             layout = "dwindle";
             resize_on_border = false;
             allow_tearing = false;
             border_part_of_window = false ;
+        };
+
+        misc = {
+            disable_hyprland_logo = true;
+            disable_splash_rendering = true;
         };
 
 
@@ -119,8 +123,7 @@
             };
         };
 
-
-        ## SLIDE IN OUT
+        # Sliding windows
         animations = {
             enabled = true;
             bezier = [
@@ -242,5 +245,19 @@
             "$mod, mouse_up, workspace, e-1"
         ];
       };
+    };
+
+    services.hyprpaper = {
+        enable = true;
+        settings = {
+          splash = false;
+          ipc = "on";
+
+          preload = [
+          ];
+
+          wallpaper = [
+          ];
+        };
     };
 }

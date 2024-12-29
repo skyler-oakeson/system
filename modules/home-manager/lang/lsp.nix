@@ -12,8 +12,8 @@
     csharp-ls
     marksman
     typescript-language-server
-    (pkgs.python311.withPackages (ppkgs: [
-      ppkgs.python-lsp-server
-    ]))
+    # (pkgs.python311.withPackages (ppkgs: [
+    #   ppkgs.python-lsp-server
+    # ]))
   ];
 }

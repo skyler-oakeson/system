@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    steam
+    steam-tui
+    steamcmd
     firefox
     discord
     wofi

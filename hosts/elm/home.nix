@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,7 +14,10 @@
     ../../modules/home-manager/apps/default.nix
     ../../modules/home-manager/lang/default.nix
     ../../modules/home-manager/nvim/nvim.nix
+    inputs.nix-colors.homeManagerModules.default
   ];
+
+  colorScheme = inputs.nix-colors.colorSchemes.classic-dark;
 
   nixpkgs.config = {
     allowUnfree = true;
