@@ -6,5 +6,6 @@
     steamcmd
     firefox
     discord
+    spotify
   ];
 }
