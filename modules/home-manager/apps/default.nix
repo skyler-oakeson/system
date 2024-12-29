@@ -6,7 +6,5 @@
     steamcmd
     firefox
     discord
-    wofi
-    pywal
   ];
 }

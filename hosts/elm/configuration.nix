@@ -10,6 +10,7 @@
       # inputs.home-manager.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/graphics/nvidia.nix
+      ../../modules/nixos/sound/pulse.nix
       ../../modules/nixos/utils/utils.nix
     ];
 

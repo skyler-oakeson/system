@@ -8,13 +8,13 @@
 
 
   imports = [
+    inputs.nix-colors.homeManagerModules.default
     ../../modules/home-manager/terminals/kitty.nix
-    ../../modules/home-manager/display/default.nix
-    ../../modules/home-manager/sh/default.nix
+    ../../modules/home-manager/desktop/hypr.nix
+    ../../modules/home-manager/sh/zsh.nix
     ../../modules/home-manager/apps/default.nix
     ../../modules/home-manager/lang/default.nix
     ../../modules/home-manager/nvim/nvim.nix
-    inputs.nix-colors.homeManagerModules.default
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.classic-dark;

@@ -1,6 +1,12 @@
 { pkgs, inputs, config, ... }:
 
 {
+  imports = [
+    ./gtk.nix
+    ./waybar.nix
+    ./wofi.nix
+  ];
+
   home.packages = with pkgs; [
     hyprland
     hyprpaper
@@ -9,6 +15,7 @@
     hyprcursor
     hyprutils
     waybar
+    wofi
     inputs.hyprland-qtutils.packages."${system}".default
   ];
 

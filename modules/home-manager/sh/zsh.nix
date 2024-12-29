@@ -56,11 +56,12 @@
     syntaxHighlighting.enable = true;
     plugins = [
         {
-            name = "zsh-vi-mode";
-            file = "./share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-            src = pkgs.zsh-vi-mode;
+          name = "zsh-vi-mode";
+          file = "./share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+          src = pkgs.zsh-vi-mode;
         }
     ];
+
     oh-my-zsh = {
       enable = true;
       plugins = [ 
