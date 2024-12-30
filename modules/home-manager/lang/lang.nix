@@ -1,13 +1,11 @@
-{ pkgs, ... }: 
-
+{pkgs, ...}:
 # ===============================================
 # Installed Compilers
-# 
-# Search: https://search.nixos.org for more pkgs 
+#
+# Search: https://search.nixos.org for more pkgs
 # ===============================================
-
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     ghc
     # python3
     gcc

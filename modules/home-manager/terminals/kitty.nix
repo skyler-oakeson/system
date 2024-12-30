@@ -1,7 +1,8 @@
-{ pkgs, config,... }:
-
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     kitty
   ];
@@ -10,7 +11,7 @@
     enable = true;
 
     shellIntegration = {
-      enableZshIntegration = true; 
+      enableZshIntegration = true;
     };
 
     settings = {

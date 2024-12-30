@@ -1,17 +1,20 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, users, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      # inputs.home-manager.nixosModules.default
-      ./hardware-configuration.nix
-      ../../modules/nixos/graphics/nvidia.nix
-      ../../modules/nixos/utils/utils.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  users,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    # inputs.home-manager.nixosModules.default
+    ./hardware-configuration.nix
+    ../../modules/nixos/graphics/nvidia.nix
+    ../../modules/nixos/utils/utils.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,13 +59,12 @@
   users.users.skyler = {
     isNormalUser = true;
     description = "skyler";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
-    packages = with pkgs; [ 
-      zsh 
+    packages = with pkgs; [
+      zsh
     ];
   };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -75,12 +77,11 @@
     git
   ];
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
-  fonts.packages = with pkgs; [ 
+  fonts.packages = with pkgs; [
     nerd-fonts.fira-code
   ];
-
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -125,5 +126,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

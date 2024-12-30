@@ -1,52 +1,74 @@
-{ config, pkgs, users, ... }:
-
 {
+  config,
+  pkgs,
+  users,
+  ...
+}: {
   home.packages = with pkgs; [
-      zsh
-      (pkgs.writeShellScriptBin "rebuild" ''
-        pushd /home/skyler/.config/system
+    zsh
+    (pkgs.writeShellScriptBin "rebuild" ''
+      Help() {
+          echo "
+              Usage: rebuild [OPTION]
+              Rebuilds NixOS and home-manager configurations.
 
-        # Early return if no changes
-        if git diff --quiet '*.nix'; then
-            echo "No changes detected, exiting."
-            popd
-            exit 0
-        fi
+                  -m,            Rebuilds only home-manager modules
+                  -n,            Rebuilds only nixos modules
+                  -a,            Rebuilds both nixos and home-manager modules
+          "
+      }
 
-        git add --all
+      if [ "#$" -ne 1 ]; then
+          echo "Illegal number of arguments."
+          exit 1
+      fi
 
-        # Autoformat your nix files
-        # alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+      pushd /home/skyler/.config/system
 
-        git diff -U0 '*.nix'
+      # Early return if no changes
+      if git diff --quiet '*.nix'; then
+          echo "No changes detected, exiting."
+          popd
+          exit 0
+      fi
 
-        echo "NixOS Rebuilding..."
+      git add --all
 
-        # In my case I use flakes but here it checks whether it fails or not
-        if sudo nixos-rebuild switch --flake ".#$1" &>.nixos-switch.log; then
-            echo -e "Done\n"
-        else
-            echo "$(cat .nixos-switch.log | grep --color error)"
+      # Autoformat your nix files
+      alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
 
-            # this is needed otherwise the script would not start next time telling you "no changes detected"
-            # (The weird patter is to include all subdirectories)
-            sudo git restore --staged ./**/*.nix
+      git diff -U0 '*.nix'
 
-            if read -p "Open log? (y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-                cat .nixos-switch.log | nvim - 	
-            fi
+      echo "NixOS Rebuilding..."
 
-            # Clean stuff and exit
-            shopt -u globstar
-            popd > /dev/null
-            exit 1
-        fi
+      while getopts ":hna:" option; do
+          case $option in
+            h) # display help
+               Help
+               exit;;
+            n) # rebuild nixos
+               sudo nixos-rebuild switch --flake .
+               exit;;
+            m) # rebuild home-manager
+               sudo home-manager switch --flake .
+               exit;;
+            a) # rebuild all
+               sudo nixos-rebuild switch --flake .
+               sudo home-manager switch --flake .
+               exit;;
+          esac
+      done
 
-        # Get current generation metadata
-        current=$(nixos-rebuild list-generations | grep current)
 
-        git commit -am "$current"
-        '')
+
+      # Get current generation metadata
+      currentNix=$(nixos-rebuild list-generations | grep current)
+      currentHM=$(home-manager generations | head -1)
+
+      git commit -am "NixOS Gen := $currentNix \n
+                      home-manager Gen := $currentHM"
+      git push
+    '')
   ];
 
   programs.zsh = {
@@ -57,17 +79,17 @@
     autocd = true;
     dotDir = ".config/zsh";
     plugins = [
-        {
-          name = "zsh-vi-mode";
-          file = "./share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-          src = pkgs.zsh-vi-mode;
-        }
+      {
+        name = "zsh-vi-mode";
+        file = "./share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        src = pkgs.zsh-vi-mode;
+      }
     ];
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
+      plugins = [
+        "git"
         "sudo"
       ];
       theme = "mh";

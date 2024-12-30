@@ -1,8 +1,10 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
-    wofi 
+    wofi
   ];
 
   programs.wofi = {

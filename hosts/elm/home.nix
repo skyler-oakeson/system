@@ -1,11 +1,13 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
-
 
   imports = [
     inputs.nix-colors.homeManagerModules.default

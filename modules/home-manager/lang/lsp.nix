@@ -1,13 +1,11 @@
-{ pkgs, ... }: 
-
+{pkgs, ...}:
 # ===============================================
 # Installed LSP's
-# 
-# Search: https://search.nixos.org for more pkgs 
+#
+# Search: https://search.nixos.org for more pkgs
 # ===============================================
-
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     nil
     csharp-ls
     marksman

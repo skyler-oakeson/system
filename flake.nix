@@ -1,5 +1,4 @@
 {
-
   description = "Nixos Config Flake";
 
   inputs = {
@@ -12,31 +11,36 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = {self, nixpkgs, home-manager, hyprland-qtutils, nix-colors,...}@inputs: 
-    let
-      inherit (self) outputs;
-      system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    hyprland-qtutils,
+    nix-colors,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    system = "x86_64-linux";
+    lib = nixpkgs.lib;
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations = {
       elm = lib.nixosSystem {
-	    specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         system = system;
-	    modules = [ 
-	      # inputs.home-manager.nixosModules.default
-	      ./hosts/elm/configuration.nix
-	    ];
+        modules = [
+          # inputs.home-manager.nixosModules.default
+          ./hosts/elm/configuration.nix
+        ];
       };
     };
 
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
-	      ./hosts/elm/home.nix
+          ./hosts/elm/home.nix
         ];
       };
     };
