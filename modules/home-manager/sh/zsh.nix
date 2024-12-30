@@ -59,7 +59,8 @@
       currentNix=$(nixos-rebuild list-generations | grep current)
       currentHM=$(home-manager generations | head -1)
 
-      sudo git commit -am "NixOS Gen := $currentNix \n home-manager Gen := $currentHM"
+      sudo git commit -am "NixOS Gen := $currentNix
+                           home-manager Gen := $currentHM"
     '')
   ];
 
