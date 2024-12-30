@@ -30,8 +30,6 @@
 
       git diff -U0 '*.nix'
 
-      echo "NixOS Rebuilding..."
-
       while getopts ":hna:" option; do
           case $option in
             h) # display help
