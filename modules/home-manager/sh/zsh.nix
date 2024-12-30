@@ -24,7 +24,7 @@
       fi
 
       pushd /home/skyler/.config/system
-      git diff -U0 '*.nix'
+      # git diff -U0 '*.nix'
 
 
       while getopts ":hna:" option; do
