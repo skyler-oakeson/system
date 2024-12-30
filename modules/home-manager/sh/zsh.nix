@@ -24,11 +24,8 @@
       fi
 
       pushd /home/skyler/.config/system
-
-      # Autoformat your nix files
-      alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
-
       git diff -U0 '*.nix'
+
 
       while getopts ":hna:" option; do
           case $option in
@@ -36,19 +33,24 @@
                Help
                exit;;
             n) # rebuild nixos
+               echo "Rebuilding NixOS..."
                git add modules/nixos/
                sudo nixos-rebuild switch --flake .
                exit;;
             m) # rebuild home-manager
+               echo "Rebuilding Home-Manager..."
                git add modules/home-manager/
                sudo home-manager switch --flake .
                exit;;
             a) # rebuild all
+               echo "Rebuilding All..."
                git add --all
                sudo nixos-rebuild switch --flake .
                sudo home-manager switch --flake .
                exit;;
           esac
+          # Autoformat your nix files
+          alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
       done
 
 
