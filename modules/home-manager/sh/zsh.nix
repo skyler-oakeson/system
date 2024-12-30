@@ -25,15 +25,6 @@
 
       pushd /home/skyler/.config/system
 
-      # Early return if no changes
-      if git diff --quiet '*.nix'; then
-          echo "No changes detected, exiting."
-          popd
-          exit 0
-      fi
-
-      git add --all
-
       # Autoformat your nix files
       alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
 
@@ -47,12 +38,15 @@
                Help
                exit;;
             n) # rebuild nixos
+               git add modules/nixos/
                sudo nixos-rebuild switch --flake .
                exit;;
             m) # rebuild home-manager
+               git add modules/home-manager/
                sudo home-manager switch --flake .
                exit;;
             a) # rebuild all
+               git add --all
                sudo nixos-rebuild switch --flake .
                sudo home-manager switch --flake .
                exit;;
@@ -65,8 +59,7 @@
       currentNix=$(nixos-rebuild list-generations | grep current)
       currentHM=$(home-manager generations | head -1)
 
-      git commit -am "NixOS Gen := $currentNix \n
-                      home-manager Gen := $currentHM"
+      git commit -am "NixOS Gen := $currentNix \n home-manager Gen := $currentHM"
       git push
     '')
   ];
