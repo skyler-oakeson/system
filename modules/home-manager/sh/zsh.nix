@@ -40,13 +40,13 @@
             m) # rebuild home-manager
                echo "Rebuilding Home-Manager..."
                git add modules/home-manager/
-               sudo home-manager switch --flake .
+               home-manager switch --flake .
                exit;;
             a) # rebuild all
                echo "Rebuilding All..."
                git add --all
                sudo nixos-rebuild switch --flake .
-               sudo home-manager switch --flake .
+               home-manager switch --flake .
                exit;;
           esac
           # Autoformat your nix files
