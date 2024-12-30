@@ -53,14 +53,11 @@
           alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
       done
 
-
-
       # Get current generation metadata
       genNix=$(nixos-rebuild list-generations | grep current)
-      genHM=$(home-manager generations | head -1)
+      genHM=$(home-manager generations | grep * | head -1)
 
-      sudo git commit -am "NixOS Gen := genNix$
-                           home-manager Gen := $genHM"
+      sudo git commit -am "NixOS Gen := genNix$ home-manager Gen := $genHM"
     '')
   ];
 

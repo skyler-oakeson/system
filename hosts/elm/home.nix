@@ -1,13 +1,17 @@
 {
-  config,
   pkgs,
   inputs,
   ...
-}: {
+}: 
+let
+  nix-colors-lib = inputs.nix-colors.lib.contrib { inherit pkgs; };
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
+
 
   imports = [
     inputs.nix-colors.homeManagerModules.default
@@ -19,7 +23,11 @@
     ../../modules/home-manager/nvim/nvim.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.classic-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  # colorScheme = nix-colors-lib.colorSchemeFromPicture {
+  #   path = wallpaper;
+  #   variant = "dark";
+  # };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -63,6 +71,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    WALLPAPER = "~/.config/system/modules/home-manager/desktop/wallpapers/nix-wallpaper-dracula.png";
   };
 
   # Let Home Manager install and manage itself.

@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  home,
   ...
 }: {
   imports = [
@@ -263,9 +264,11 @@
       ipc = "on";
 
       preload = [
+          "${config.home.sessionVariables.WALLPAPER}"
       ];
 
       wallpaper = [
+      ",${config.home.sessionVariables.WALLPAPER}"
       ];
     };
   };
