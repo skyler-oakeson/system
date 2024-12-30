@@ -60,7 +60,6 @@
       currentHM=$(home-manager generations | head -1)
 
       git commit -am "NixOS Gen := $currentNix \n home-manager Gen := $currentHM"
-      git push
     '')
   ];
 
