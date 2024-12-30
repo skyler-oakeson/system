@@ -56,11 +56,11 @@
 
 
       # Get current generation metadata
-      currentNix=$(nixos-rebuild list-generations | grep current)
-      currentHM=$(home-manager generations | head -1)
+      genNix=$(nixos-rebuild list-generations | grep current)
+      genHM=$(home-manager generations | head -1)
 
-      sudo git commit -am "NixOS Gen := $currentNix
-                           home-manager Gen := $currentHM"
+      sudo git commit -am "NixOS Gen := genNix$
+                           home-manager Gen := $genHM"
     '')
   ];
 
