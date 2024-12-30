@@ -54,6 +54,8 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    autocd = true;
+    dotDir = ".config/zsh";
     plugins = [
         {
           name = "zsh-vi-mode";
