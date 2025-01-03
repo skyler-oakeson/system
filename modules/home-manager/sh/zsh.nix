@@ -11,20 +11,22 @@
           echo "
               Usage: rebuild [OPTION]
               Rebuilds NixOS and home-manager configurations.
-
                   -m,            Rebuilds only home-manager modules
                   -n,            Rebuilds only nixos modules
-                  -a,            Rebuilds both nixos and home-manager modules
           "
       }
 
-      if [ "#$" -ne 1 ]; then
-          echo "Illegal number of arguments."
-          exit 1
-      fi
-
       pushd /home/skyler/.config/system
       # git diff -U0 '*.nix'
+
+      if [[ $# -eq 0]]; then
+      # rebuild all
+          echo "Rebuilding All..."
+          git add --all
+          sudo nixos-rebuild switch --flake .
+          home-manager switch --flake .
+          exit;;
+      fi;
 
 
       while getopts ":hna:" option; do
@@ -40,12 +42,6 @@
             m) # rebuild home-manager
                echo "Rebuilding Home-Manager..."
                git add modules/home-manager/
-               home-manager switch --flake .
-               exit;;
-            a) # rebuild all
-               echo "Rebuilding All..."
-               git add --all
-               sudo nixos-rebuild switch --flake .
                home-manager switch --flake .
                exit;;
           esac
