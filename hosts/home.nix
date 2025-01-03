@@ -22,12 +22,12 @@ in {
     ../modules/home-manager/nvim/nvim.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.woodland;
+  # colorScheme = inputs.nix-colors.colorSchemes.woodland;
 
-  # colorScheme = nix-colors-lib.colorSchemeFromPicture {
-  #   path = wallpaper;
-  #   variant = "dark";
-  # };
+  colorScheme = nix-colors-lib.colorSchemeFromPicture {
+    path = wallpaper;
+    variant = "dark";
+  };
 
   nixpkgs.config = {
     allowUnfree = true;

@@ -22,12 +22,16 @@
     inherit (self) outputs;
     system = "x86_64-linux";
     lib = nixpkgs.lib;
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
   in {
     nixosConfigurations = {
       elm = lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = system;
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = pkgs;
         modules = [
           # inputs.home-manager.nixosModules.default
           ./hosts/elm/configuration.nix
@@ -37,7 +41,7 @@
 
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = pkgs;
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./hosts/home.nix
