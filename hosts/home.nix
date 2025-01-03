@@ -22,7 +22,7 @@ in {
     ../modules/home-manager/nvim/nvim.nix
   ];
 
-  # colorScheme = inputs.nix-colors.colorSchemes.woodland;
+  # colorScheme = inputs.nix-colors.colorSchemes.brewer;
 
   colorScheme = nix-colors-lib.colorSchemeFromPicture {
     path = wallpaper;

@@ -136,11 +136,11 @@
       }
 
       @define-color background #${config.colorScheme.palette.base00};
-      @define-color foreground #${config.colorScheme.palette.base05};
+      @define-color foreground #${config.colorScheme.palette.base03};
 
       window#waybar {
         background-color: rgba(0, 0, 0, 0);
-        border-radius: 13px;
+        border-radius: 0px;
         transition-property: background-color;
         transition-duration: .5s;
       }
@@ -239,7 +239,7 @@
       .modules-right,
       .modules-left {
         background-color: @background;
-        border-radius: 3px;
+        border-radius: 0px;
         border: solid 1px;
         border-color: @foreground
       }

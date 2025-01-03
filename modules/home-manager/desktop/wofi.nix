@@ -20,7 +20,7 @@
         font-family: "JetBrainsMono Nerd Font";
         font-size: 16px;
         background: #${config.colorScheme.palette.base00};
-        color: #${config.colorScheme.palette.base05};
+        color: #${config.colorScheme.palette.base03};
         font-style: oblique;
         border-bottom: none;
         outline: none;

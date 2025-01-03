@@ -5,5 +5,6 @@
     firefox
     discord
     spotify
+    docker
   ];
 }

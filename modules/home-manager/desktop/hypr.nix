@@ -95,7 +95,7 @@
         gaps_out = 10;
         border_size = 1;
         "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
-        "col.active_border" = "rgb(${config.colorScheme.palette.base05})";
+        "col.active_border" = "rgb(${config.colorScheme.palette.base03})";
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
