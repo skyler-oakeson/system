@@ -21,6 +21,7 @@
       git diff -U0 '*.nix'
 
       if "$#" -eq 0; then
+          # rebuild all
           echo "Rebuilding All..."
           git add --all
           sudo nixos-rebuild switch --flake .
@@ -45,7 +46,7 @@
                exit;;
           esac
           # Autoformat your nix files
-          alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+          # alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
       done
 
       # Get current generation metadata
