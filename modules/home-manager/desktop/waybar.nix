@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -17,13 +18,25 @@
         height = 30;
         reload_style_on_change = true;
 
-        modules-left = [
-          "hyprland/workspaces"
-          "hyprland/window"
-        ];
+        modules-left =
+          [
+            "hyprland/workspaces"
+            "hyprland/window"
+          ]
+          ++ (
+            if (builtins.getEnv "HOST" == "yew")
+            then ["hyprland/window"]
+            else []
+          );
 
-        modules-center = [
-        ];
+        modules-center =
+          [
+          ]
+          ++ (
+            if (builtins.getEnv "HOST" == "elm")
+            then ["hyprland/window"]
+            else []
+          );
 
         modules-right = [
           "pulseaudio"
@@ -168,7 +181,7 @@
 
 
       #workspaces button:hover {
-        /*background: rgba(0, 0, 0, 0.2);*/
+        background: rgba(0, 0, 0, 0.2);
       }
 
       #workspaces button.focused {

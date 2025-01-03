@@ -22,12 +22,12 @@
     inherit (self) outputs;
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       elm = lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = system;
+        pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           # inputs.home-manager.nixosModules.default
           ./hosts/elm/configuration.nix
@@ -40,7 +40,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {inherit inputs;};
         modules = [
-          ./hosts/elm/home.nix
+          ./hosts/home.nix
         ];
       };
     };

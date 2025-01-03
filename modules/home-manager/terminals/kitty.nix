@@ -5,6 +5,8 @@
 }: {
   home.packages = with pkgs; [
     kitty
+    ranger
+    neofetch
   ];
 
   programs.kitty = {

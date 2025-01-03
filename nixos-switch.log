@@ -1,4 +1,0 @@
-error:
-       … while fetching the input 'git+file:///home/skyler/.config/system'
-
-       error: opening Git repository '"/home/skyler/.config/system"': repository path '/home/skyler/.config/system' is not owned by current user

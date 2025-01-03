@@ -14,5 +14,7 @@
     cmake
     libgccjit
     wl-clipboard
+    zip
+    unzip
   ];
 }

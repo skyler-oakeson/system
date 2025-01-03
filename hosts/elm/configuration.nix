@@ -80,7 +80,7 @@
   environment.shells = with pkgs; [zsh];
 
   fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 
   hardware.pulseaudio.enable = false;

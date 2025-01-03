@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   config,
-  home,
   ...
 }: {
   imports = [
@@ -111,7 +110,7 @@
       decoration = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 3;
+        rounding = 0;
 
         blur = {
           enabled = true;
@@ -123,7 +122,7 @@
         };
 
         active_opacity = 1.0;
-        inactive_opacity = 1.0;
+        inactive_opacity = 0.70;
 
         shadow = {
           range = 30;
@@ -264,11 +263,11 @@
       ipc = "on";
 
       preload = [
-          "${config.home.sessionVariables.WALLPAPER}"
+        "${config.home.sessionVariables.WALLPAPER}"
       ];
 
       wallpaper = [
-      ",${config.home.sessionVariables.WALLPAPER}"
+        ",${config.home.sessionVariables.WALLPAPER}"
       ];
     };
   };
