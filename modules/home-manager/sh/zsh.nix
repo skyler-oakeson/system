@@ -11,25 +11,24 @@
           echo "
               Usage: rebuild [OPTION]
               Rebuilds NixOS and home-manager configurations.
+                  -h,            Displays help message
                   -m,            Rebuilds only home-manager modules
                   -n,            Rebuilds only nixos modules
           "
       }
 
       pushd /home/skyler/.config/system
-      # git diff -U0 '*.nix'
+      git diff -U0 '*.nix'
 
-      if [[ $# -eq 0]]; then
-      # rebuild all
+      if [ "$#" -eq 0]; then
           echo "Rebuilding All..."
           git add --all
           sudo nixos-rebuild switch --flake .
           home-manager switch --flake .
-          exit;;
-      fi;
+          exit;
+      fi
 
-
-      while getopts ":hna:" option; do
+      while getopts ":hnm:" option; do
           case $option in
             h) # display help
                Help
@@ -51,9 +50,10 @@
 
       # Get current generation metadata
       genNix=$(nixos-rebuild list-generations | grep current)
-      genHM=$(home-manager generations | grep * | head -1)
+      genHM=$(home-manager generations | head -1)
 
       sudo git commit -am "NixOS Gen := genNix$ home-manager Gen := $genHM"
+      popd
     '')
   ];
 
