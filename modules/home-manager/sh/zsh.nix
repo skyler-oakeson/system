@@ -20,7 +20,7 @@
       pushd /home/skyler/.config/system
       git diff -U0 '*.nix'
 
-      if [[ "$#" -eq 0]]; then
+      if "$#" -eq 0; then
           echo "Rebuilding All..."
           git add --all
           sudo nixos-rebuild switch --flake .
