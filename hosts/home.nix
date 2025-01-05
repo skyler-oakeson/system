@@ -5,7 +5,7 @@
   ...
 }: let
   nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
-  wallpaper = ../modules/home-manager/desktop/wallpapers/blue_distortion_1.png;
+  wallpaper = ../modules/home-manager/desktop/wallpapers/cube_prod.png;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -22,12 +22,12 @@ in {
     ../modules/home-manager/nvim/nvim.nix
   ];
 
-  # colorScheme = inputs.nix-colors.colorSchemes.brewer;
+  colorScheme = inputs.nix-colors.colorSchemes.brewer;
 
-  colorScheme = nix-colors-lib.colorSchemeFromPicture {
-    path = wallpaper;
-    variant = "dark";
-  };
+  # colorScheme = nix-colors-lib.colorSchemeFromPicture {
+  #   path = wallpaper;
+  #   variant = "dark";
+  # };
 
   nixpkgs.config = {
     allowUnfree = true;

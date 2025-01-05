@@ -16,5 +16,6 @@
     wl-clipboard
     zip
     unzip
+    comma
   ];
 }

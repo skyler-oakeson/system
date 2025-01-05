@@ -16,11 +16,11 @@
       allow_markup = true;
     };
     style = ''
-      window {
+      #window {
         font-family: "JetBrainsMono Nerd Font";
         font-size: 16px;
         background: #${config.colorScheme.palette.base00};
-        color: #${config.colorScheme.palette.base03};
+        color: #${config.colorScheme.palette.base05};
         font-style: oblique;
         border-bottom: none;
         outline: none;
@@ -29,14 +29,18 @@
       #input {
         border-radius: 0px;
         outline: none;
-        padding: 10;
+        padding: 5;
         border: 0px;
         background: #${config.colorScheme.palette.base00};
-        foreground: #${config.colorScheme.palette.base07};
+        color: #${config.colorScheme.palette.base05};
+      }
+
+      #input:focus {
+        outline: none;
       }
 
       #entry {
-        padding: 10px;
+        padding: 5px;
         border-radius: 0px;
         outline: none;
       }

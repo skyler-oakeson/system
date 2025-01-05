@@ -136,7 +136,7 @@
       }
 
       @define-color background #${config.colorScheme.palette.base00};
-      @define-color foreground #${config.colorScheme.palette.base03};
+      @define-color foreground #${config.colorScheme.palette.base05};
 
       window#waybar {
         background-color: rgba(0, 0, 0, 0);

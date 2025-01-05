@@ -7,6 +7,7 @@
     kitty
     ranger
     neofetch
+    btop
   ];
 
   programs.kitty = {
@@ -17,7 +18,7 @@
     };
 
     settings = {
-      font_family = "JetBrainsMonoNerd Font";
+      font_family = "JetBrainsMono Nerd Font";
       font_size = 12.0;
       window_padding_width = 10;
       bold_font = "auto";

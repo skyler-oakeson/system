@@ -14,6 +14,8 @@
     ./hardware-configuration.nix
     ../../modules/nixos/graphics/nvidia.nix
     ../../modules/nixos/utils/utils.nix
+    ../../modules/nixos/fonts/fonts.nix
+    ../../modules/nixos/games/steam.nix
   ];
 
   # Bootloader.
@@ -75,10 +77,6 @@
   ];
 
   environment.shells = with pkgs; [zsh];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
