@@ -12,10 +12,10 @@
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
-    ../../modules/nixos/graphics/nvidia.nix
-    ../../modules/nixos/utils/utils.nix
-    ../../modules/nixos/fonts/fonts.nix
-    ../../modules/nixos/games/steam.nix
+    ../../modules/graphics/nvidia.nix
+    ../../modules/utils/utils.nix
+    ../../modules/fonts/fonts.nix
+    ../../modules/games/steam.nix
   ];
 
   # Bootloader.
@@ -55,6 +55,8 @@
     layout = "us";
     variant = "";
   };
+
+  programs.dconf.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;

@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./gtk.nix
     ./waybar.nix
     ./wofi.nix
   ];
@@ -34,7 +33,10 @@
     };
 
     settings = {
-      monitor = ",3456x2234,auto,1";
+      monitor = [
+        "DP-1,2560x1440@144,auto,1"
+        "DP-2,3840x2160@60,auto,1.5"
+      ];
 
       dwindle = {
         pseudotile = "yes";
@@ -62,7 +64,7 @@
       "exec-once" = [
         "hyprctl hyprpaper"
         "waybar"
-        "hyprctl setcursor Bibata-Modern-Ice 24"
+        # "hyprctl setcursor Bibata-Modern-Ice 24"
       ];
 
       input = {
@@ -94,8 +96,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 1;
-        "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
-        "col.active_border" = "rgb(${config.colorScheme.palette.base05})";
+        # "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
+        # "col.active_border" = "rgb(${config.colorScheme.palette.base05})";
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
@@ -127,10 +129,14 @@
         shadow = {
           range = 30;
           render_power = 4;
-          color = "0x66000000";
+          color = (lib.mkForce "0x66000000");
           offset = "5 5";
         };
       };
+
+      workspace = [
+        "1,monitor:DP-1"
+      ];
 
       # Sliding windows
       animations = {
@@ -256,19 +262,19 @@
     };
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      splash = false;
-      ipc = "on";
-
-      preload = [
-        "${config.home.sessionVariables.WALLPAPER}"
-      ];
-
-      wallpaper = [
-        ",${config.home.sessionVariables.WALLPAPER}"
-      ];
-    };
-  };
+  # services.hyprpaper = {
+  #   enable = true;
+  #   settings = {
+  #     splash = false;
+  #     ipc = "on";
+  #
+  #     preload = [
+  #       "${config.home.sessionVariables.WALLPAPER}"
+  #     ];
+  #
+  #     wallpaper = [
+  #       ",${config.home.sessionVariables.WALLPAPER}"
+  #     ];
+  #   };
+  # };
 }

@@ -4,8 +4,7 @@
   config,
   ...
 }: let
-  nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
-  wallpaper = ../modules/home-manager/desktop/wallpapers/cube_prod.png;
+  wallpaper = ./modules/desktop/wallpapers/loupe.png;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -13,21 +12,24 @@ in {
   home.homeDirectory = "/home/skyler";
 
   imports = [
-    inputs.nix-colors.homeManagerModules.default
-    ../modules/home-manager/terminals/kitty.nix
-    ../modules/home-manager/desktop/hypr.nix
-    ../modules/home-manager/sh/zsh.nix
-    ../modules/home-manager/apps/default.nix
-    ../modules/home-manager/lang/default.nix
-    ../modules/home-manager/nvim/nvim.nix
+    ./modules/terminals/kitty.nix
+    ./modules/desktop/hypr.nix
+    ./modules/sh/zsh.nix
+    ./modules/apps/default.nix
+    ./modules/lang/default.nix
+    ./modules/nvim/default.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.brewer;
+  stylix = {
+    enable = true;
+    image = wallpaper;
+    polarity = "dark";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
+    fonts = {
+    };
+  };
 
-  # colorScheme = nix-colors-lib.colorSchemeFromPicture {
-  #   path = wallpaper;
-  #   variant = "dark";
-  # };
+  gtk.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;

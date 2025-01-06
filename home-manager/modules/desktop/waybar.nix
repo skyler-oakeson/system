@@ -61,8 +61,7 @@
           "on-click" = "activate";
           "sort-by-number" = true;
           "persistent-workspaces" = {
-            "*" = 4; # 5 workspaces by default on every monitor
-            "HDMI-A-1" = 3; # but only three on HDMI-A-1
+            "DP-2" = 4; # 5 workspaces by default on every monitor
           };
         };
         "clock" = {
@@ -135,11 +134,8 @@
         font-size: 16px;
       }
 
-      @define-color background #${config.colorScheme.palette.base00};
-      @define-color foreground #${config.colorScheme.palette.base05};
-
       window#waybar {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: transparent;
         border-radius: 0px;
         transition-property: background-color;
         transition-duration: .5s;
@@ -153,48 +149,45 @@
         border-radius: 0;
       }
 
-      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
       button:hover {
         background: inherit;
-        box-shadow: inset 0 -3px @foreground;
+        box-shadow: inset 0 -3px @base05;
       }
 
-      /* you can set a style on hover for any module like this */
       #pulseaudio:hover {
-        background-color: @foreground;
+        background-color: @base05;
       }
 
       #workspaces {
-          color: @foreground;
+          color: @base05;
       }
 
       #workspaces button.active {
-          color: @background;
-          background: @foreground
+          color: @base00;
+          background: @base05
       }
 
       #workspaces button {
         padding: 0 5px;
         background-color: transparent;
-        color: @foreground;
+        color: @base05;
       }
 
 
       #workspaces button:hover {
-        background: rgba(0, 0, 0, 0.2);
+        background: @base06;
       }
 
       #workspaces button.focused {
-        background-color: @background;
-        box-shadow: inset 0 -3px @foreground;
+        background-color: @base06;
       }
 
       #workspaces button.urgent {
-        background-color: @foreground;
+        background-color: @base05;
       }
 
       #mode {
-        background-color: @foreground;
+        background-color: @base05;
         box-shadow: inset 0 -3px #ffffff;
       }
 
@@ -209,39 +202,39 @@
       }
 
       #pulseaudio {
-        color: @foreground;
+        color: @base05;
       }
 
       #network {
-        color: @foreground;
+        color: @base05;
       }
 
       #temperature {
-        color: @foreground;
+        color: @base05;
       }
 
       #battery {
-        color: @foreground;
+        color: @base05;
       }
 
       #clock {
-        color: @foreground;
+        color: @base05;
       }
 
       #window {
-        color: @foreground;
+        color: @base05;
       }
 
       #backlight {
-        color: @foreground;
+        color: @base05;
       }
 
       .modules-right,
       .modules-left {
-        background-color: @background;
+        background-color: @base00;
         border-radius: 0px;
         border: solid 1px;
-        border-color: @foreground
+        border-color: @base05
       }
 
       .modules-right {
@@ -258,19 +251,19 @@
 
       #battery.charging,
       #battery.plugged {
-        color: @foreground;
+        color: @base05;
       }
 
       @keyframes blink {
         to {
-          color: @background;
+          color: @base00;
         }
       }
 
       /* Using steps() instead of linear as a timing function to limit cpu usage */
       #battery.critical:not(.charging) {
-        background-color: @background;
-        color: @foreground;
+        background-color: @base00;
+        color: @base05;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: steps(12);
@@ -279,11 +272,11 @@
       }
 
       label:focus {
-        background-color: @background;
+        background-color: @base00;
       }
 
       #pulseaudio.muted {
-        color: @foreground;
+        color: @base05;
       }
     '';
   };

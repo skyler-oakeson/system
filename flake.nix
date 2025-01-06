@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -16,7 +16,7 @@
     nixpkgs,
     home-manager,
     hyprland-qtutils,
-    nix-colors,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -30,21 +30,22 @@
     nixosConfigurations = {
       elm = lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        system = system;
-        pkgs = pkgs;
+        inherit system;
+        inherit pkgs;
         modules = [
           # inputs.home-manager.nixosModules.default
-          ./hosts/elm/configuration.nix
+          ./nixos/hosts/elm/configuration.nix
         ];
       };
     };
 
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        inherit pkgs;
         extraSpecialArgs = {inherit inputs;};
         modules = [
-          ./hosts/home.nix
+          stylix.homeManagerModules.stylix
+          ./home-manager/home.nix
         ];
       };
     };
