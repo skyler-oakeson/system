@@ -12,10 +12,10 @@
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
-    ../../modules/graphics/nvidia.nix
-    ../../modules/utils/utils.nix
-    ../../modules/fonts/fonts.nix
-    ../../modules/games/steam.nix
+    ../../graphics/nvidia.nix
+    ../../utils/utils.nix
+    ../../fonts/fonts.nix
+    ../../games/steam.nix
   ];
 
   # Bootloader.

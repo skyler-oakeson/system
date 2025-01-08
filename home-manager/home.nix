@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  wallpaper = ./modules/desktop/wallpapers/loupe.png;
+  wallpaper = ./desktop/wallpapers/loupe.png;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -12,12 +12,12 @@ in {
   home.homeDirectory = "/home/skyler";
 
   imports = [
-    ./modules/terminals/kitty.nix
-    ./modules/desktop/hypr.nix
-    ./modules/sh/zsh.nix
-    ./modules/apps/default.nix
-    ./modules/lang/default.nix
-    ./modules/nvim/default.nix
+    ./terminals/kitty.nix
+    ./desktop/hypr.nix
+    ./sh/zsh.nix
+    ./apps/default.nix
+    ./lang/default.nix
+    ./nvim/default.nix
   ];
 
   stylix = {

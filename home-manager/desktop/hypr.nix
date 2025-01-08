@@ -11,7 +11,6 @@
 
   home.packages = with pkgs; [
     hyprland
-    hyprpaper
     hyprlock
     hypridle
     hyprcursor
@@ -261,20 +260,4 @@
       ];
     };
   };
-
-  # services.hyprpaper = {
-  #   enable = true;
-  #   settings = {
-  #     splash = false;
-  #     ipc = "on";
-  #
-  #     preload = [
-  #       "${config.home.sessionVariables.WALLPAPER}"
-  #     ];
-  #
-  #     wallpaper = [
-  #       ",${config.home.sessionVariables.WALLPAPER}"
-  #     ];
-  #   };
-  # };
 }
