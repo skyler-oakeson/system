@@ -9,5 +9,7 @@
     ghc
     # python3
     gcc
+    gdb
+    rustup
   ];
 }

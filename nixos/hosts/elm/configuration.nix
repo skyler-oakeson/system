@@ -15,7 +15,7 @@
     ../../graphics/nvidia.nix
     ../../utils/utils.nix
     ../../fonts/fonts.nix
-    ../../games/steam.nix
+    ../../games/default.nix
   ];
 
   # Bootloader.
@@ -80,7 +80,7 @@
 
   environment.shells = with pkgs; [zsh];
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

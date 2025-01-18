@@ -17,5 +17,6 @@
     zip
     unzip
     comma
+    usbutils
   ];
 }

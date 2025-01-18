@@ -61,7 +61,6 @@
           "on-click" = "activate";
           "sort-by-number" = true;
           "persistent-workspaces" = {
-            "DP-2" = 4; # 5 workspaces by default on every monitor
           };
         };
         "clock" = {
@@ -114,7 +113,7 @@
             "car" = "";
             "default" = ["" "" ""];
           };
-          "on-click" = "pavucontrol";
+          "on-click" = "pwvucontrol";
         };
         "backlight" = {
           "scroll-step" = 1;

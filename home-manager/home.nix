@@ -3,33 +3,20 @@
   inputs,
   config,
   ...
-}: let
-  wallpaper = ./desktop/wallpapers/loupe.png;
-in {
+}: 
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
 
   imports = [
-    ./terminals/kitty.nix
-    ./desktop/hypr.nix
-    ./sh/zsh.nix
+    ./desktop/default.nix
     ./apps/default.nix
     ./lang/default.nix
     ./nvim/default.nix
+    ./theming/default.nix
   ];
-
-  stylix = {
-    enable = true;
-    image = wallpaper;
-    polarity = "dark";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
-    fonts = {
-    };
-  };
-
-  gtk.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -73,7 +60,6 @@ in {
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    WALLPAPER = wallpaper;
   };
 
   # Let Home Manager install and manage itself.

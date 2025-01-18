@@ -1,6 +1,6 @@
 {pkgs, ...}:
 # ===============================================
-# Installed Formatters
+# Installed Formatters and Linters
 #
 # Search: https://search.nixos.org for more pkgs
 # ===============================================

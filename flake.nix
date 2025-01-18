@@ -9,6 +9,7 @@
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     stylix.url = "github:danth/stylix";
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = {
@@ -17,6 +18,7 @@
     home-manager,
     hyprland-qtutils,
     stylix,
+    nvf,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -45,6 +47,7 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           stylix.homeManagerModules.stylix
+          nvf.homeManagerModules.default
           ./home-manager/home.nix
         ];
       };

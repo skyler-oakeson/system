@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  imports = [
-    ./waybar.nix
-    ./wofi.nix
-  ];
-
   home.packages = with pkgs; [
     hyprland
     hyprlock
@@ -63,7 +58,6 @@
       "exec-once" = [
         "hyprctl hyprpaper"
         "waybar"
-        # "hyprctl setcursor Bibata-Modern-Ice 24"
       ];
 
       input = {
