@@ -5,8 +5,7 @@
   ...
 }: 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
 
@@ -19,18 +18,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-  };
-
-  walnix = {
-    enable = true;
-    path = ./desktop/wallpapers/lighthouse.jpg;
-    backend = "wal";
-    saturation = 0;
-    checkContrast = true;
-    dynamicThreshold = true;
-    palette = "dark16";
-    colorSpace = "labmixed";
-    alpha = 100;
   };
 
   # You should not change this value, even if you update Home Manager. If you do
@@ -69,6 +56,7 @@
   #
   #  /etc/profiles/per-user/skyler/etc/profile.d/hm-session-vars.sh
   #
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };

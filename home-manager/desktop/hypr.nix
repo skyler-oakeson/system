@@ -6,6 +6,7 @@
 }: {
   home.packages = with pkgs; [
     hyprland
+    hyprpaper
     hyprlock
     hypridle
     hyprutils
@@ -13,6 +14,15 @@
     wofi
     inputs.hyprland-qtutils.packages."${system}".default
   ];
+  
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      enable = true;
+      preload = [ "${config.walnix.path}" ];
+      wallpaper = [ ",${config.walnix.path}" ];
+    };
+  };
 
   wayland.windowManager.hyprland = with pkgs; {
     enable = true;
@@ -53,7 +63,7 @@
       "$mod" = "MOD4";
 
       "exec-once" = [
-        "hyprctl hyprpaper"
+        "hyprpaper"
         "waybar"
       ];
 

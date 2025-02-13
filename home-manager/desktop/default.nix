@@ -4,5 +4,6 @@
     ./waybar.nix
     ./wofi.nix
     ./hypr.nix
+    ./walnix.nix
   ];
 }
