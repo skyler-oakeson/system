@@ -15,11 +15,22 @@
     ./apps/default.nix
     ./lang/default.nix
     ./nvim/default.nix
-    ./theming/default.nix
   ];
 
   nixpkgs.config = {
     allowUnfree = true;
+  };
+
+  walnix = {
+    enable = true;
+    path = ./theming/wallpapers/lighthouse.jpg;
+    backend = "wal";
+    saturation = 0;
+    checkContrast = true;
+    dynamicThreshold = true;
+    palette = "dark16";
+    colorSpace = "labmixed";
+    alpha = 100;
   };
 
   # You should not change this value, even if you update Home Manager. If you do

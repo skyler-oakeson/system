@@ -18,5 +18,6 @@
     unzip
     comma
     usbutils
+    jq
   ];
 }

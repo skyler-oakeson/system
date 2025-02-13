@@ -9,7 +9,7 @@
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     stylix.url = "github:danth/stylix";
-    nvf.url = "github:notashelf/nvf";
+    walnix.url = "path:/home/skyler/Code/walnix/";
   };
 
   outputs = {
@@ -18,7 +18,7 @@
     home-manager,
     hyprland-qtutils,
     stylix,
-    nvf,
+    walnix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -46,9 +46,9 @@
         inherit pkgs;
         extraSpecialArgs = {inherit inputs;};
         modules = [
-          stylix.homeManagerModules.stylix
-          nvf.homeManagerModules.default
           ./home-manager/home.nix
+          stylix.homeManagerModules.stylix
+          walnix.homeManagerModules.walnix
         ];
       };
     };

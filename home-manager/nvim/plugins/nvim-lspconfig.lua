@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 lspconfig.clangd.setup {}
 lspconfig.ts_ls.setup {}
 lspconfig.nil_ls.setup {}
+lspconfig.jdtls.setup {}
 lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {

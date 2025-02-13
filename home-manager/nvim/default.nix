@@ -20,6 +20,7 @@
       clang-tools
       marksman
       rust-analyzer
+      jdt-language-server
       typescript-language-server
       lua-language-server
       (pkgs.python311.withPackages (ppkgs: [
@@ -37,6 +38,8 @@
         p.tree-sitter-json
         p.tree-sitter-c
         p.tree-sitter-cpp
+        p.tree-sitter-markdown
+        p.tree-sitter-java
       ]))
 
       {

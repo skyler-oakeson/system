@@ -8,7 +8,6 @@
     hyprland
     hyprlock
     hypridle
-    hyprcursor
     hyprutils
     waybar
     wofi
@@ -39,8 +38,6 @@
 
       env = [
         "MOZ_ENABLE_WAYLAND,1"
-        "XCURSOR_SIZE,24"
-        "XCURSOR_THEME,Bibata-Modern-Ice"
         "NIXOS_OZONE_WL,1"
         "QT_QPA_PLATFORMTHEME,qt6ct"
         "QT_QPA_PLATFORM,wayland;xcb"
@@ -89,8 +86,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 1;
-        # "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
-        # "col.active_border" = "rgb(${config.colorScheme.palette.base05})";
+        # "col.inactive_border" = lib.mkForce config.lib.walnix.colors.rgb.color0;
+        # "col.active_border" = lib.mkForce config.lib.walnix.colors.rgb.color5;
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
