@@ -23,7 +23,7 @@
 
   walnix = {
     enable = true;
-    path = ./theming/wallpapers/lighthouse.jpg;
+    path = ./desktop/wallpapers/lighthouse.jpg;
     backend = "wal";
     saturation = 0;
     checkContrast = true;
