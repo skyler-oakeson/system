@@ -577,8 +577,8 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1739478901,
-        "narHash": "sha256-H+vyiwqAszTRy9O4bzZF8/lOpg6f9SD8R3lB+2sH638=",
+        "lastModified": 1739550609,
+        "narHash": "sha256-2QBIrd10Zo5mmnIake4JwctFA9eSOYZwr1kqqN10fqw=",
         "path": "/home/skyler/Code/walnix/",
         "type": "path"
       },

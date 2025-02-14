@@ -2,14 +2,13 @@
 {
   walnix = {
     enable = true;
-    path = ./wallpapers/lighthouse.jpg;
+    path = ./wallpapers/loupe.png;
     backend = "wal";
-    saturation = 1;
+    saturation = 10;
     checkContrast = true;
-    # dynamicThreshold = true;
+    dynamicThreshold = true;
     palette = "dark16";
     colorSpace = "labmixed";
-    alpha = 0;
-    threshold = 5;
+    # threshold = 5;
   };
 }

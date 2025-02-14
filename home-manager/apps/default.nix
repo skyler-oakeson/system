@@ -2,12 +2,13 @@
   imports = [
     ./kitty.nix
     ./zsh.nix
+    ./firefox.nix
   ];
 
   home.packages = with pkgs; [
-    firefox
     discord
     spotify
     pwvucontrol
   ];
+
 }
