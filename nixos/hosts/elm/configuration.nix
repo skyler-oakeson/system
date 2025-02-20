@@ -89,6 +89,19 @@
     pulse.enable = true;
   };
 
+  programs.hyprland.enable = true;
+
+  # Screen sharing with Wayland.
+  xdg = {
+    portal = {
+      enable = true;
+      configPackages = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-hyprland
+      ];
+    };
+  };
+
   # home-manager = {
   #   extraSpecialArgs = { inherit inputs; };
   #   users = {

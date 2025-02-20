@@ -2,13 +2,13 @@
 {
   walnix = {
     enable = true;
-    path = ./wallpapers/loupe.png;
+    path = ./wallpapers/chromatic_dark_1.jpg;
     backend = "wal";
-    saturation = 10;
+    saturation = 30;
     checkContrast = true;
     dynamicThreshold = true;
-    palette = "dark16";
-    colorSpace = "labmixed";
+    palette = "harddark16";
+    # colorSpace = "lch";
     # threshold = 5;
   };
 }

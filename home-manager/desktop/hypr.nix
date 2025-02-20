@@ -35,7 +35,7 @@
       variables = ["--all"];
     };
 
-    settings = {
+    settings = with config.walnix.colors.rgba; {
       monitor = [
         "DP-1,2560x1440@144,auto,1"
         "DP-2,3840x2160@60,auto,1.5"
@@ -96,12 +96,24 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 1;
-        # "col.inactive_border" = lib.mkForce config.lib.walnix.colors.rgb.color0;
-        # "col.active_border" = lib.mkForce config.lib.walnix.colors.rgb.color5;
+        "col.active_border" = color5;
+        "col.inactive_border" = color1;
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
         border_part_of_window = false;
+      };
+
+      group = {
+        "col.border_inactive" = color1;
+        "col.border_active" = color0;
+        "col.border_locked_active" = color3;
+      
+        groupbar = {
+          text_color = color5;
+          "col.active" = color1;
+          "col.inactive" = color0;
+        };
       };
 
       misc = {
@@ -129,7 +141,7 @@
         shadow = {
           range = 30;
           render_power = 4;
-          color = (lib.mkForce "0x66000000");
+          color = "0x66000000";
           offset = "5 5";
         };
       };

@@ -8,8 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    stylix.url = "github:danth/stylix";
-    walnix.url = "path:/home/skyler/Code/walnix/";
+    walnix.url = "path:/home/skyler/Code/Nix/walnix/";
   };
 
   outputs = {
@@ -17,7 +16,6 @@
     nixpkgs,
     home-manager,
     hyprland-qtutils,
-    stylix,
     walnix,
     ...
   } @ inputs: let
@@ -47,7 +45,6 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home-manager/home.nix
-          stylix.homeManagerModules.stylix
           walnix.homeManagerModules.walnix
         ];
       };

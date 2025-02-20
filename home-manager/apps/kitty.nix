@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }: {
   home.packages = with pkgs; [
@@ -16,7 +17,7 @@
       enableZshIntegration = true;
     };
 
-    settings = {
+    settings = with config.walnix.colors.noHash; {
       font_family = "JetBrainsMono Nerd Font";
       font_size = 12.0;
       window_padding_width = 10;
@@ -26,50 +27,50 @@
       remember_window_size = "yes";
       confirm_os_window_close = 0;
 
-      # background = "#${config.colorScheme.palette.base00}";
-      # foreground = "#${config.colorScheme.palette.base05}";
-      # selection_background = "#${config.colorScheme.palette.base05}";
-      # selection_foreground = "#${config.colorScheme.palette.base00}";
-      # url_color = "#${config.colorScheme.palette.base04}";
-      # cursor = "#${config.colorScheme.palette.base05}";
-      # cursor_text_color = "#${config.colorScheme.palette.base00}";
-      # active_border_color = "#${config.colorScheme.palette.base03}";
-      # inactive_border_color = "#${config.colorScheme.palette.base01}";
-      # active_tab_background = "#${config.colorScheme.palette.base00}";
-      # active_tab_foreground = "#${config.colorScheme.palette.base05}";
-      # inactive_tab_background = "#${config.colorScheme.palette.base01}";
-      # inactive_tab_foreground = "#${config.colorScheme.palette.base04}";
-      # tab_bar_background = "#${config.colorScheme.palette.base01}";
-      # wayland_titlebar_color = "#${config.colorScheme.palette.base00}";
-      # macos_titlebar_color = "#${config.colorScheme.palette.base00}";
-      #
-      # # normal
-      # color0 = "#${config.colorScheme.palette.base00}";
-      # color1 = "#${config.colorScheme.palette.base08}";
-      # color2 = "#${config.colorScheme.palette.base0B}";
-      # color3 = "#${config.colorScheme.palette.base0A}";
-      # color4 = "#${config.colorScheme.palette.base0D}";
-      # color5 = "#${config.colorScheme.palette.base0E}";
-      # color6 = "#${config.colorScheme.palette.base0C}";
-      # color7 = "#${config.colorScheme.palette.base05}";
-      #
-      # # bright
-      # color8 = "#${config.colorScheme.palette.base03}";
-      # color9 = "#${config.colorScheme.palette.base08}";
-      # color10 = "#${config.colorScheme.palette.base0B}";
-      # color11 = "#${config.colorScheme.palette.base0A}";
-      # color12 = "#${config.colorScheme.palette.base0D}";
-      # color13 = "#${config.colorScheme.palette.base0E}";
-      # color14 = "#${config.colorScheme.palette.base0C}";
-      # color15 = "#${config.colorScheme.palette.base07}";
-      #
-      # # extended base16 colors
-      # color16 = "#${config.colorScheme.palette.base09}";
-      # color17 = "#${config.colorScheme.palette.base0F}";
-      # color18 = "#${config.colorScheme.palette.base01}";
-      # color19 = "#${config.colorScheme.palette.base02}";
-      # color20 = "#${config.colorScheme.palette.base04}";
-      # color21 = "#${config.colorScheme.palette.base06}";
+      background = "#${background}";
+      foreground = "#${foreground}";
+      selection_background = "#${foreground}";
+      selection_foreground = "#${background}";
+      url_color = "#${color4}";
+      cursor = "#${color5}";
+      cursor_text_color = "#${color0}";
+      active_border_color = "#${color3}";
+      inactive_border_color = "#${color1}";
+      active_tab_background = "#${color0}";
+      active_tab_foreground = "#${color5}";
+      inactive_tab_background = "#${color1}";
+      inactive_tab_foreground = "#${color4}";
+      tab_bar_background = "#${color1}";
+      wayland_titlebar_color = "#${color0}";
+      macos_titlebar_color = "#${color0}";
+
+      # normal
+      color0 = "#${color0}";
+      color1 = "#${color8}";
+      color2 = "#${color11}";
+      color3 = "#${color10}";
+      color4 = "#${color13}";
+      color5 = "#${color14}";
+      color6 = "#${color12}";
+      color7 = "#${color5}";
+
+      # bright
+      color8 = "#${color3}";
+      color9 = "#${color8}";
+      color10 = "#${color11}";
+      color11 = "#${color10}";
+      color12 = "#${color13}";
+      color13 = "#${color14}";
+      color14 = "#${color12}";
+      color15 = "#${color7}";
+
+      # extended color16 colors
+      color16 = "#${color9}";
+      color17 = "#${color15}";
+      color18 = "#${color1}";
+      color19 = "#${color2}";
+      color20 = "#${color4}";
+      color21 = "#${color6}";
     };
   };
 }

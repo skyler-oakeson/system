@@ -127,7 +127,17 @@
         };
       };
     };
-    style = ''
+    style = 
+    with config.walnix.colors.rgba;
+    ''
+      @define-color color0 ${color0}; @define-color color1 ${color1}; @define-color color2 ${color2}; 
+      @define-color color3 ${color3}; @define-color color4 ${color4}; @define-color color5 ${color5}; 
+      @define-color color6 ${color6}; @define-color color7 ${color7}; @define-color color8 ${color8}; 
+      @define-color color9 ${color9}; @define-color color10 ${color10}; @define-color color11 ${color11}; 
+      @define-color color12 ${color12}; @define-color color13 ${color13}; @define-color color14 ${color14}; 
+      @define-color color15 ${color15}; @define-color background ${background}; 
+      @define-color foreground ${foreground};
+
       * {
         font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
         font-size: 16px;
@@ -150,43 +160,43 @@
 
       button:hover {
         background: inherit;
-        box-shadow: inset 0 -3px @base05;
+        box-shadow: inset 0 -3px @background;
       }
 
       #pulseaudio:hover {
-        background-color: @base05;
+        background-color: @background;
       }
 
       #workspaces {
-          color: @base05;
+          color: @color5;
       }
 
       #workspaces button.active {
-          color: @base00;
-          background: @base05
+          color: @background;
+          background: @color5;
       }
 
       #workspaces button {
         padding: 0 5px;
         background-color: transparent;
-        color: @base05;
+        color: @color5;
       }
 
 
       #workspaces button:hover {
-        background: @base06;
+        background: @color6;
       }
 
       #workspaces button.focused {
-        background-color: @base06;
+        background-color: @color6;
       }
 
       #workspaces button.urgent {
-        background-color: @base05;
+        background-color: @background;
       }
 
       #mode {
-        background-color: @base05;
+        background-color: @background;
         box-shadow: inset 0 -3px #ffffff;
       }
 
@@ -201,39 +211,39 @@
       }
 
       #pulseaudio {
-        color: @base05;
+        color: @color5;
       }
 
       #network {
-        color: @base05;
+        color: @color5;
       }
 
       #temperature {
-        color: @base05;
+        color: @color5;
       }
 
       #battery {
-        color: @base05;
+        color: @color5;
       }
 
       #clock {
-        color: @base05;
+        color: @color5;
       }
 
       #window {
-        color: @base05;
+        color: @color5;
       }
 
       #backlight {
-        color: @base05;
+        color: @color5;
       }
 
       .modules-right,
       .modules-left {
-        background-color: @base00;
+        background-color: @background;
         border-radius: 0px;
         border: solid 1px;
-        border-color: @base05
+        border-color: @color5
       }
 
       .modules-right {
@@ -250,7 +260,7 @@
 
       #battery.charging,
       #battery.plugged {
-        color: @base05;
+        color: @background;
       }
 
       @keyframes blink {
@@ -261,8 +271,8 @@
 
       /* Using steps() instead of linear as a timing function to limit cpu usage */
       #battery.critical:not(.charging) {
-        background-color: @base00;
-        color: @base05;
+        background-color: @background;
+        color: @color5;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: steps(12);
@@ -271,11 +281,11 @@
       }
 
       label:focus {
-        background-color: @base00;
+        background-color: @background;
       }
 
       #pulseaudio.muted {
-        color: @base05;
+        color: @background;
       }
     '';
   };
