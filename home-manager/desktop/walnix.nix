@@ -2,13 +2,13 @@
 {
   walnix = {
     enable = true;
-    path = ./wallpapers/chromatic_dark_1.jpg;
+    path = ./wallpapers/forest_path.jpg;
     backend = "wal";
     saturation = 30;
     checkContrast = true;
     dynamicThreshold = true;
-    palette = "harddark16";
-    # colorSpace = "lch";
+    palette = "dark16";
+    colorSpace = "lchmixed";
     # threshold = 5;
   };
 }

@@ -7,7 +7,9 @@
   inputs,
   users,
   ...
-}: {
+}: 
+
+{
   imports = [
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default
@@ -15,7 +17,8 @@
     ../../graphics/nvidia.nix
     ../../utils/utils.nix
     ../../fonts/fonts.nix
-    ../../games/default.nix
+    ../../games
+    ../../display/wayland.nix
   ];
 
   # Bootloader.
@@ -87,19 +90,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-  };
-
-  programs.hyprland.enable = true;
-
-  # Screen sharing with Wayland.
-  xdg = {
-    portal = {
-      enable = true;
-      configPackages = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-hyprland
-      ];
-    };
   };
 
   # home-manager = {

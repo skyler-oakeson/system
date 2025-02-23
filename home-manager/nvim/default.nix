@@ -118,7 +118,19 @@
             hi Normal guibg=NONE ctermbg=NONE
             hi NormalNC guibg=NONE ctermbg=NONE
             hi SignColumn ctermbg=NONE ctermfg=NONE guibg=NONE
-          
+            hi LineNr guibg=NONE
+            hi LineNrBelow guibg=NONE
+            hi LineNrAbove guibg=NONE
+            hi CursorLineNr guibg=NONE
+            hi GitSignsAdd guibg=NONE
+            hi GitSignsChange guibg=NONE
+            hi GitSignsDelete guibg=NONE
+            hi CursorLineSign guibg=NONE
+            hi DiagnosticSignError guibg=NONE
+            hi DiagnosticSignWarn guibg=NONE
+            hi DiagnosticSignInfo guibg=NONE
+            hi DiagnosticSignHint guibg=NONE
+            hi DiagnosticSignOk guibg=NONE
             hi Pmenu ctermbg=NONE ctermfg=NONE guibg=NONE
             hi FloatBorder ctermbg=NONE ctermfg=NONE guibg=NONE
             hi NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE

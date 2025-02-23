@@ -18,25 +18,17 @@
         height = 30;
         reload_style_on_change = true;
 
-        modules-left =
-          [
-            "hyprland/workspaces"
-            "hyprland/window"
-          ]
-          ++ (
-            if (builtins.getEnv "HOST" == "yew")
-            then ["hyprland/window"]
-            else []
-          );
-
-        modules-center =
-          [
-          ]
-          ++ (
+        modules-left = (
             if (builtins.getEnv "HOST" == "elm")
             then ["hyprland/window"]
-            else []
-          );
+            else ["hyprland/workspaces" "hyprland/window"]
+        );
+
+        modules-center = (
+            if (builtins.getEnv "HOST" == "elm")
+                then ["hyprland/workspaces"]
+                else []
+        );
 
         modules-right = [
           "pulseaudio"
@@ -127,8 +119,7 @@
         };
       };
     };
-    style = 
-    with config.walnix.colors.rgba;
+    style = with config.walnix.colors.rgba;
     ''
       @define-color color0 ${color0}; @define-color color1 ${color1}; @define-color color2 ${color2}; 
       @define-color color3 ${color3}; @define-color color4 ${color4}; @define-color color5 ${color5}; 

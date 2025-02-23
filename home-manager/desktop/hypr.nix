@@ -3,15 +3,16 @@
   inputs,
   config,
   ...
-}: {
+}: 
+
+{
   home.packages = with pkgs; [
     hyprland
     hyprpaper
     hyprlock
+    hyprcursor
     hypridle
     hyprutils
-    waybar
-    wofi
     inputs.hyprland-qtutils.packages."${system}".default
   ];
   
@@ -22,6 +23,22 @@
       preload = [ "${config.walnix.path}" ];
       wallpaper = [ ",${config.walnix.path}" ];
     };
+  };
+
+  home.pointerCursor = with pkgs; 
+  let
+    cursorSize = 32;
+  in
+  {
+    hyprcursor = {
+      enable = true;
+      size = cursorSize;
+    };
+    gtk.enable = true;
+    x11.enable = true;
+    package = vanilla-dmz;
+    name = "Vanilla-DMZ";
+    size = cursorSize;
   };
 
   wayland.windowManager.hyprland = with pkgs; {
@@ -65,6 +82,7 @@
       "exec-once" = [
         "hyprpaper"
         "waybar"
+        "setcursor Vanilla-DMZ 32"
       ];
 
       input = {
@@ -149,6 +167,18 @@
       workspace = [
         "1,monitor:DP-1"
       ];
+
+      cursor = {
+        enable_hyprcursor = false;
+      };
+
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
+      debug = {
+        enable_stdout_logs = true;
+      };
 
       # Sliding windows
       animations = {
