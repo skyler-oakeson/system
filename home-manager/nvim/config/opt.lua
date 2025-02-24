@@ -7,7 +7,7 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.cursorline = true
-vim.opt.mouse = ""
+vim.opt.mouse = "n"
 vim.opt.spellsuggest = { "best", 10 }
 vim.opt.scrolloff = 3
 

@@ -1,8 +1,8 @@
 require('telescope').setup({
-    defaults = {
-        borderchars = {
-            "─", "│", "─", "│", "┌", "┐", "┘", "└"
-        }
+  defaults = {
+    borderchars = {
+      "─", "│", "─", "│", "┌", "┐", "┘", "└"
     }
+  }
 })
 require('telescope').load_extension('fzf')

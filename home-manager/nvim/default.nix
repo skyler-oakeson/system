@@ -52,6 +52,11 @@
         config = toLuaFile ./plugins/surround.lua;
       }
 
+      # {
+      #   plugin = lualine-nvim;
+      #   config = toLuaFile ./plugins/lualine.lua;
+      # }
+
       {
         plugin = telescope-nvim;
         config = toLuaFile ./plugins/telescope.lua;
@@ -99,6 +104,11 @@
       {
         plugin = toggleterm-nvim;
         config = toLuaFile ./plugins/toggleterm.lua;
+      }
+
+      {
+        plugin = lazydev-nvim;
+        config = toLuaFile ./plugins/lazydev.lua;
       }
 
       {
