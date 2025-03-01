@@ -18,17 +18,8 @@
         height = 30;
         reload_style_on_change = true;
 
-        modules-left = (
-            if (builtins.getEnv "HOST" == "elm")
-            then ["hyprland/window"]
-            else ["hyprland/workspaces" "hyprland/window"]
-        );
-
-        modules-center = (
-            if (builtins.getEnv "HOST" == "elm")
-                then ["hyprland/workspaces"]
-                else []
-        );
+        modules-left = ["hyprland/window"];
+        modules-center = ["hyprland/workspaces"];
 
         modules-right = [
           "pulseaudio"
@@ -56,8 +47,9 @@
           };
         };
         "clock" = {
-          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          "format-alt" = "{:%Y-%m-%d}";
+          "format" = "{:%I:%M}";
+          "format-alt" = "{:%m-%d-%Y}";
+          "tooltip" = false;
         };
         "cpu" = {
           "format" = "  {usage}%";
@@ -86,7 +78,7 @@
         "network" = {
           "format-wifi" = "  {signalStrength}%";
           "format-ethernet" = "{cidr} ";
-          "tooltip-format" = "{ifname} via {gwaddr} ";
+          "tooltip" = false;
           "format-linked" = "{ifname} (No IP) ";
           "format-disconnected" = " ⚠ ";
           "format-alt" = "{ifname}: {ipaddr}/{cidr}";
@@ -137,8 +129,6 @@
       window#waybar {
         background-color: transparent;
         border-radius: 0px;
-        transition-property: background-color;
-        transition-duration: .5s;
       }
 
       button {
@@ -150,8 +140,7 @@
       }
 
       button:hover {
-        background: inherit;
-        box-shadow: inset 0 -3px @background;
+        background: @color6;
       }
 
       #pulseaudio:hover {
@@ -173,11 +162,6 @@
         color: @color5;
       }
 
-
-      #workspaces button:hover {
-        background: @color6;
-      }
-
       #workspaces button.focused {
         background-color: @color6;
       }
@@ -186,67 +170,36 @@
         background-color: @background;
       }
 
-      #mode {
-        background-color: @background;
-        box-shadow: inset 0 -3px #ffffff;
-      }
-
       #clock,
       #battery,
       #cpu,
       #memory,
       #temperature,
       #network,
+      #backlight,
+      #window,
       #pulseaudio {
         padding: 0 10px;
-      }
-
-      #pulseaudio {
-        color: @color5;
-      }
-
-      #network {
-        color: @color5;
-      }
-
-      #temperature {
-        color: @color5;
-      }
-
-      #battery {
-        color: @color5;
-      }
-
-      #clock {
         color: @color5;
       }
 
       #window {
-        color: @color5;
+        padding: 0 5px;
       }
 
-      #backlight {
-        color: @color5;
-      }
 
-      .modules-right,
-      .modules-left {
+      .modules-left, 
+      .modules-center,
+      .modules-right {
         background-color: @background;
         border-radius: 0px;
         border: solid 1px;
-        border-color: @color5
-      }
-
-      .modules-right {
-        padding: 0 10px;
-      }
-
-      .modules-left {
+        border-color: @color5;
         padding: 0 10px;
       }
 
       .modules-center {
-        padding: 0 10px;
+        padding: 0 0px;
       }
 
       #battery.charging,
@@ -277,6 +230,7 @@
 
       #pulseaudio.muted {
         color: @background;
+        background-color: @color5;
       }
     '';
   };

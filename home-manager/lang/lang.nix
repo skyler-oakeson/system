@@ -11,5 +11,8 @@
     gcc
     gdb
     rustup
+    gradle
+    temurin-bin
+    dart
   ];
 }
