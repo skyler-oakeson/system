@@ -13,6 +13,7 @@
     hyprcursor
     hypridle
     hyprutils
+    hyprshot
     inputs.hyprland-qtutils.packages."${system}".default
   ];
   
@@ -52,10 +53,10 @@
       variables = ["--all"];
     };
 
-    settings = with config.walnix.colors.rgba; {
+    settings = with config.walnix.colors.rgb; {
       monitor = [
         "DP-1,2560x1440@144,auto,1"
-        "DP-2,3840x2160@60,auto,1.5"
+        "DP-2,3840x2160@60,auto,1.25"
       ];
 
       dwindle = {
@@ -83,6 +84,7 @@
         "hyprpaper"
         "waybar"
         "setcursor Vanilla-DMZ 32"
+        "mako"
       ];
 
       input = {
@@ -248,6 +250,7 @@
         "$mod, V, togglefloating,"
         "$mod, SPACE, exec, pkill wofi || $menu"
         "$mod, M, exec, hyprctl dispatch exit"
+        "$mod, ESCAPE, exec, systemctl suspend"
 
         "$mod, U, pseudo, # dwindle"
         "$mod, T, togglesplit, # dwindle"

@@ -7,12 +7,13 @@
 {
   home.packages = with pkgs; [
     ghc
-    # python3
+    # python3Full
     gcc
     gdb
     rustup
     gradle
     temurin-bin
     dart
+    nodejs_23
   ];
 }

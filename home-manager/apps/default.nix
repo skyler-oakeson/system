@@ -9,6 +9,8 @@
     discord
     spotify
     pwvucontrol
+    obs-studio
+    vlc
   ];
 
 }

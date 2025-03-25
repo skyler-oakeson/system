@@ -49,8 +49,8 @@
       }
 
       #entry:selected {
-        background: #${color2};
-        foreground: #${color7};
+        background: #${color5};
+        foreground: #${background};
       }
 
       #text:selected {

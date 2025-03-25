@@ -6,6 +6,17 @@
 }: {
   home.packages = with pkgs; [
     zsh
+    (pkgs.writeShellScriptBin "pyinit" ''
+        echo "let
+          pkgs = import <nixpkgs> {}; 
+        in pkgs.mkShell {
+          packages = [
+            (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+            ]))
+          ];
+        }" >> shell.nix
+    '')
+
     (pkgs.writeShellScriptBin "rebuild" ''
       Help() {
           echo "

@@ -149,6 +149,10 @@
         '';
       }
 
+      {
+        plugin = wal-vim;
+      }
+
     ];
 
     extraLuaConfig = ''
