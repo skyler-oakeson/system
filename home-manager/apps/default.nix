@@ -3,11 +3,11 @@
     ./kitty.nix
     ./zsh.nix
     ./firefox.nix
+    ./spicetify.nix
   ];
 
   home.packages = with pkgs; [
     discord
-    spotify
     pwvucontrol
     obs-studio
     vlc

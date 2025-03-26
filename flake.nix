@@ -9,6 +9,7 @@
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     walnix.url = "path:/home/skyler/Code/Nix/walnix/";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = {
@@ -17,6 +18,7 @@
     home-manager,
     hyprland-qtutils,
     walnix,
+    spicetify-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -46,6 +48,7 @@
         modules = [
           ./home-manager/home.nix
           walnix.homeManagerModules.walnix
+          spicetify-nix.homeManagerModules.default
         ];
       };
     };
