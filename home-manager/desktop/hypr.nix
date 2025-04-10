@@ -115,9 +115,9 @@
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 1;
+        border_size = 2;
         "col.active_border" = color5;
-        "col.inactive_border" = color1;
+        "col.inactive_border" = color4;
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
@@ -156,13 +156,14 @@
         };
 
         active_opacity = 1.0;
-        inactive_opacity = 0.70;
+        inactive_opacity = 1.0;
 
         shadow = {
-          range = 30;
+          enabled = true;
+          range = 40;
           render_power = 4;
-          color = "0x66000000";
-          offset = "5 5";
+          color = "rgba(1a1a1aaf)";
+          offset = "7 7";
         };
       };
 
@@ -186,16 +187,16 @@
       animations = {
         enabled = true;
         bezier = [
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "winIn, 0.1, 1.1, 0.1, 1.1"
-          "winOut, 0.3, -0.3, 0, 1"
+          "wind, 0.05, 0.9, 0.1, 1.00"
+          "winIn, 0.1, 1.0, 0.1, 1.0"
+          "winOut, 0.3, 0.1, 0, 1"
           "liner, 1, 1, 1, 1"
         ];
         animation = [
-          "windows, 1, 6, wind, slide"
-          "windowsIn, 1, 6, winIn, slide"
-          "windowsOut, 1, 5, winOut, slide"
-          "windowsMove, 1, 5, wind, slide:"
+          "windows, 1, 5, wind, popin"
+          "windowsIn, 1, 5, winIn, popin"
+          "windowsOut, 1, 5, winOut, popin"
+          "windowsMove, 1, 5, wind"
           "border, 1, 1, liner"
           "borderangle, 1, 30, liner, loop"
           "fade, 1, 10, default"
@@ -249,7 +250,6 @@
         "$mod, E, exec, $fileManager"
         "$mod, V, togglefloating,"
         "$mod, SPACE, exec, pkill wofi || $menu"
-        "$mod, M, exec, hyprctl dispatch exit"
         "$mod, ESCAPE, exec, systemctl suspend"
 
         "$mod, U, pseudo, # dwindle"

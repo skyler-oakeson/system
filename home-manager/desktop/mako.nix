@@ -9,10 +9,11 @@
 
   services.mako = with config.walnix.colors.hex; {
     enable = true;
-    borderColor = background;
+    borderColor = color5;
     textColor = background;
-    backgroundColor = color5;
+    backgroundColor = color2;
     defaultTimeout = 10000;
     anchor = "top-right";
+    borderSize = 2;
   };
 }

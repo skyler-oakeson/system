@@ -14,6 +14,8 @@
       normal_window = true;
       no_actions = true;
       allow_markup = true;
+      key_up = "Ctrl-k";
+      key_down = "Ctrl-j";
     };
     style = with config.walnix.colors.noHash; ''
       #window {
@@ -37,15 +39,19 @@
 
       #input:focus {
         outline: none;
+        box-shadow: none;
       }
 
       #entry {
         padding: 5px;
+        margin: 0px 10px;
         border-radius: 0px;
         outline: none;
+        color: #${foreground};
       }
 
       #entry:innerbox {
+        margin: 0px 5px;
       }
 
       #entry:selected {

@@ -6,7 +6,7 @@
 }: {
   home.packages = with pkgs; [
     zsh
-    (pkgs.writeShellScriptBin "pyinit" ''
+    (pkgs.writeShellScriptBin "initpy" ''
         echo "let
           pkgs = import <nixpkgs> {}; 
         in pkgs.mkShell {

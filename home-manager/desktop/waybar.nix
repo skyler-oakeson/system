@@ -47,8 +47,8 @@
           };
         };
         "clock" = {
-          "format" = "{:%I:%M}";
-          "format-alt" = "{:%m-%d-%Y}";
+          "format" = "[{:%I:%M}]";
+          "format-alt" = "[{:%m-%d-%Y}]";
           "tooltip" = false;
         };
         "cpu" = {
@@ -57,11 +57,13 @@
         };
         "memory" = {
           "format" = "{}%  ";
+          "tooltip" = false;
         };
         "temperature" = {
           "critical-threshold" = 80;
-          "format" = "{icon} {temperatureC}°C";
+          "format" = "[temp: {temperatureC}°C]";
           "format-icons" = ["" "" ""];
+          "tooltip" = false;
         };
         "battery" = {
           "states" = {
@@ -74,20 +76,21 @@
           "format-plugged" = "  {capacity}%";
           "format-alt" = "{time} {icon}";
           "format-icons" = ["" "" "" "" ""];
+          "tooltip" = false;
         };
         "network" = {
-          "format-wifi" = "  {signalStrength}%";
+          "format-wifi" = "[wifi: {signalStrength}%]";
           "format-ethernet" = "{cidr} ";
           "tooltip" = false;
           "format-linked" = "{ifname} (No IP) ";
-          "format-disconnected" = " ⚠ ";
+          "format-disconnected" = "[wifi: !]";
           "format-alt" = "{ifname}: {ipaddr}/{cidr}";
         };
         "pulseaudio" = {
-          "format" = "{icon}  {volume}%";
+          "format" = "[vol: {volume}%]";
           "format-bluetooth" = "{volume}% {icon} {format_source}";
           "format-bluetooth-muted" = " {icon} {format_source}";
-          "format-muted" = "  {volume}%";
+          "format-muted" = "[mut: {volume}%]";
           "format-icons" = {
             "headphone" = "";
             "hands-free" = "";
@@ -98,6 +101,7 @@
             "default" = ["" "" ""];
           };
           "on-click" = "pwvucontrol";
+          "tooltip" = false;
         };
         "backlight" = {
           "scroll-step" = 1;
@@ -149,6 +153,7 @@
 
       #workspaces {
           color: @color5;
+          background: @background;
       }
 
       #workspaces button.active {
@@ -171,6 +176,7 @@
       }
 
       #clock,
+      #pulseaudio,
       #battery,
       #cpu,
       #memory,
@@ -193,7 +199,7 @@
       .modules-right {
         background-color: @background;
         border-radius: 0px;
-        border: solid 1px;
+        border: solid 2px;
         border-color: @color5;
         padding: 0 10px;
       }
