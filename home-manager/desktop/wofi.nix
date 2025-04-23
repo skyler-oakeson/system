@@ -22,7 +22,7 @@
         font-family: "JetBrainsMono Nerd Font";
         font-size: 16px;
         background: #${background};
-        color: #${color5};
+        color: #${color11};
         font-style: oblique;
         border-bottom: none;
         outline: none;
@@ -34,7 +34,7 @@
         padding: 5;
         border: 0px;
         background: #${background};
-        color: #${color5};
+        color: #${color11};
       }
 
       #input:focus {
@@ -55,7 +55,7 @@
       }
 
       #entry:selected {
-        background: #${color5};
+        background: #${color11};
         foreground: #${background};
       }
 

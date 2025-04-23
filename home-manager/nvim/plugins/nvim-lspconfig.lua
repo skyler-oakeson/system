@@ -3,6 +3,8 @@ lspconfig.clangd.setup {}
 lspconfig.ts_ls.setup {}
 lspconfig.nil_ls.setup {}
 lspconfig.jdtls.setup {}
+lspconfig.html.setup {}
+lspconfig.csharp_ls.setup {}
 lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {

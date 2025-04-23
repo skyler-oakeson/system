@@ -15,5 +15,6 @@
     temurin-bin
     dart
     nodejs_23
+    dotnet-sdk_9
   ];
 }

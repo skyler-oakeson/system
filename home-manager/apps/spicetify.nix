@@ -16,20 +16,19 @@
     ];
     theme = spicePkgs.themes.text;
     customColorScheme = with config.walnix.colors.noHash; {
-      accent = color10;
-      accent-active = color2;
-      accent-inactive = color0;
-      banner = color5;
-      border-active = color5;
-      border-inactive = color0;
-      header = color0;
-      highlight = color0;
-      highlight-elevated = foreground;
+      accent = color12;
+      accent-active = color11;
+      accent-inactive = color3;
+      banner = color14;
+      border-active = color12;
+      border-inactive = color4;
+      header = color12;
+      highlight = color12;
+      highlight-elevated = color11;
       main = background;
       main-elevated = color0;
-      text = color5;
-      subtext = foreground;
-
+      text = color12;
+      subtext = color5;
 
       sidebar = background;
       player = color3;

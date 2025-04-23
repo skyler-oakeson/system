@@ -55,8 +55,8 @@
 
     settings = with config.walnix.colors.rgb; {
       monitor = [
-        "DP-1,2560x1440@144,auto,1"
-        "DP-2,3840x2160@60,auto,1.25"
+        "DP-1,highres@highr,auto,1.25"
+        "DP-2,highres@highr,auto,1"
       ];
 
       dwindle = {
@@ -81,10 +81,14 @@
       "$mod" = "MOD4";
 
       "exec-once" = [
-        "hyprpaper"
         "waybar"
         "setcursor Vanilla-DMZ 32"
         "mako"
+      ];
+
+      "exec" = [
+        # "pkill hyprpaper"
+        # "hyprpaper"
       ];
 
       input = {
@@ -116,12 +120,11 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = color5;
+        "col.active_border" = color12;
         "col.inactive_border" = color4;
         layout = "dwindle";
         resize_on_border = false;
         allow_tearing = false;
-        border_part_of_window = false;
       };
 
       group = {
@@ -130,7 +133,7 @@
         "col.border_locked_active" = color3;
       
         groupbar = {
-          text_color = color5;
+          text_color = color4;
           "col.active" = color1;
           "col.inactive" = color0;
         };
@@ -160,15 +163,20 @@
 
         shadow = {
           enabled = true;
-          range = 40;
+          range = 10;
           render_power = 4;
+          sharp = false;
+          ignore_window = true;
           color = "rgba(1a1a1aaf)";
-          offset = "7 7";
+          # color_inactive = "rgba(1a1a1aff)";
+          offset = "5 5";
+          scale = 1.0;
         };
       };
 
       workspace = [
         "1,monitor:DP-1"
+        "2,monitor:DP-2"
       ];
 
       cursor = {

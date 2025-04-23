@@ -12,9 +12,10 @@
     enable = true;
     settings = {
       mainBar = {
-        margin-top = 5;
+        margin-top = 10;
         margin-left = 10;
         margin-right = 10;
+        margin-bottom = 0;
         height = 30;
         reload_style_on_change = true;
 
@@ -80,7 +81,7 @@
         };
         "network" = {
           "format-wifi" = "[wifi: {signalStrength}%]";
-          "format-ethernet" = "{cidr} ";
+          "format-ethernet" = "[eth: {cidr}]";
           "tooltip" = false;
           "format-linked" = "{ifname} (No IP) ";
           "format-disconnected" = "[wifi: !]";
@@ -152,23 +153,23 @@
       }
 
       #workspaces {
-          color: @color5;
+          color: @color11;
           background: @background;
       }
 
       #workspaces button.active {
-          color: @background;
-          background: @color5;
+          color: @color13;
+          background: @color4;
       }
 
       #workspaces button {
         padding: 0 5px;
         background-color: transparent;
-        color: @color5;
+        color: @color13;
       }
 
       #workspaces button.focused {
-        background-color: @color6;
+        background-color: @color12;
       }
 
       #workspaces button.urgent {
@@ -186,7 +187,7 @@
       #window,
       #pulseaudio {
         padding: 0 10px;
-        color: @color5;
+        color: @color13;
       }
 
       #window {
@@ -200,7 +201,7 @@
         background-color: @background;
         border-radius: 0px;
         border: solid 2px;
-        border-color: @color5;
+        border-color: @color4;
         padding: 0 10px;
       }
 
@@ -222,7 +223,7 @@
       /* Using steps() instead of linear as a timing function to limit cpu usage */
       #battery.critical:not(.charging) {
         background-color: @background;
-        color: @color5;
+        color: @color4;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: steps(12);
@@ -236,7 +237,7 @@
 
       #pulseaudio.muted {
         color: @background;
-        background-color: @color5;
+        background-color: @color4;
       }
     '';
   };
