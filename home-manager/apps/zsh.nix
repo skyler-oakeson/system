@@ -57,7 +57,6 @@
                home-manager switch --flake .
                exit;;
           esac
-          Autoformat your nix files
           alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
       done
 
@@ -70,7 +69,7 @@
       sudo git commit -am "
       NixOS := $genNix
       home-manager := $genHM
-      Message := $message
+      Message := $message"
 
       popd
     '')
