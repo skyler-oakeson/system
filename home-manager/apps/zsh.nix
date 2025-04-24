@@ -65,15 +65,15 @@
       genNix=$(nixos-rebuild list-generations | grep current)
       genHM=$(home-manager generations | head -1)
 
-      echo "Please enter commit message:"
+      echo "Please enter a commit message:"
       read message
-      sudo git commit -am '
+      sudo git commit -am "
       ~~~~ Generation ~~~~ 
       NixOS := $genNix
       home-manager := $genHM
       ~~~~~~ Commit ~~~~~~
       $message
-      ~~~~~~~~~~~~~~~~~~~~'
+      ~~~~~~~~~~~~~~~~~~~~"
 
       popd
     '')
