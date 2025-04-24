@@ -21,7 +21,7 @@
       Help() {
           echo "
               Usage: rebuild [OPTION]
-              Rebuilds NixOS and home-manager configurations.
+              Rebuilds NixOS and home-manager configurations. Then commits the changes.
                   -h,            Displays help message
                   -m,            Rebuilds only home-manager modules
                   -n,            Rebuilds only nixos modules
