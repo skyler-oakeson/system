@@ -69,7 +69,7 @@
       sudo git commit -am "
       NixOS := $genNix
       home-manager := $genHM
-      Message := $message"
+      Message := $message" > /dev/null
 
       popd
     '')
