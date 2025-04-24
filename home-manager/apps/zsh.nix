@@ -64,8 +64,7 @@
       genNix=$(nixos-rebuild list-generations | grep current)
       genHM=$(home-manager generations | head -1)
 
-      sudo git commit -am "NixOS Gen := $genNix 
-                           home-manager Gen := $genHM"
+      sudo git commit -am "NixOS Gen := $genNix \n home-manager Gen := $genHM"
       popd
     '')
   ];
