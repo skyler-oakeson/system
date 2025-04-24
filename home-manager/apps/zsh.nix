@@ -71,7 +71,7 @@
                            NixOS Gen := $genNix
                            home-manager Gen := $genHM
                            --- Commit Message ----
-                           $(message)
+                           $message
                            -----------------------'
 
       popd
