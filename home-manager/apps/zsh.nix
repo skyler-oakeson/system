@@ -56,15 +56,16 @@
                home-manager switch --flake .
                exit;;
           esac
-          # Autoformat your nix files
-          # alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+          Autoformat your nix files
+          alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
       done
 
       # Get current generation metadata
       genNix=$(nixos-rebuild list-generations | grep current)
       genHM=$(home-manager generations | head -1)
 
-      sudo git commit -am "NixOS Gen := $genNix home-manager Gen := $genHM"
+      sudo git commit -am "NixOS Gen := $genNix 
+                           home-manager Gen := $genHM"
       popd
     '')
   ];
