@@ -20,21 +20,21 @@
     (pkgs.writeShellScriptBin "rebuild" ''
       Help() {
           echo "
-              Usage: rebuild [OPTION]
-              Rebuilds NixOS and home-manager configurations. Then commits the changes.
-                  -h,            Displays help message
-                  -m,            Rebuilds only home-manager modules
-                  -n,            Rebuilds only nixos modules
+          NAME
+                rebuild - rebuilds NixOS and home-manager configurations.
+          OPTIONS:
+                -h,            Displays help message
+                -m,            Rebuilds only home-manager modules
+                -n,            Rebuilds only nixos modules
           "
       }
 
       if "$#" -eq 0; then
           pushd /home/skyler/.config/system
-          git diff -U0 '*.nix'
           # rebuild all
           echo "Rebuilding all..."
           git add --all
-          sudo nixos-rebuild switch --flake .
+          nixos-rebuild switch --flake .
           home-manager switch --flake .
           exit;
       fi
@@ -46,14 +46,12 @@
                exit;;
             n) # rebuild nixos
                pushd /home/skyler/.config/system
-               git diff -U0 '*.nix'
                echo "Rebuilding NixOS..."
                git add modules/nixos/
                sudo nixos-rebuild switch --flake .
                exit;;
             m) # rebuild home-manager
                pushd /home/skyler/.config/system
-               git diff -U0 '*.nix'
                echo "Rebuilding Home-Manager..."
                git add modules/home-manager/
                home-manager switch --flake .
