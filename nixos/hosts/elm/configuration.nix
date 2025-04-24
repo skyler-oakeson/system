@@ -7,9 +7,7 @@
   inputs,
   users,
   ...
-}: 
-
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default

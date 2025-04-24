@@ -3,16 +3,13 @@
   pkgs,
   inputs,
   ...
-}: 
-{
-  programs.spicetify = 
-  let 
+}: {
+  programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-  in
-  {
+  in {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
-       adblock
+      adblock
     ];
     theme = spicePkgs.themes.text;
     customColorScheme = with config.walnix.colors.noHash; {

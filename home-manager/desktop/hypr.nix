@@ -3,9 +3,7 @@
   inputs,
   config,
   ...
-}: 
-
-{
+}: {
   home.packages = with pkgs; [
     hyprland
     hyprpaper
@@ -16,21 +14,19 @@
     hyprshot
     inputs.hyprland-qtutils.packages."${system}".default
   ];
-  
+
   services.hyprpaper = {
     enable = true;
     settings = {
       enable = true;
-      preload = [ "${config.walnix.path}" ];
-      wallpaper = [ ",${config.walnix.path}" ];
+      preload = ["${config.walnix.path}"];
+      wallpaper = [",${config.walnix.path}"];
     };
   };
 
-  home.pointerCursor = with pkgs; 
-  let
+  home.pointerCursor = with pkgs; let
     cursorSize = 32;
-  in
-  {
+  in {
     hyprcursor = {
       enable = true;
       size = cursorSize;
@@ -131,7 +127,7 @@
         "col.border_inactive" = color1;
         "col.border_active" = color0;
         "col.border_locked_active" = color3;
-      
+
         groupbar = {
           text_color = color4;
           "col.active" = color1;

@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   walnix = {
     enable = true;
     path = ./wallpapers/cube_prod.png;

@@ -7,14 +7,14 @@
   home.packages = with pkgs; [
     zsh
     (pkgs.writeShellScriptBin "initpy" ''
-        echo "let
-          pkgs = import <nixpkgs> {}; 
-        in pkgs.mkShell {
-          packages = [
-            (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-            ]))
-          ];
-        }" >> shell.nix
+      echo "let
+        pkgs = import <nixpkgs> {};
+      in pkgs.mkShell {
+        packages = [
+          (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+          ]))
+        ];
+      }" >> shell.nix
     '')
 
     (pkgs.writeShellScriptBin "rebuild" ''
@@ -65,7 +65,15 @@
       genNix=$(nixos-rebuild list-generations | grep current)
       genHM=$(home-manager generations | head -1)
 
-      sudo git commit -am "Generation info \n NixOS Gen := $genNix \n home-manager Gen := $genHM"
+      echo "Please enter commit message:"
+      read message
+      sudo git commit -am "--- Generation info ---
+                           NixOS Gen := $genNix
+                           home-manager Gen := $genHM
+                           --- Commit Message ----
+                           $(message)
+                           -----------------------"
+
       popd
     '')
   ];
@@ -95,7 +103,7 @@
     };
 
     initExtra = ''
-        PATH=$PATH:$HOME/.cargo/bin
+      PATH=$PATH:$HOME/.cargo/bin
     '';
   };
 

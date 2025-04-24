@@ -1,6 +1,4 @@
-{ pkgs, ...}:
-
-{
+{pkgs, ...}: {
   programs.hyprland.enable = true;
 
   # Screen sharing with Wayland.
