@@ -33,7 +33,7 @@
 
       if "$#" -eq 0; then
           # rebuild all
-          echo "Rebuilding All..."
+          echo "Rebuilding all..."
           git add --all
           sudo nixos-rebuild switch --flake .
           home-manager switch --flake .
