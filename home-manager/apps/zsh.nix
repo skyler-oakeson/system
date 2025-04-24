@@ -67,8 +67,13 @@
 
       echo "Please enter commit message:"
       read message
-      sudo git commit -a -m'--- Generation info ---' -m 'NixOS Gen := $genNix' -m 'home-manager Gen := $genHM'
-      -m '--- Commit Message ----' -m $message -m '-----------------------'
+      sudo git commit -am '
+      ~~~~ Generation ~~~~ 
+      NixOS := $genNix
+      home-manager := $genHM
+      ~~~~~~ Commit ~~~~~~
+      $message
+      ~~~~~~~~~~~~~~~~~~~~'
 
       popd
     '')
