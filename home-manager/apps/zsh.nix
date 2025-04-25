@@ -18,7 +18,21 @@
     '')
 
     (pkgs.writeShellScriptBin "rebuild" ''
-      Help() {
+
+      pushd /home/skyler/.config/system
+      if [[ $* != *-h* && $* != *-m* && $* != *-n* ]] then
+          # rebuild all
+          git add --all
+          echo "-> Rebuilding home-manager"
+          home-manager switch --flake .
+          echo "-> Rebuilding NixOs"
+          sudo nixos-rebuild switch --flake .
+          exit;
+      fi
+
+      while [$# -gt 0]; do
+        case $1 in
+          h | --help) # display help
           echo "
           NAME
                 rebuild - rebuilds NixOS and home-manager configurations.
@@ -27,51 +41,32 @@
                 -m,            Rebuilds only home-manager modules
                 -n,            Rebuilds only nixos modules
           "
-      }
-
-      if "$#" -eq 0; then
-          pushd /home/skyler/.config/system
-          # rebuild all
-          echo "Rebuilding all..."
-          git add --all
-          nixos-rebuild switch --flake .
-          home-manager switch --flake .
-          exit;
-      fi
-
-      while getopts ":hnm:" option; do
-          case $option in
-            h) # display help
-               Help
-               exit;;
-            n) # rebuild nixos
-               pushd /home/skyler/.config/system
-               echo "Rebuilding NixOS..."
-               git add modules/nixos/
-               sudo nixos-rebuild switch --flake .
-               exit;;
-            m) # rebuild home-manager
-               pushd /home/skyler/.config/system
-               echo "Rebuilding Home-Manager..."
-               git add modules/home-manager/
-               home-manager switch --flake .
-               exit;;
-          esac
-          alejandra . &>/dev/null || ( alejandra . ; echo "formatting failed!" && exit 1)
+             ;;
+          n | --nixos) # rebuild nixos
+             echo "Rebuilding NixOS..."
+             git add modules/nixos/
+             sudo nixos-rebuild switch --flake .
+             ;;
+          m | --home-manager) # rebuild home-manager
+             echo "Rebuilding Home-Manager..."
+             git add modules/home-manager/
+             home-manager switch --flake .
+             ;;
+          c | --commit) # commit
+             # Get current generation metadata
+             genNix=$(nixos-rebuild list-generations | grep current)
+             genHM=$(home-manager generations | head -1)
+             echo "-> Please enter a commit message:"
+             read message
+             sudo git commit -am "
+             NixOS := $genNix
+             home-manager := $genHM
+             Message := $message" > /dev/null
+             ;;
+        esac
+        shift
       done
-
-      # Get current generation metadata
-      genNix=$(nixos-rebuild list-generations | grep current)
-      genHM=$(home-manager generations | head -1)
-
-      echo "Please enter a commit message:"
-      read message
-      sudo git commit -am "
-      NixOS := $genNix
-      home-manager := $genHM
-      Message := $message" > /dev/null
-
-      popd
+      popd > /dev/null
     '')
   ];
 

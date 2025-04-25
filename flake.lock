@@ -257,11 +257,11 @@
       "locked": {
         "lastModified": 1745287962,
         "narHash": "sha256-r2aFxqVaVDDDGqm5u2QZkQac2guk7zhG1ede/y9Taj0=",
-        "path": "/home/skyler/Code/Nix/walnix/",
+        "path": "/home/skyler/code/nix/walnix/",
         "type": "path"
       },
       "original": {
-        "path": "/home/skyler/Code/Nix/walnix/",
+        "path": "/home/skyler/code/nix/walnix/",
         "type": "path"
       }
     }

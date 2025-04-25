@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    walnix.url = "path:/home/skyler/Code/Nix/walnix/";
+    walnix.url = "path:/home/skyler/code/nix/walnix/";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
