@@ -30,7 +30,7 @@
     kitty.enable = true;
     utils.enable = true;
     misc.enable = true;
-    zsh.enable = false;
+    zsh.enable = true;
     vlc.enable = true;
     wofi.enable = true;
   };
