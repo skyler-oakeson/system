@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Firefox
-#
+# qBittorrent
+# 
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {
@@ -9,26 +9,23 @@
   pkgs,
   ...
 }: 
-let 
-  cfg = config.apps.firefox;
-in
+  let cfg = config.apps.qbittorrent;
+  in
 {
   options = {
     apps = {
-      firefox = with lib; {
+      qbittorrent = with lib; {
         enable = mkEnableOption { 
-          description = "Install Firefox."; 
+          description = "Install qBittorrent.";
           default = false;
         };
       };
     };
   };
+
   config = lib.mkIf (cfg.enable) {
-      home.packages = with pkgs; [
-        (wrapFirefox (firefox-unwrapped.override {pipewireSupport = true;}) {})
-      ];
-      programs.firefox = {
-        enable = false;
-    };
+    home.packages = with pkgs; [
+      qbittorrent
+    ];
   };
 }

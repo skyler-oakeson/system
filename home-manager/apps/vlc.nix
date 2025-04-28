@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Firefox
-#
+# VLC
+# 
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {
@@ -9,26 +9,22 @@
   pkgs,
   ...
 }: 
-let 
-  cfg = config.apps.firefox;
-in
+  let cfg = config.apps.vlc;
+  in
 {
   options = {
     apps = {
-      firefox = with lib; {
+      vlc = with lib; {
         enable = mkEnableOption { 
-          description = "Install Firefox."; 
+          description = "Install vlc.";
           default = false;
         };
       };
     };
   };
   config = lib.mkIf (cfg.enable) {
-      home.packages = with pkgs; [
-        (wrapFirefox (firefox-unwrapped.override {pipewireSupport = true;}) {})
-      ];
-      programs.firefox = {
-        enable = false;
-    };
+    home.packages = with pkgs; [
+      vlc
+    ];
   };
 }

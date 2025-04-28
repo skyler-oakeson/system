@@ -1,5 +1,5 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Firefox
+# Ranger
 #
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9,26 +9,23 @@
   pkgs,
   ...
 }: 
-let 
-  cfg = config.apps.firefox;
-in
+  let cfg = config.apps.ranger;
+  in
 {
   options = {
     apps = {
-      firefox = with lib; {
+      ranger = with lib; {
         enable = mkEnableOption { 
-          description = "Install Firefox."; 
+          description = "Install ranger.";
           default = false;
         };
       };
     };
   };
+
   config = lib.mkIf (cfg.enable) {
-      home.packages = with pkgs; [
-        (wrapFirefox (firefox-unwrapped.override {pipewireSupport = true;}) {})
-      ];
-      programs.firefox = {
-        enable = false;
-    };
+    home.packages = with pkgs; [
+      ranger
+    ];
   };
 }

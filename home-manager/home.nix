@@ -12,11 +12,33 @@
     ./desktop
     ./apps
     ./lang
-    ./nvim
   ];
 
   nixpkgs.config = {
     allowUnfree = true;
+  };
+
+  apps = {
+    qbittorrent.enable = true;
+    pwvucontrol.enable = true;
+    obs-studio.enable = true;
+    spicetify.enable = true;
+    discord.enable = true;
+    firefox.enable = true;
+    neovim.enable = true;
+    ranger.enable = true;
+    kitty.enable = true;
+    utils.enable = true;
+    misc.enable = true;
+    zsh.enable = false;
+    vlc.enable = true;
+    wofi.enable = true;
+  };
+
+  desktop = {
+    hypr.enable = true;
+    waybar.enable = true;
+    mako.enable = true;
   };
 
   # You should not change this value, even if you update Home Manager. If you do

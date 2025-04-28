@@ -1,5 +1,5 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Firefox
+# OBS-studio
 #
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9,26 +9,27 @@
   pkgs,
   ...
 }: 
-let 
-  cfg = config.apps.firefox;
-in
+  let cfg = config.apps.obs-studio;
+  in
 {
   options = {
     apps = {
-      firefox = with lib; {
+      obs-studio = with lib; {
         enable = mkEnableOption { 
-          description = "Install Firefox."; 
+          description = "Install obs-studio.";
           default = false;
         };
       };
     };
   };
-  config = lib.mkIf (cfg.enable) {
+  config = lib.mkIf (
+    cfg.enable
+  )
+  (
+    {
       home.packages = with pkgs; [
-        (wrapFirefox (firefox-unwrapped.override {pipewireSupport = true;}) {})
+        obs-studio
       ];
-      programs.firefox = {
-        enable = false;
-    };
-  };
+    }
+  );
 }

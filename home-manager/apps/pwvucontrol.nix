@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Firefox
-#
+# pwvucontrol
+# 
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {
@@ -9,26 +9,23 @@
   pkgs,
   ...
 }: 
-let 
-  cfg = config.apps.firefox;
-in
+  let cfg = config.apps.pwvucontrol;
+  in
 {
   options = {
     apps = {
-      firefox = with lib; {
+      pwvucontrol = with lib; {
         enable = mkEnableOption { 
-          description = "Install Firefox."; 
+          description = "Install pwvucontrol.";
           default = false;
         };
       };
     };
   };
+
   config = lib.mkIf (cfg.enable) {
-      home.packages = with pkgs; [
-        (wrapFirefox (firefox-unwrapped.override {pipewireSupport = true;}) {})
-      ];
-      programs.firefox = {
-        enable = false;
-    };
+    home.packages = with pkgs; [
+      pwvucontrol
+    ];
   };
 }

@@ -1,23 +1,18 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
-    ./kitty.nix
-    ./zsh.nix
+    ./discord.nix
     ./firefox.nix
+    ./ranger.nix
+    ./utils.nix
+    ./misc.nix
+    ./zsh.nix
     ./spicetify.nix
-  ];
-
-  home.packages = with pkgs; [
-    discord
-    pwvucontrol
-    obs-studio
-    vlc
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        ms-dotnettools.csdevkit
-        ms-dotnettools.csharp
-        ms-dotnettools.vscode-dotnet-runtime
-        vscodevim.vim
-      ];
-    })
+    ./kitty.nix
+    ./nvim/nvim.nix
+    ./pwvucontrol.nix
+    ./qbittorrent.nix
+    ./obs-studio.nix
+    ./vlc.nix
+    ./wofi.nix
   ];
 }
