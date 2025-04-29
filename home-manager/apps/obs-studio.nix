@@ -22,14 +22,10 @@
       };
     };
   };
-  config = lib.mkIf (
-    cfg.enable
-  )
-  (
-    {
-      home.packages = with pkgs; [
-        obs-studio
-      ];
-    }
-  );
+
+  config = lib.mkIf (cfg.enable) {
+    home.packages = with pkgs; [
+      obs-studio
+    ];
+  };
 }

@@ -28,7 +28,6 @@
   (
     {
       home.packages = with pkgs; [
-        vlc
       ];
     }
   );

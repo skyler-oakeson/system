@@ -4,7 +4,11 @@
   inputs,
   lib,
   ...
-}: {
+}: 
+  let
+    cfg = config.apps.spicetify;
+  in
+{
   options = {
     apps = {
       spicetify = with lib; {
@@ -13,7 +17,8 @@
       };
     };
   };
-  config = {
+
+  config = lib.mkIf (cfg.enable) {
     programs.spicetify = let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
     in {
