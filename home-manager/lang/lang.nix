@@ -16,5 +16,6 @@
     dart
     nodejs_23
     dotnet-sdk_9
+    texliveFull
   ];
 }

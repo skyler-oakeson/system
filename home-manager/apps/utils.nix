@@ -29,15 +29,24 @@
         fd
         fzf
         tree
-        gnumake
-        cmake
-        libgccjit
         wl-clipboard
         zip
         unzip
         comma
         usbutils
         jq
+
+        # C build utils
+        autoconf
+        automake
+        libtool
+        gnum4
+        gnumake
+        cmake
+        libgccjit
+        findutils
+
+        nix-index
      ];
   };
 }

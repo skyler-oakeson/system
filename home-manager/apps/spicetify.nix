@@ -32,7 +32,7 @@
         accent-active = color11;
         accent-inactive = color3;
         banner = color14;
-        border-active = color12;
+        border-active = color13;
         border-inactive = color4;
         header = color12;
         highlight = color12;

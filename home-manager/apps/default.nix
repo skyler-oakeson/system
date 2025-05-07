@@ -14,5 +14,6 @@
     ./obs-studio.nix
     ./vlc.nix
     ./wofi.nix
+    ./feh.nix
   ];
 }

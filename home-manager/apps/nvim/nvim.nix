@@ -40,10 +40,12 @@
         jdt-language-server
         typescript-language-server
         lua-language-server
+        texlab
         csharp-ls
         vscode-langservers-extracted
-        (pkgs.python311.withPackages (ppkgs: [
-          ppkgs.python-lsp-server
+        (pkgs.python3.withPackages (p: [
+          p.python-lsp-server
+          p.python-lsp-ruff
         ]))
       ];
       plugins = with pkgs.vimPlugins; [
@@ -61,6 +63,8 @@
           p.tree-sitter-markdown
           p.tree-sitter-java
           p.tree-sitter-html
+          p.tree-sitter-latex
+          p.tree-sitter-bibtex
         ]))
   
         {

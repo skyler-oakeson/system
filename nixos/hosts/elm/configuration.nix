@@ -33,6 +33,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  utils.docker.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Denver";
 

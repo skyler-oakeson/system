@@ -29,9 +29,9 @@ in
   
     services.mako = with config.walnix.colors.hex; {
       enable = true;
-      borderColor = color13;
-      textColor = background;
-      backgroundColor = color5;
+      borderColor = color4;
+      textColor = color13;
+      backgroundColor = background;
       defaultTimeout = 10000;
       anchor = "top-right";
       borderSize = 2;

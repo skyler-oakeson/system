@@ -103,7 +103,7 @@
             "format-wifi" = "[wifi: {signalStrength}%]";
             "format-ethernet" = "[eth: {cidr}]";
             "tooltip" = false;
-            "format-linked" = "{ifname} (No IP) ";
+            "format-linked" = "[eth: {cidr} (No IP)";
             "format-disconnected" = "[wifi: !]";
             "format-alt" = "{ifname}: {ipaddr}/{cidr}";
           };
@@ -172,7 +172,7 @@
         }
 
         #workspaces {
-            color: @color11;
+            color: @color3;
             background: @background;
         }
 
@@ -188,7 +188,7 @@
         }
 
         #workspaces button.focused {
-          background-color: @color12;
+          background-color: @color4;
         }
 
         #workspaces button.urgent {
@@ -235,7 +235,7 @@
 
         @keyframes blink {
           to {
-            color: @base00;
+            color: @background;
           }
         }
 

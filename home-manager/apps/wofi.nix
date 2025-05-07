@@ -44,7 +44,7 @@
           font-family: "JetBrainsMono Nerd Font";
           font-size: 16px;
           background: #${background};
-          color: #${color11};
+          color: #${color13};
           font-style: oblique;
           border-bottom: none;
           outline: none;
@@ -56,7 +56,7 @@
           padding: 5;
           border: 0px;
           background: #${background};
-          color: #${color11};
+          color: #${foreground};
         }
 
         #input:focus {
@@ -69,7 +69,7 @@
           margin: 0px 10px;
           border-radius: 0px;
           outline: none;
-          color: #${foreground};
+          color: #${color13};
         }
 
         #entry:innerbox {
@@ -77,12 +77,12 @@
         }
 
         #entry:selected {
-          background: #${color11};
-          foreground: #${background};
+          background: #${color4};
+          foreground: #${color13};
         }
 
         #text:selected {
-          foreground: #${foreground};
+          foreground: #${color13};
         }
 
         #scroll {

@@ -33,6 +33,7 @@
     zsh.enable = true;
     vlc.enable = true;
     wofi.enable = true;
+    feh.enable = true;
   };
 
   desktop = {

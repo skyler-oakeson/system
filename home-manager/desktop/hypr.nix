@@ -143,7 +143,7 @@ in
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.active_border" = color12;
+          "col.active_border" = color13;
           "col.inactive_border" = color4;
           layout = "dwindle";
           resize_on_border = false;
@@ -190,7 +190,7 @@ in
             render_power = 4;
             sharp = false;
             ignore_window = true;
-            color = "rgba(1a1a1aaf)";
+            color = "rgba(020202a2)";
             # color_inactive = "rgba(1a1a1aff)";
             offset = "5 5";
             scale = 1.0;
@@ -254,6 +254,9 @@ in
           "size 700 600,class:(.*org.pulseaudio.pavucontrol.*)"
           "center,class:(.*org.pulseaudio.pavucontrol.*)"
           "pin,class:(.*org.pulseaudio.pavucontrol.*)"
+
+          # Spotify floating special
+          "workspace:special, float, size 1000 1000, class:^(spotify)$"
         ];
 
         binde = [
@@ -334,6 +337,10 @@ in
           # Scroll through existing workspaces with mod + scroll
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
+
+          # Take screenshot
+          "$mod, PRINT, exec, hyprshot -m region"
+          "$mod CONTROL, PRINT, exec, hyprshot -m output -m active"
         ];
       };
     };
