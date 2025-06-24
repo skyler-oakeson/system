@@ -110,7 +110,7 @@
         theme = "mh";
       };
 
-      initExtra = ''
+      initContent = ''
         PATH=$PATH:$HOME/.cargo/bin
       '';
     };

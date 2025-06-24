@@ -14,11 +14,11 @@
     ./lang
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   apps = {
+    term = {
+      kitty.enable = true;
+    };
+
     qbittorrent.enable = true;
     pwvucontrol.enable = true;
     obs-studio.enable = true;
@@ -27,7 +27,6 @@
     firefox.enable = true;
     neovim.enable = true;
     ranger.enable = true;
-    kitty.enable = true;
     utils.enable = true;
     misc.enable = true;
     zsh.enable = true;

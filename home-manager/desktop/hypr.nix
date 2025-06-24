@@ -61,7 +61,7 @@ in
       gtk.enable = true;
       x11.enable = true;
       package = vanilla-dmz;
-      name = "Vanilla-DMZ";
+      name = "Vanilla-DMZ-AA";
       size = cursorSize;
     };
 
@@ -79,7 +79,7 @@ in
       settings = with config.walnix.colors.rgb; {
         monitor = [
           "DP-1,highres@highr,auto,1.25"
-          "DP-2,highres@highr,auto,1"
+          "DP-2,highres@highr,auto,1.25"
         ];
 
         dwindle = {
@@ -98,7 +98,7 @@ in
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         ];
 
-        "$terminal" = "kitty";
+        "$terminal" = "${config.apps.term.selected}";
         "$fileManager" = "kitty ranger";
         "$menu" = "wofi --width=30% --height=30% --show drun";
         "$mod" = "MOD4";
@@ -190,8 +190,7 @@ in
             render_power = 4;
             sharp = false;
             ignore_window = true;
-            color = "rgba(020202a2)";
-            # color_inactive = "rgba(1a1a1aff)";
+            color = "rgba(00000062)";
             offset = "5 5";
             scale = 1.0;
           };
@@ -339,8 +338,8 @@ in
           "$mod, mouse_up, workspace, e-1"
 
           # Take screenshot
-          "$mod, PRINT, exec, hyprshot -m region"
-          "$mod CONTROL, PRINT, exec, hyprshot -m output -m active"
+          "$mod CONTROL, r, exec, hyprshot -m region"
+          "$mod CONTROL, p, exec, hyprshot -m output -m active"
         ];
       };
     };

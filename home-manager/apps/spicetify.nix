@@ -26,7 +26,11 @@
       enabledExtensions = with spicePkgs.extensions; [
         adblock
       ];
+      spicetifyPackage =  pkgs.spicetify-cli;
+      spotifyPackage = pkgs.spotify;
       theme = spicePkgs.themes.text;
+      wayland = true;
+      windowManagerPatch = true;
       customColorScheme = with config.walnix.colors.noHash; {
         accent = color12;
         accent-active = color11;

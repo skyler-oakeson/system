@@ -7,7 +7,7 @@
     ./misc.nix
     ./zsh.nix
     ./spicetify.nix
-    ./kitty.nix
+    ./term.nix
     ./nvim/nvim.nix
     ./pwvucontrol.nix
     ./qbittorrent.nix

@@ -10,12 +10,19 @@
   ...
 }: 
 let
-  cfg = config.apps.kitty;
+  cfg = config.apps.term.kitty;
 in
 {
-  options = {
+  options = with lib; {
     apps = {
       term = {
+        selected = mkOption {
+          type = types.enum [
+            "kitty"
+          ];
+          default = "kitty";
+        };
+
         kitty = with lib; {
           enable = mkEnableOption { 
             description = "Install Kitty.";

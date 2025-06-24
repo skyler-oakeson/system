@@ -1,7 +1,7 @@
 {...}: {
   walnix = {
     enable = true;
-    path = ./wallpapers/clouds.jpg;
+    path = ./wallpapers/cube_prod.png;
     alpha = 100;
     backend = "thumb";
     saturation = 30;

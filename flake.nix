@@ -26,7 +26,10 @@
     lib = nixpkgs.lib;
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (pkg: true);
+      };
     };
   in {
     nixosConfigurations = {

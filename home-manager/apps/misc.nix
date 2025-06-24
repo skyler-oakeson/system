@@ -28,6 +28,8 @@
   (
     {
       home.packages = with pkgs; [
+        graphviz
+        dot2tex
       ];
     }
   );
