@@ -1,6 +1,16 @@
 vim.lsp.enable("clangd")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("nil_ls")
+vim.lsp.config("nil_ls", {
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixfmt" }
+      },
+    }
+  }
+})
+
 vim.lsp.enable("jdtls")
 vim.lsp.enable("html")
 vim.lsp.enable("csharp_ls")

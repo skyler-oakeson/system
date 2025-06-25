@@ -4,15 +4,15 @@
   users,
   lib,
   ...
-}: 
-  let
-    cfg = config.apps.zsh;
-  in
+}:
+let
+  cfg = config.apps.zsh;
+in
 {
   options = {
     apps = {
       zsh = with lib; {
-        enable = mkEnableOption { 
+        enable = mkEnableOption {
           description = "Install zsh.";
           default = false;
         };

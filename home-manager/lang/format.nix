@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 # ===============================================
 # Installed Formatters and Linters
 #
@@ -6,6 +6,6 @@
 # ===============================================
 {
   home.packages = with pkgs; [
-    alejandra
+    nixfmt-rfc-style
   ];
 }
