@@ -338,8 +338,8 @@ in
           "$mod, mouse_up, workspace, e-1"
 
           # Take screenshot
-          "$mod CONTROL, r, exec, hyprshot -m region"
-          "$mod CONTROL, p, exec, hyprshot -m output -m active"
+          "$mod, PRINT, exec, hyprshot -m region"
+          "$mod CONTROL, PRINT, exec, hyprshot -m output -m active"
         ];
       };
     };
