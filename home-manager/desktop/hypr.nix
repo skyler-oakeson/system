@@ -76,10 +76,10 @@ in
         variables = [ "--all" ];
       };
 
-      settings = with config.walnix.colors.rgba; {
+      settings = with config.walnix.colors.rgb; {
         monitor = [
-          "DP-1,highres@highr,auto,1.0"
-          "DP-2,highres@highr,auto,1.25"
+          "DP-1,highres@highr,auto,1.20"
+          "DP-2,highres@highr,auto,1.20"
         ];
 
         dwindle = {
@@ -196,7 +196,6 @@ in
             sharp = false;
             ignore_window = true;
             color = "rgba(00000062)";
-            # color_inactive = "rgba(00000000)";
             offset = "5 5";
             scale = 1.0;
           };
