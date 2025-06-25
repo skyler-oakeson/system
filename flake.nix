@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    walnix.url = "path:/home/skyler/Code/Nix/walnix/";
+    walnix.url = "path:/home/skyler/code/nix/walnix/";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
@@ -25,8 +25,11 @@
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (pkg: true);
+      };
     };
   in {
     nixosConfigurations = {
@@ -44,7 +47,7 @@
     homeConfigurations = {
       skyler = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home-manager/home.nix
           walnix.homeManagerModules.walnix

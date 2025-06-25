@@ -1,15 +1,15 @@
-{ ... }:
-{
+{...}: {
   walnix = {
     enable = true;
-    path = ./wallpapers/loupe.png;
+    path = ./wallpapers/cube_prod.png;
     alpha = 100;
-    backend = "wal";
-    saturation = 40;
+    backend = "thumb";
+    saturation = 30;
     checkContrast = true;
     dynamicThreshold = true;
     palette = "dark16";
-    colorSpace = "labmixed";
-    # threshold = 5;
+    colorSpace = "lab";
+    fallbackGenerator = "interpolate";
+    # threshold = 30;
   };
 }

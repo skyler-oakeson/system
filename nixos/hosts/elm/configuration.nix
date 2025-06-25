@@ -7,9 +7,7 @@
   inputs,
   users,
   ...
-}: 
-
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default
@@ -34,6 +32,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  utils.docker.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Denver";

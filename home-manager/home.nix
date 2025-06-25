@@ -3,8 +3,7 @@
   inputs,
   config,
   ...
-}: 
-{
+}: {
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
@@ -13,11 +12,33 @@
     ./desktop
     ./apps
     ./lang
-    ./nvim
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
+  apps = {
+    term = {
+      kitty.enable = true;
+    };
+
+    qbittorrent.enable = true;
+    pwvucontrol.enable = true;
+    obs-studio.enable = true;
+    spicetify.enable = true;
+    discord.enable = true;
+    firefox.enable = true;
+    neovim.enable = true;
+    ranger.enable = true;
+    utils.enable = true;
+    misc.enable = true;
+    zsh.enable = true;
+    vlc.enable = true;
+    wofi.enable = true;
+    feh.enable = true;
+  };
+
+  desktop = {
+    hypr.enable = true;
+    waybar.enable = true;
+    mako.enable = true;
   };
 
   # You should not change this value, even if you update Home Manager. If you do
