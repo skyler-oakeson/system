@@ -219,7 +219,7 @@
         .modules-right {
           background-color: @background;
           border-radius: 0px;
-          border: solid 2px;
+          border: solid 0px;
           border-color: @color4;
           padding: 0 10px;
         }

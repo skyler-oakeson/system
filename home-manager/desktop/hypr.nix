@@ -15,8 +15,8 @@
   config,
   lib,
   ...
-}: 
-let 
+}:
+let
   cfg = config.desktop.hypr;
   cursorSize = 32;
 in
@@ -24,8 +24,8 @@ in
   options = {
     desktop = {
       hypr = with lib; {
-        enable = mkEnableOption { 
-          description = "Install Hyprland and related apps."; 
+        enable = mkEnableOption {
+          description = "Install Hyprland and related apps.";
           default = false;
         };
       };
@@ -48,8 +48,8 @@ in
       enable = true;
       settings = {
         enable = true;
-        preload = ["${config.walnix.path}"];
-        wallpaper = [",${config.walnix.path}"];
+        preload = [ "${config.walnix.path}" ];
+        wallpaper = [ ",${config.walnix.path}" ];
       };
     };
 
@@ -73,12 +73,12 @@ in
       # Whether to enable hyprland-session.target on hyprland startup
       systemd = {
         enable = true;
-        variables = ["--all"];
+        variables = [ "--all" ];
       };
 
-      settings = with config.walnix.colors.rgb; {
+      settings = with config.walnix.colors.rgba; {
         monitor = [
-          "DP-1,highres@highr,auto,1.25"
+          "DP-1,highres@highr,auto,1.0"
           "DP-2,highres@highr,auto,1.25"
         ];
 
@@ -144,7 +144,13 @@ in
           gaps_out = 10;
           border_size = 2;
           "col.active_border" = color13;
-          "col.inactive_border" = color4;
+
+          # Use this when you want borders
+          # "col.inactive_border" = color4;
+
+          # Use this when you want no borders
+          "col.inactive_border" = "rgba(00000000)";
+
           layout = "dwindle";
           resize_on_border = false;
           allow_tearing = false;
@@ -169,9 +175,7 @@ in
 
         decoration = {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
           rounding = 0;
-
           blur = {
             enabled = true;
             size = 12;
@@ -183,6 +187,7 @@ in
 
           active_opacity = 1.0;
           inactive_opacity = 1.0;
+          border_part_of_window = false;
 
           shadow = {
             enabled = true;
@@ -191,6 +196,7 @@ in
             sharp = false;
             ignore_window = true;
             color = "rgba(00000062)";
+            # color_inactive = "rgba(00000000)";
             offset = "5 5";
             scale = 1.0;
           };
@@ -256,6 +262,13 @@ in
 
           # Spotify floating special
           "workspace:special, float, size 1000 1000, class:^(spotify)$"
+
+        ];
+
+        layerrule = [
+          # Removes black border on screenshots
+          "noanim, hyprpicker"
+          "noanim, selection"
         ];
 
         binde = [
