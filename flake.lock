@@ -192,11 +192,28 @@
         "type": "github"
       }
     },
+    "nvim-improvedft": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1597241631,
+        "narHash": "sha256-Db1NkRdNNjZoKHpKErNFYI8BBfdX2wCmfohV2uAwVtA=",
+        "owner": "chrisbra",
+        "repo": "improvedft",
+        "rev": "1f0b78b55ba5fca70db0f584d8b5e56a35fd26f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chrisbra",
+        "repo": "improvedft",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland-qtutils": "hyprland-qtutils",
         "nixpkgs": "nixpkgs_2",
+        "nvim-improvedft": "nvim-improvedft",
         "spicetify-nix": "spicetify-nix",
         "walnix": "walnix"
       }

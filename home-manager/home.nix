@@ -3,7 +3,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "skyler";
   home.homeDirectory = "/home/skyler";
@@ -13,6 +14,25 @@
     ./apps
     ./lang
   ];
+
+  nixpkgs = {
+    overlays = [
+      (
+        self: super:
+        let
+          nvim-improvedft = super.vimUtils.buildVimPlugin {
+            name = "nvim-improvedft";
+            src = inputs.nvim-improvedft;
+          };
+        in
+        {
+          vimPlugins = super.vimPlugins // {
+            inherit nvim-improvedft;
+          };
+        }
+      )
+    ];
+  };
 
   apps = {
     term = {
