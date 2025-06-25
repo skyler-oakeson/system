@@ -8,7 +8,7 @@
   config,
   lib,
   ...
-}: 
+}:
 let
   cfg = config.desktop.mako;
 in
@@ -26,8 +26,8 @@ in
     home.packages = with pkgs; [
       mako
     ];
-  
-    services.mako = with config.walnix.colors.hex; {
+
+    services.mako.settings = with config.walnix.colors.hex; {
       enable = true;
       borderColor = color4;
       textColor = color13;
