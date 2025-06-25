@@ -15,25 +15,6 @@
     ./lang
   ];
 
-  nixpkgs = {
-    overlays = [
-      (
-        self: super:
-        let
-          nvim-improvedft = super.vimUtils.buildVimPlugin {
-            name = "nvim-improvedft";
-            src = inputs.nvim-improvedft;
-          };
-        in
-        {
-          vimPlugins = super.vimPlugins // {
-            inherit nvim-improvedft;
-          };
-        }
-      )
-    ];
-  };
-
   apps = {
     term = {
       kitty.enable = true;

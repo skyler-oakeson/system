@@ -21,6 +21,7 @@ in
   };
 
   config = lib.mkIf (cfg.enable) {
+
     # overlay any flake inputs that are nvim plugins here
     nixpkgs = {
       overlays = [
