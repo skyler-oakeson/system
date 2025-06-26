@@ -8,14 +8,15 @@
   config,
   lib,
   ...
-}: 
-  let cfg = config.desktop.waybar;
-  in
+}:
+let
+  cfg = config.desktop.waybar;
+in
 {
   options = {
     desktop = {
       waybar = with lib; {
-        enable = mkEnableOption { 
+        enable = mkEnableOption {
           description = "Install Waybar.";
           default = false;
         };
@@ -39,12 +40,12 @@
           height = 30;
           reload_style_on_change = true;
 
-          modules-left = ["hyprland/window"];
-          modules-center = ["hyprland/workspaces"];
+          modules-left = [ "hyprland/window" ];
+          modules-center = [ "hyprland/workspaces" ];
 
           modules-right = [
             "pulseaudio"
-            # "backlight"
+            "backlight"
             "network"
             "temperature"
             # "battery"
@@ -52,12 +53,13 @@
           ];
 
           "hyprland/window" = {
-            "format" = "{}";
-            "max-length" = 35;
+            "format" = "[loc]: {}";
+            "max-length" = 50;
             "rewrite" = {
               "" = "Desktop";
             };
-            "separate-outputs" = true;
+            "separate-outputs" = false;
+            "tooltip" = false;
           };
 
           "hyprland/workspaces" = {
@@ -66,76 +68,71 @@
             "sort-by-number" = true;
             "persistent-workspaces" = {
             };
+            "tooltip" = false;
           };
+
           "clock" = {
-            "format" = "[{:%I:%M}]";
-            "format-alt" = "[{:%m-%d-%Y}]";
+            "format" = "[time]: {:%I:%M}";
+            "format-alt" = "[date]: {:%m-%d-%Y}";
             "tooltip" = false;
           };
+
           "cpu" = {
-            "format" = "  {usage}%";
+            "format" = "[cpu]: {usage}%";
             "tooltip" = false;
           };
+
           "memory" = {
-            "format" = "{}%  ";
+            "format" = "[mem]: {}%";
             "tooltip" = false;
           };
+
           "temperature" = {
             "critical-threshold" = 80;
-            "format" = "[temp: {temperatureC}°C]";
-            "format-icons" = ["" "" ""];
+            "format" = "[temp]: {temperatureC}°C";
             "tooltip" = false;
           };
+
           "battery" = {
             "states" = {
               "warning" = 30;
               "critical" = 15;
             };
-            "format" = "{icon}  {capacity}%";
-            "format-full" = "{icon}  {capacity}%";
-            "format-charging" = "  {capacity}%";
-            "format-plugged" = "  {capacity}%";
-            "format-alt" = "{time} {icon}";
-            "format-icons" = ["" "" "" "" ""];
+            "format" = "[bat]: {capacity}%";
             "tooltip" = false;
           };
+
           "network" = {
-            "format-wifi" = "[wifi: {signalStrength}%]";
-            "format-ethernet" = "[eth: {cidr}]";
+            "format-wifi" = "[wifi]: {signalStrength}%";
+            "format-ethernet" = "[eth]: {cidr}";
+            "format-linked" = "[eth]: {cidr} (No IP)";
+            "format-disconnected" = "[eth/wifi]: !";
+            "format-alt" = "[add]: {ipaddr}";
             "tooltip" = false;
-            "format-linked" = "[eth: {cidr} (No IP)";
-            "format-disconnected" = "[wifi: !]";
-            "format-alt" = "{ifname}: {ipaddr}/{cidr}";
           };
+
           "pulseaudio" = {
-            "format" = "[vol: {volume}%]";
+            "format" = "[vol]: {volume}%";
             "format-bluetooth" = "{volume}% {icon} {format_source}";
             "format-bluetooth-muted" = " {icon} {format_source}";
-            "format-muted" = "[mut: {volume}%]";
-            "format-icons" = {
-              "headphone" = "";
-              "hands-free" = "";
-              "headset" = "";
-              "phone" = "";
-              "portable" = "";
-              "car" = "";
-              "default" = ["" "" ""];
-            };
+            "format-muted" = "[vol]: mute";
             "on-click" = "pwvucontrol";
             "tooltip" = false;
           };
+
           "backlight" = {
             "scroll-step" = 1;
             "on-scroll-up" = "brightnessctl set +10";
             "on-scroll-down" = "brightnessctl set 10-";
             "device" = "eDP-1";
-            "format" = "{icon} {percent:>2}%";
-            "format-icons" = ["" "" "" "" "" "" "" "" ""];
+            "format" = "[light]: {percent:>2}%";
             "tooltip" = false;
             "reverse-scrolling" = true;
           };
+
         };
       };
+
       style = with config.walnix.colors.rgba; ''
         @define-color color0 ${color0}; @define-color color1 ${color1}; @define-color color2 ${color2};
         @define-color color3 ${color3}; @define-color color4 ${color4}; @define-color color5 ${color5};
@@ -213,7 +210,6 @@
           padding: 0 5px;
         }
 
-
         .modules-left,
         .modules-center,
         .modules-right {
@@ -222,6 +218,10 @@
           border: solid 0px;
           border-color: @color4;
           padding: 0 10px;
+        }
+
+        .modules-right:hover {
+          border: solid 2px;
         }
 
         .modules-center {
