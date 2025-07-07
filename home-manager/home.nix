@@ -50,8 +50,8 @@
   launchers = {
     default = "tofi";
     wofi.enable = false;
-    rofi.enable = true;
-    tofi.enable = false;
+    rofi.enable = false;
+    tofi.enable = true;
   };
 
   apps = {
