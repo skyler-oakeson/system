@@ -14,6 +14,10 @@
       url = "github:chrisbra/improvedft";
       flake = false;
     };
+    nvim-neopywal = {
+      url = "github:RedsXDD/neopywal.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -21,15 +25,14 @@
       self,
       nixpkgs,
       home-manager,
-      hyprland-qtutils,
       walnix,
       spicetify-nix,
-      nvim-improvedft,
       ...
     }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
+      username = "skyler";
       lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         inherit system;
@@ -42,9 +45,14 @@
     {
       nixosConfigurations = {
         elm = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          inherit system;
           inherit pkgs;
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              ;
+          };
           modules = [
             # inputs.home-manager.nixosModules.default
             ./nixos/hosts/elm/configuration.nix
@@ -55,7 +63,14 @@
       homeConfigurations = {
         skyler = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              username
+              system
+              ;
+            colors = "~/.cache/wallust";
+          };
           modules = [
             ./home-manager/home.nix
             walnix.homeManagerModules.walnix

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts = {
     packages = with pkgs; [
       monocraft
@@ -11,9 +12,9 @@
     ];
     fontconfig = {
       defaultFonts = {
-        serif = ["Computer Modern"];
-        sansSerif = ["Lato"];
-        monospace = ["JetBrainsMono Nerd Font"];
+        serif = [ "Computer Modern" ];
+        sansSerif = [ "Lato" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
   };

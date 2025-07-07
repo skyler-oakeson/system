@@ -2,45 +2,74 @@
   pkgs,
   inputs,
   config,
+  username,
   ...
 }:
 {
   # Home Manager needs a bit of information about you and the paths it should manage.
-  home.username = "skyler";
-  home.homeDirectory = "/home/skyler";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   imports = [
-    ./desktop
-    ./apps
-    ./lang
+    ./modules
   ];
 
-  apps = {
-    term = {
-      kitty.enable = true;
-    };
+  terminals = {
+    default = "kitty";
+    kitty.enable = true;
+  };
 
+  browsers = {
+    default = "firefox";
+    firefox.enable = true;
+    chromium.enable = true;
+  };
+
+  window-managers = {
+    hypr.enable = true;
+  };
+
+  viewers = {
+    feh.enable = true;
+    vlc.enable = true;
+  };
+
+  file-explorers = {
+    ranger.enable = true;
+    default = "ranger";
+  };
+
+  shells = {
+    zsh.enable = true;
+  };
+
+  notifiers = {
+    mako.enable = true;
+  };
+
+  launchers = {
+    default = "tofi";
+    wofi.enable = false;
+    rofi.enable = true;
+    tofi.enable = false;
+  };
+
+  apps = {
     qbittorrent.enable = true;
     pwvucontrol.enable = true;
     obs-studio.enable = true;
     spicetify.enable = true;
     discord.enable = true;
-    firefox.enable = true;
-    neovim.enable = true;
-    ranger.enable = true;
-    utils.enable = true;
-    misc.enable = true;
-    zsh.enable = true;
-    vlc.enable = true;
-    wofi.enable = true;
-    feh.enable = true;
+    btop.enable = true;
+    neofetch.enable = true;
+    nvim.enable = true;
+    spotify-player.enable = true;
   };
 
-  desktop = {
-    hypr.enable = true;
-    waybar.enable = true;
-    mako.enable = true;
-  };
+  test-pkgs.enable = true;
+  waybar.enable = true;
+  utils.enable = true;
+  wallust.enable = true;
 
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager

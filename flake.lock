@@ -208,12 +208,29 @@
         "type": "github"
       }
     },
+    "nvim-neopywal": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744501005,
+        "narHash": "sha256-RLwxyGRmU1B8r6xO1YObF8qlNEj7qitNUArUlw092V8=",
+        "owner": "RedsXDD",
+        "repo": "neopywal.nvim",
+        "rev": "09188d79b45694141ec779d05cbcc75f994639d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RedsXDD",
+        "repo": "neopywal.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland-qtutils": "hyprland-qtutils",
         "nixpkgs": "nixpkgs_2",
         "nvim-improvedft": "nvim-improvedft",
+        "nvim-neopywal": "nvim-neopywal",
         "spicetify-nix": "spicetify-nix",
         "walnix": "walnix"
       }

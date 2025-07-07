@@ -6,8 +6,10 @@
   pkgs,
   inputs,
   users,
+  username,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     # inputs.home-manager.nixosModules.default
@@ -63,10 +65,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
-  users.users.skyler = {
+  users.users."${username}" = {
     isNormalUser = true;
     description = "skyler";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       zsh
@@ -81,7 +86,7 @@
     git
   ];
 
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -126,5 +131,8 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }
