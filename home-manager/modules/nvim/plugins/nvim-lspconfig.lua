@@ -28,20 +28,22 @@ vim.lsp.config("rust_analyzer", {
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("texlab")
-vim.lsp.enable("pylsp")
-vim.lsp.config("pylsp", {
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          enabled = false
-        }
-      }
-    }
-  }
-})
+-- vim.lsp.enable("pylsp")
+-- vim.lsp.config("pylsp", {
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = {
+--           enabled = false
+--         }
+--       }
+--     }
+--   }
+-- })
 
+-- vim.lsp.config("ruff")
 
+vim.lsp.enable("basedpyright")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)

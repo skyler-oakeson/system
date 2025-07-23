@@ -1,5 +1,5 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Kitty
+# Terminals
 #
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,29 +19,18 @@ in
       default = mkOption {
         type = types.enum [
           "kitty"
+          "ghostty"
         ];
         default = "kitty";
-      };
-
-      kitty = with lib; {
-        enable = mkEnableOption {
-          description = "Install Kitty.";
-          default = false;
-        };
       };
     };
   };
 
-  config = lib.mkIf (cfg.kitty.enable) {
-    home.packages = with pkgs; [
-      kitty
-    ];
-
+  config = with pkgs; {
     programs.kitty = {
-      enable = true;
       settings = {
         include = "${colors}/colors_kitty.conf";
-        font_family = "JetBrainsMono Nerd Font";
+        font_family = "monospace";
         font_size = 12.0;
         window_padding_width = 10;
         bold_font = "auto";
@@ -49,6 +38,26 @@ in
         bold_italic_font = "auto";
         remember_window_size = "yes";
         confirm_os_window_close = 0;
+      };
+    };
+
+    programs.ghostty = {
+      settings = {
+        theme = "${colors}/colors_ghostty";
+        font-family = "monospace";
+        keybind = [
+          "ctrl+shift+h=goto_split:left"
+          "ctrl+shift+l=goto_split:right"
+          "ctrl+shift+k=goto_split:up"
+          "ctrl+shift+j=goto_split:down"
+        ];
+        font-size = 16;
+        window-padding-y = 10;
+        window-padding-x = 10;
+        window-save-state = "always";
+        clipboard-trim-trailing-spaces = true;
+        confirm-close-surface = false;
+        shell-integration = "zsh";
       };
     };
   };

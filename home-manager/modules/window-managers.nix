@@ -19,12 +19,12 @@
   ...
 }:
 let
-  cfg = config.window-managers;
+  cfg = config.programs;
   cursorSize = 32;
 in
 {
   options = {
-    window-managers = {
+    programs = {
       hypr = with lib; {
         enable = mkEnableOption {
           description = "Install Hyprland and related apps.";
@@ -34,29 +34,28 @@ in
     };
   };
 
-  config = lib.mkIf (cfg.hypr.enable) {
-    home.packages = with pkgs; [
-      hyprland
-      hyprpaper
-      hyprlock
-      hyprshot
-      hyprcursor
-      hypridle
-      hyprutils
-      inputs.hyprland-qtutils.packages."${system}".default
-    ];
+  config = {
+    home.packages =
+      with pkgs;
+      [ ]
+      ++ lib.optionals (cfg.hypr.enable) [
+        hyprshot
+        hypridle
+        hyprutils
+        inputs.hyprland-qtutils.packages."${system}".default
+      ];
 
     services.hyprpaper = {
-      enable = true;
+      enable = cfg.hypr.enable;
       settings = {
-        preload = [ "~/.config/wallpapers/clouds.jpg" ];
-        wallpaper = [ ",~/.config/wallpapers/clouds.jpg" ];
+        preload = [ "~/.config/wallpapers/saturn_drawing.png" ];
+        wallpaper = [ ",~/.config/wallpapers/saturn_drawing.png" ];
       };
     };
 
     home.pointerCursor = with pkgs; {
       hyprcursor = {
-        enable = true;
+        enable = cfg.hypr.enable;
         size = cursorSize;
       };
       gtk.enable = true;
@@ -66,8 +65,12 @@ in
       size = cursorSize;
     };
 
+    programs.hyprlock = {
+      enable = cfg.hypr.enable;
+    };
+
     wayland.windowManager.hyprland = with pkgs; {
-      enable = true;
+      enable = cfg.hypr.enable;
       package = hyprland;
       xwayland.enable = true;
 
@@ -101,7 +104,7 @@ in
         ];
 
         "$terminal" = "${config.terminals.default}";
-        "$fileManager" = "${config.terminals.default} ${config.file-explorers.default}";
+        "$fileManager" = "${config.file-explorers.default}";
         "$browser" = "${config.browsers.default}";
         "$menu" = "${config.launchers.${config.launchers.default}.cmd}";
         "$mod" = "MOD4";
@@ -144,19 +147,19 @@ in
 
         general = {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          gaps_in = 5;
-          gaps_out = 10;
-          border_size = 2;
-          "col.active_border" = "$color2";
+          gaps_in = 10;
+          gaps_out = "0, 20, 20, 20";
+          border_size = 1;
+          "col.active_border" = "$color8";
 
           # Use this when you want borders
-          # "col.inactive_border" = "$color4";
+          "col.inactive_border" = "$color0";
 
           # Use this when you want no borders
-          "col.inactive_border" = "rgba(00000000)";
+          # "col.inactive_border" = "rgba(00000000)";
 
           layout = "dwindle";
-          resize_on_border = false;
+          resize_on_border = true;
           allow_tearing = false;
         };
 
@@ -197,12 +200,12 @@ in
 
           shadow = {
             enabled = true;
-            range = 10;
+            range = 0;
             render_power = 4;
-            sharp = false;
+            sharp = true;
             ignore_window = true;
-            color = "rgba(00000062)";
-            offset = "5 5";
+            color = "rgba(00000080)";
+            offset = "8 8";
             scale = 1.0;
           };
         };
@@ -267,7 +270,6 @@ in
 
           # Spotify floating special
           "workspace:special, float, size 1000 1000, class:^(spotify)$"
-
         ];
 
         layerrule = [
@@ -298,14 +300,14 @@ in
         bind = [
           "$mod, C, exec, $terminal"
           "$mod, Q, killactive,"
-          "$mod, E, exec, $fileManager"
+          "$mod, E, exec, $terminal -e $fileManager"
           "$mod, F, fullscreen, 0"
-          "$mod, SPACE, exec, pkill wofi || $menu"
+          "$mod, SPACE, exec, pkill $menu || $menu"
           "$mod, ESCAPE, exec, systemctl suspend"
 
           "$mod, V, togglefloating,"
           "$mod, T, togglesplit, # dwindle"
-          "$mod, O, pseudo, # dwindle"
+          "$mod, U, pseudo, # dwindle"
           "$mod, B, exec, $browser"
 
           # Move focus with mod + vim keys

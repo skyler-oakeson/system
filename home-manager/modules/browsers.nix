@@ -25,29 +25,11 @@ in
         default = "firefox";
       };
 
-      chromium = {
-        enable = mkEnableOption {
-          description = "Install Chrome.";
-          default = false;
-        };
-      };
-
-      firefox = {
-        enable = mkEnableOption {
-          description = "Install Firefox.";
-          default = false;
-        };
-      };
     };
   };
 
   config = {
-    programs.chromium = {
-      enable = cfg.chromium.enable;
-    };
-
     programs.firefox = {
-      enable = cfg.firefox.enable;
       policies = {
         BlockAboutConfig = true;
         # DefaultDownloadDirectory = "${home}/dwn";

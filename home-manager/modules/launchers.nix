@@ -63,7 +63,6 @@ in
   config = {
 
     programs.wofi = {
-      enable = (cfg.wofi.enable);
       settings = {
         hide_scroll = true;
         normal_window = true;
@@ -129,12 +128,10 @@ in
     };
 
     programs.rofi = {
-      enable = (cfg.rofi.enable);
       theme = "dmenu";
     };
 
     programs.tofi = {
-      enable = (cfg.tofi.enable);
       settings = {
         include = "${colors}/colors_tofi";
         font = "monospace";

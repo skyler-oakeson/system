@@ -8,12 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    walnix.url = "path:/home/skyler/code/nix/walnix/";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    nvim-improvedft = {
-      url = "github:chrisbra/improvedft";
-      flake = false;
-    };
+
     nvim-neopywal = {
       url = "github:RedsXDD/neopywal.nvim";
       flake = false;
@@ -25,7 +21,6 @@
       self,
       nixpkgs,
       home-manager,
-      walnix,
       spicetify-nix,
       ...
     }@inputs:
@@ -69,11 +64,10 @@
               username
               system
               ;
-            colors = "~/.cache/wallust";
+            colors = "/home/${username}/.cache/wallust";
           };
           modules = [
             ./home-manager/home.nix
-            walnix.homeManagerModules.walnix
             spicetify-nix.homeManagerModules.default
           ];
         };

@@ -5,38 +5,14 @@
   lib,
   ...
 }:
-let
-  cfg = config.apps.nvim;
-in
 {
-  options = {
-    apps = {
-      nvim = with lib; {
-        enable = mkEnableOption {
-          description = "Install Neovim.";
-          default = false;
-        };
-      };
-    };
-  };
-
   config = {
-
-    # FIND ROGUE INSTALLATION
-    # home.packages = with pkgs; [
-    #   neovim
-    # ];
-
     # overlay any flake inputs that are nvim plugins here
     nixpkgs = {
       overlays = [
         (
           self: super:
           let
-            nvim-improvedft = super.vimUtils.buildVimPlugin {
-              name = "nvim-improvedft";
-              src = inputs.nvim-improvedft;
-            };
             nvim-neopywal = super.vimUtils.buildVimPlugin {
               name = "nvim-neopywal";
               src = inputs.nvim-neopywal;
@@ -45,7 +21,6 @@ in
           in
           {
             vimPlugins = super.vimPlugins // {
-              inherit nvim-improvedft;
               inherit nvim-neopywal;
             };
           }
@@ -59,7 +34,6 @@ in
         toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
       in
       {
-        enable = (cfg.enable);
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
@@ -78,6 +52,7 @@ in
           lua-language-server
           texlab
           csharp-ls
+          basedpyright
           vscode-langservers-extracted
           (pkgs.python3.withPackages (p: [
             p.python-lsp-server
@@ -109,10 +84,6 @@ in
           }
 
           {
-            plugin = nvim-improvedft;
-          }
-
-          {
             plugin = nvim-surround;
             config = toLuaFile ./plugins/surround.lua;
           }
@@ -130,6 +101,10 @@ in
           {
             plugin = nvim-autopairs;
             config = toLuaFile ./plugins/autopairs.lua;
+          }
+
+          {
+            plugin = nvim-treesitter-context;
           }
 
           # cmp dependecies

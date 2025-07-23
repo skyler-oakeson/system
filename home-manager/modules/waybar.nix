@@ -14,29 +14,15 @@ let
   cfg = config.waybar;
 in
 {
-  options = {
-    waybar = with lib; {
-      enable = mkEnableOption {
-        description = "Install Waybar.";
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      waybar
-    ];
-
+  config = {
     programs.waybar = {
-      enable = true;
       settings = {
         mainBar = {
-          margin-top = 10;
-          margin-left = 10;
+          margin-top = 20;
+          margin-bottom = 10;
           margin-right = 10;
-          margin-bottom = 0;
-          height = 30;
+          margin-left = 0;
+          height = 10;
           reload_style_on_change = true;
 
           modules-left = [ "hyprland/window" ];
@@ -71,8 +57,8 @@ in
           };
 
           "clock" = {
-            "format" = "[time]: {:%I:%M}";
-            "format-alt" = "[date]: {:%m-%d-%Y}";
+            "format" = "{:%I:%M}";
+            "format-alt" = "{:%m-%d-%Y}";
             "tooltip" = false;
           };
 
@@ -88,7 +74,7 @@ in
 
           "temperature" = {
             "critical-threshold" = 80;
-            "format" = "[temp]: {temperatureC}°C";
+            "format" = "{temperatureC}°C";
             "tooltip" = false;
           };
 
@@ -102,19 +88,19 @@ in
           };
 
           "network" = {
-            "format-wifi" = "[wifi]: {signalStrength}%";
-            "format-ethernet" = "[eth]: {cidr}";
+            "format-wifi" = "W{signalStrength}%";
+            "format-ethernet" = "E {cidr}";
             "format-linked" = "[eth]: {cidr} (No IP)";
-            "format-disconnected" = "[eth/wifi]: !";
-            "format-alt" = "[add]: {ipaddr}";
+            "format-disconnected" = "E/W !";
+            "format-alt" = "A {ipaddr}";
             "tooltip" = false;
           };
 
           "pulseaudio" = {
-            "format" = "[vol]: {volume}%";
+            "format" = "{volume}%";
             "format-bluetooth" = "{volume}% {icon} {format_source}";
             "format-bluetooth-muted" = " {icon} {format_source}";
-            "format-muted" = "[vol]: mute";
+            "format-muted" = "_%";
             "on-click" = "pwvucontrol";
             "tooltip" = false;
           };
@@ -136,7 +122,7 @@ in
         @import "../../.cache/wallust/colors_waybar.css";
 
         * {
-          font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+          font-family: "monospace";
           font-size: 16px;
         }
 
@@ -146,15 +132,13 @@ in
         }
 
         button {
-          /* Use box-shadow instead of border so the text isn't offset */
-          box-shadow: inset 0 -3px transparent;
-          /* Avoid rounded borders under each button name */
-          border: none;
+          border: solid 1;
           border-radius: 0;
+          border-color: @color0;
         }
 
         button:hover {
-          background-color: @color13;
+          color: @color2;
         }
 
         #pulseaudio:hover {
@@ -162,31 +146,30 @@ in
         }
 
         #workspaces {
-            color: @color7;
-            background-color: @background;
+            color: @foreground;
+            background-color: transparent;
         }
 
         #workspaces button.active {
-            color: @background;
-            background-color: @color2;
-        }
-
-        #workspaces button.hover {
-            color: @background;
-            background-color: @color7;
+            border-color: @color8;
         }
 
         #workspaces button {
-          padding: 0 5px;
           background-color: @background;
-          color: @color7;
+          color: @foreground;
         }
 
         #workspaces button.focused {
-          background-color: @color7;
+          background-color: @foreground;
           color: @background;
         }
 
+        #window {
+          border: solid 1px;
+          border-color: @color0;
+        }
+
+        #window,
         #clock,
         #pulseaudio,
         #battery,
@@ -195,36 +178,26 @@ in
         #temperature,
         #network,
         #backlight,
-        #window,
         #pulseaudio {
-          padding: 0 10px;
-          color: @color7;
-        }
-
-        #window {
+          color: @foreground;
+          background: @background;
+          border: solid 1px;
+          border-color: @color0;
+          margin-right: 10px;
+          box-shadow: 5px 5px rgba(0, 0, 0, .50);
           padding: 0 5px;
         }
 
         .modules-left,
         .modules-center,
         .modules-right {
-          background-color: @background;
-          border-radius: 0px;
-          border: solid 0px;
-          border-color: @color4;
-          padding: 0 10px;
-        }
-
-        .modules-right:hover {
-          border: solid 2px;
+          background-color: transparent;
+          /* background: radial-gradient(@background .5px,transparent 2px) 0 0/5px 5px, transparent; */
+          margin-bottom: 10px;
         }
 
         .modules-center {
-          padding: 0 0px;
-        }
-
-        label:focus {
-          background-color: @background;
+          box-shadow: 5px 5px rgba(0, 0, 0, .50);
         }
 
         #pulseaudio.muted {

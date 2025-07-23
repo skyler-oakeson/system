@@ -3,6 +3,7 @@
   inputs,
   config,
   username,
+  lib,
   ...
 }:
 {
@@ -14,62 +15,53 @@
     ./modules
   ];
 
-  terminals = {
-    default = "kitty";
-    kitty.enable = true;
-  };
+  # TERMINALS
+  terminals.default = "ghostty";
+  programs.kitty.enable = true;
+  programs.ghostty.enable = true;
 
-  browsers = {
-    default = "firefox";
-    firefox.enable = true;
-    chromium.enable = true;
-  };
+  # BROWSERS
+  browsers.default = "firefox";
+  programs.firefox.enable = true;
+  programs.chromium.enable = false;
 
-  window-managers = {
-    hypr.enable = true;
-  };
+  file-explorers.default = "ranger";
+  programs.ranger.enable = true;
 
-  viewers = {
-    feh.enable = true;
-    vlc.enable = true;
-  };
+  # WINDOW MANAGERS
+  programs.hypr.enable = true;
+  programs.waybar.enable = true;
 
-  file-explorers = {
-    ranger.enable = true;
-    default = "ranger";
-  };
+  # SHELLS
+  programs.zsh.enable = true;
 
-  shells = {
-    zsh.enable = true;
-  };
+  # NOTIFICATION SERVICES
+  notifiers.default = "mako";
+  services.mako.enable = true;
 
-  notifiers = {
-    mako.enable = true;
-  };
+  # LAUNCHERS
+  launchers.default = "tofi";
+  programs.wofi.enable = false;
+  programs.rofi.enable = false;
+  programs.tofi.enable = true;
 
-  launchers = {
-    default = "tofi";
-    wofi.enable = false;
-    rofi.enable = false;
-    tofi.enable = true;
-  };
-
-  apps = {
-    qbittorrent.enable = true;
-    pwvucontrol.enable = true;
-    obs-studio.enable = true;
-    spicetify.enable = true;
-    discord.enable = true;
-    btop.enable = true;
-    neofetch.enable = true;
-    nvim.enable = true;
-    spotify-player.enable = true;
-  };
+  # APPS
+  programs.btop.enable = true;
+  programs.obs-studio.enable = true;
+  programs.spicetify.enable = false;
+  programs.spotify-player.enable = true;
+  programs.wallust.enable = true;
+  programs.neovim.enable = true;
+  programs.helix.enable = false;
+  programs.feh.enable = true;
+  programs.vlc.enable = true;
+  programs.fastfetch.enable = true;
+  programs.qbittorrent.enable = true;
+  programs.pwvucontrol.enable = true;
+  programs.discord.enable = true;
 
   test-pkgs.enable = true;
-  waybar.enable = true;
   utils.enable = true;
-  wallust.enable = true;
 
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager

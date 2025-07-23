@@ -24,7 +24,6 @@ in
 
   config = lib.mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      # cmd utils
       ripgrep
       fd
       fzf
@@ -33,14 +32,9 @@ in
       unzip
       comma
       usbutils
-
       neofetch
       btop
-
-      # clipboard
       wl-clipboard
-
-      # C build utils
       autoconf
       automake
       libtool
@@ -49,9 +43,11 @@ in
       cmake
       libgccjit
       findutils
-
-      # nix utils
       nix-index
     ];
+
+    programs.git = {
+      enable = true;
+    };
   };
 }

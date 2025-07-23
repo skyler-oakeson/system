@@ -13,8 +13,8 @@
     ./terminals.nix
     ./test-pkgs.nix
     ./utils.nix
-    ./viewers.nix
     ./waybar.nix
     ./window-managers.nix
+    ./helix
   ];
 }

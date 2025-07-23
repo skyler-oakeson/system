@@ -9,17 +9,7 @@ let
   cfg = config.shells;
 in
 {
-  options = {
-    shells = {
-      zsh = with lib; {
-        enable = mkEnableOption {
-          description = "Install zsh.";
-          default = false;
-        };
-      };
-    };
-  };
-  config = lib.mkIf (cfg.zsh.enable) {
+  config = {
     home.packages = with pkgs; [
       zsh
       (pkgs.writeShellScriptBin "initpy" ''
@@ -86,9 +76,18 @@ in
       '')
     ];
 
+    home.shellAliases = {
+      "..." = "cd ../..";
+      "plshell" = "docker exec -it mypl /bin/bash";
+      "plstart" =
+        "sudo docker run -it --rm -p 3000:3000 -e NODEMON=true -v ~/cde/py/PrairieLearn:/PrairieLearn --name mypl prairielearn/prairielearn";
+    };
+
+    home.shell.enableZshIntegration = true;
+
     programs.zsh = {
-      enable = true;
       enableCompletion = true;
+      enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       autocd = true;
@@ -118,6 +117,8 @@ in
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
+      fileWidgetOptions = [
+      ];
     };
   };
 }

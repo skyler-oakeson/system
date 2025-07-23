@@ -12,7 +12,6 @@
     rustup
     gradle
     temurin-bin
-    dart
     nodejs_24
     dotnet-sdk_9
     texliveFull

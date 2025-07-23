@@ -4,8 +4,8 @@ vim.g.mapleader = ' '
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fa',
-  "<cmd>lua require'telescope.builtin'.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-  {})
+    "<cmd>lua require'telescope.builtin'.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+    {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
@@ -24,6 +24,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
+
 -- clear search --
 vim.keymap.set('n', '<leader>n', vim.cmd.nohl)
 
@@ -37,6 +38,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P')
 
 -- delete to empty register --
 vim.keymap.set('n', '<leader>d', '"_d')
+vim.keymap.set('n', '<leader>x', '"_x')
 
 -- toggle relative number --
 vim.keymap.set('n', '<leader>r', '<cmd>set relativenumber!<cr>')
@@ -47,3 +49,16 @@ vim.keymap.set('n', '[c', '<cmd>Gitsigns prev_hunk<cr>')
 vim.keymap.set('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<cr>')
 vim.keymap.set('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<cr>')
 vim.keymap.set('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<cr>')
+
+
+-- keep screen centered when jumping --
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev search result (centered)" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+
+-- move through buffers --
+vim.keymap.set("n", "<C-n>", ":bnext<CR>")
+vim.keymap.set("n", "<C-p>", ":bprevious<CR>")
+
+vim.keymap.set("n", "<leader>rc", ":so ~/.config/nvim/init.lua<CR>")

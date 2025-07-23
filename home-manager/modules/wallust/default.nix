@@ -15,27 +15,13 @@ let
   templates = "/home/skyler/.config/system/home-manager/modules/wallust/templates";
 in
 {
-  options = {
-    wallust = with lib; {
-      enable = mkEnableOption {
-        description = "Install Wallust and link toml config.";
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      wallust
-    ];
-
+  config = {
     programs.wallust = {
-      enable = true;
       settings = {
-        backend = "thumb";
+        backend = "wal";
         color_space = "lab";
         palette = "dark16";
-        saturation = 40;
+        saturation = 60;
         check_contrast = true;
         dynamic_threshold = true;
         fallback_generator = "interpolate";
@@ -54,6 +40,8 @@ in
           nvim.target = "${colors}/colors_neopywal.vim";
           mako.template = "${templates}/colors_mako.conf";
           mako.target = "${colors}/colors_mako.conf";
+          ghostty.template = "${templates}/colors_ghostty";
+          ghostty.target = "${colors}/colors_ghostty";
         };
       };
     };
