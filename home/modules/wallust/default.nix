@@ -12,20 +12,42 @@
 }:
 let
   cfg = config.wallust;
-  templates = "/home/skyler/.config/system/home-manager/modules/wallust/templates";
+  templates = "/home/skyler/.config/system/home/modules/wallust/templates";
+
+  notTooBright = {
+    backend = "wal";
+    color_space = "lch";
+    palette = "dark16";
+    saturation = 40;
+    check_contrast = true;
+    dynamic_threshold = true;
+    fallback_generator = "interpolate";
+    alpha = 100;
+  };
+
+  current = notTooBright;
 in
 {
+  options = {
+    wallust = with lib; {
+      enable = mkEnableOption {
+        description = "Install and configure wallust.";
+        default = false;
+      };
+    };
+  };
+
   config = {
     programs.wallust = {
       settings = {
-        backend = "wal";
-        color_space = "lab";
-        palette = "dark16";
-        saturation = 60;
-        check_contrast = true;
-        dynamic_threshold = true;
-        fallback_generator = "interpolate";
-        alpha = 100;
+        # backend = "wal";
+        # color_space = "lch";
+        # palette = "dark16";
+        # saturation = 40;
+        # check_contrast = true;
+        # dynamic_threshold = true;
+        # fallback_generator = "interpolate";
+        # alpha = 100;
 
         templates = {
           kitty.template = "${templates}/colors_kitty.conf";
@@ -43,7 +65,8 @@ in
           ghostty.template = "${templates}/colors_ghostty";
           ghostty.target = "${colors}/colors_ghostty";
         };
-      };
+      }
+      // current;
     };
   };
 }

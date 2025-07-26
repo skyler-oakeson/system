@@ -21,7 +21,7 @@ in
           margin-top = 20;
           margin-bottom = 10;
           margin-right = 10;
-          margin-left = 0;
+          margin-left = 20;
           height = 10;
           reload_style_on_change = true;
 

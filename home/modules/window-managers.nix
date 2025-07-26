@@ -15,7 +15,8 @@
   config,
   lib,
   colors,
-  username,
+  host,
+  user,
   ...
 }:
 let
@@ -48,8 +49,8 @@ in
     services.hyprpaper = {
       enable = cfg.hypr.enable;
       settings = {
-        preload = [ "~/.config/wallpapers/saturn_drawing.png" ];
-        wallpaper = [ ",~/.config/wallpapers/saturn_drawing.png" ];
+        preload = [ "~/.config/wallpapers/trees_river_painting.jpg" ];
+        wallpaper = [ ",~/.config/wallpapers/trees_river_painting.jpg" ];
       };
     };
 
@@ -77,15 +78,21 @@ in
       # Whether to enable hyprland-session.target on hyprland startup
       systemd = {
         enable = true;
+        enableXdgAutostart = true;
         variables = [ "--all" ];
       };
 
       settings = {
         source = "${colors}/colors_hypr.conf";
-        monitor = [
-          "DP-1,highres@highr,auto,1.20"
-          "DP-2,highres@highr,auto,1.20"
-        ];
+
+        monitor = lib.imap1 (
+          i: monitor:
+          "${monitor.id},${monitor.resolution}@${toString monitor.refreshRate},auto,${toString monitor.scale}"
+        ) (lib.attrsets.mapAttrsToList (name: value: value) host.monitors);
+
+        workspace = lib.imap1 (i: monitor: "${toString i},monitor${monitor.id}") (
+          lib.attrsets.mapAttrsToList (name: value: value) host.monitors
+        );
 
         dwindle = {
           pseudotile = "yes";
@@ -130,7 +137,7 @@ in
 
           touchpad = {
             # natural_scroll = "yes";
-            scroll_factor = .4;
+            scroll_factor = 0.4;
             disable_while_typing = true;
             clickfinger_behavior = true;
             tap-to-click = false;
@@ -178,6 +185,7 @@ in
         misc = {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
+          enable_anr_dialog = false;
         };
 
         decoration = {
@@ -185,15 +193,18 @@ in
           rounding = 0;
           blur = {
             enabled = false;
-            size = 12;
-            passes = 4;
+            size = 3;
+            passes = 3;
+            noise = 0.3;
+            contrast = 0.9;
+            brightness = 0.8;
             new_optimizations = "on";
             xray = false;
             ignore_opacity = true;
           };
 
           active_opacity = 1.0;
-          # inactive_opacity = 1.0;
+          inactive_opacity = 1.0;
           border_part_of_window = false;
 
           # screen_shader = builtins.readFile ./shaders/bluelight.frag;
@@ -209,11 +220,6 @@ in
             scale = 1.0;
           };
         };
-
-        workspace = [
-          "1,monitor:DP-1"
-          "2,monitor:DP-2"
-        ];
 
         cursor = {
           enable_hyprcursor = true;

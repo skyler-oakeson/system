@@ -26,7 +26,7 @@ in
     };
   };
 
-  config = with pkgs; {
+  config = {
     programs.kitty = {
       settings = {
         include = "${colors}/colors_kitty.conf";
@@ -51,7 +51,7 @@ in
           "ctrl+shift+k=goto_split:up"
           "ctrl+shift+j=goto_split:down"
         ];
-        font-size = 16;
+        font-size = 14;
         window-padding-y = 10;
         window-padding-x = 10;
         window-save-state = "always";

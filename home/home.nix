@@ -21,9 +21,10 @@
   programs.ghostty.enable = true;
 
   # BROWSERS
-  browsers.default = "firefox";
+  browsers.default = "qutebrowser";
   programs.firefox.enable = true;
   programs.chromium.enable = false;
+  programs.qutebrowser.enable = true;
 
   file-explorers.default = "ranger";
   programs.ranger.enable = true;
@@ -48,7 +49,6 @@
   # APPS
   programs.btop.enable = true;
   programs.obs-studio.enable = true;
-  programs.spicetify.enable = false;
   programs.spotify-player.enable = true;
   programs.wallust.enable = true;
   programs.neovim.enable = true;

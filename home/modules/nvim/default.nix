@@ -1,33 +1,11 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
   ...
 }:
 {
   config = {
-    # overlay any flake inputs that are nvim plugins here
-    nixpkgs = {
-      overlays = [
-        (
-          self: super:
-          let
-            nvim-neopywal = super.vimUtils.buildVimPlugin {
-              name = "nvim-neopywal";
-              src = inputs.nvim-neopywal;
-              doCheck = false;
-            };
-          in
-          {
-            vimPlugins = super.vimPlugins // {
-              inherit nvim-neopywal;
-            };
-          }
-        )
-      ];
-    };
-
     programs.neovim =
       let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
@@ -41,7 +19,8 @@
         withPython3 = true;
         withNodeJs = true;
         extraPackages = with pkgs; [
-          nil
+          # nil
+          nixd
           nixfmt-rfc-style
           csharp-ls
           clang-tools

@@ -1,5 +1,6 @@
 vim.lsp.enable("clangd")
 vim.lsp.enable("ts_ls")
+vim.lsp.enable("nixd")
 vim.lsp.enable("nil_ls")
 vim.lsp.config("nil_ls", {
   settings = {

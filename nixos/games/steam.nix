@@ -1,24 +1,39 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    steam
-    gamescope
-    # steamcmd
-    # steam-tui
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
 
-    openssl
-    nghttp2
-    libidn2
-    rtmpdump
-    libpsl
-    curl
-    krb5
-    keyutils
-  ];
+  options = {
+    steam.enable = lib.mkEnableOption "enable steam";
+  };
 
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = [];
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
+  config = lib.mkIf config.steam.enable {
+    environment.systemPackages = with pkgs; [
+      steam
+      gamescope
+      # steamcmd
+      # steam-tui
+
+      openssl
+      nghttp2
+      libidn2
+      rtmpdump
+      libpsl
+      curl
+      krb5
+      keyutils
+    ];
+
+    programs.steam = {
+      enable = true;
+      extraCompatPackages = [ ];
+      localNetworkGameTransfers.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      remotePlay.openFirewall = true;
+      gamescopeSession.enable = true;
+    };
   };
 }

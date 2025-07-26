@@ -61,4 +61,4 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 vim.keymap.set("n", "<C-n>", ":bnext<CR>")
 vim.keymap.set("n", "<C-p>", ":bprevious<CR>")
 
-vim.keymap.set("n", "<leader>rc", ":so ~/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>sc", ":so ~/.config/nvim/init.lua<CR>")

@@ -82,21 +82,5 @@ in
         };
       };
     };
-
-    # TODO integrate this with wallust
-    programs.spicetify =
-      let
-        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-      in
-      {
-        enabledExtensions = with spicePkgs.extensions; [
-          adblock
-        ];
-        spicetifyPackage = pkgs.spicetify-cli;
-        spotifyPackage = pkgs.spotify;
-        theme = spicePkgs.themes.text;
-        wayland = true;
-        windowManagerPatch = true;
-      };
   };
 }

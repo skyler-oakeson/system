@@ -8,14 +8,15 @@
   lib,
   pkgs,
   ...
-}: 
-  let cfg = config.utils.docker;
-  in
+}:
+let
+  cfg = config.utils.docker;
+in
 {
   options = {
     utils = {
       docker = with lib; {
-        enable = mkEnableOption { 
+        enable = mkEnableOption {
           description = "Install docker.";
           default = false;
         };
@@ -26,8 +27,8 @@
   config = lib.mkIf (cfg.enable) {
     virtualisation.docker.enable = true;
     virtualisation.docker.daemon.settings = {
-      data-root = "/home/skyler/.docker";
-  };
+      data-root = "/home/skyler/.cache/.docker";
+    };
     users.extraGroups.docker.members = [ "skyler" ];
   };
 }
