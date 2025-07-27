@@ -7,10 +7,12 @@
 {
 
   options = {
-    steam.enable = lib.mkEnableOption "enable steam";
+    games = {
+      steam.enable = lib.mkEnableOption "enable steam and system settings to run it.";
+    };
   };
 
-  config = lib.mkIf config.steam.enable {
+  config = lib.mkIf config.games.steam.enable {
     environment.systemPackages = with pkgs; [
       steam
       gamescope
@@ -35,5 +37,8 @@
       remotePlay.openFirewall = true;
       gamescopeSession.enable = true;
     };
+
+    programs.appimage.enable = true;
+    programs.appimage.binfmt = true;
   };
 }

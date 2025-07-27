@@ -30,7 +30,6 @@
     dool # System statistics tool (dstat replacement)
     inxi # My swiss army knife
     lshw # List hardware
-    lshw # List hardware
     pciutils # lspci
     read-edid # EDID information
     smartmontools # S.M.A.R.T. monitoring
