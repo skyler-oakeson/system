@@ -7,16 +7,15 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../nixos/display
-    ../../nixos/virtualization
+    ../../nixos/virtual
     ../../nixos/fonts/fonts.nix
     ../../nixos/games
     ../../nixos/utils
     ../../nixos/maintenance
     ../../nixos/boot
-    ../../nixos/networking
+    ../../nixos/network
     ../../nixos/services
   ];
 
@@ -31,13 +30,11 @@
     deleteOlderThan = "10d";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups."${user.username}" = { };
   users.users."${user.username}" = {
     home = "/home/${user.username}";
     isSystemUser = user.isSystemUser;
     isNormalUser = user.isNormalUser;
-    hashedPassword = user.password;
     description = user.username;
     group = user.username;
     extraGroups = [

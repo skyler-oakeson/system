@@ -15,6 +15,11 @@
       url = "github:RedsXDD/neopywal.nvim";
       flake = false;
     };
+
+    nvim-blink = {
+      url = "github:Saghen/blink.cmp";
+      flake = true;
+    };
   };
 
   outputs =
@@ -43,6 +48,7 @@
               };
               overlays = [
                 overlays.nvim-neopywal
+                overlays.nvim-blink
               ];
             };
             user = users.user0;
@@ -70,9 +76,8 @@
                       host
                       user
                       ;
-                    colors = "/home/${user.username}/.cache/wallust";
                   };
-                  users.${user.username} = import ./users/${user.username};
+                  users.${user.username} = import ./users/${user.username}; # give it home.nix
                 };
               }
             ];
