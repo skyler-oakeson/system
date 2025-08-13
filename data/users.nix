@@ -8,6 +8,8 @@
     preferences = {
       ui = {
         radius = 0;
+        border = true;
+        borderSize = 1;
       };
     };
 

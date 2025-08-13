@@ -28,7 +28,7 @@ in
       "..." = "cd ../..";
       "plshell" = "sudo docker exec -it mypl /bin/bash";
       "plinit" =
-        "docker run -it --rm -p 3000:3000 -e DEV=true -v .:/PrairieLearn prairielearn/prairielearn /bin/bash -c \"make deps && /PrairieLearn/scripts/init.sh\"";
+        "sudo docker run -it --rm -p 3000:3000 -e DEV=true -v .:/PrairieLearn prairielearn/prairielearn /bin/bash -c \"make deps && /PrairieLearn/scripts/init.sh\"";
       "plstart" =
         "sudo docker run -it --rm -p 3000:3000 -e NODEMON=true -v ~/cde/py/PrairieLearn:/PrairieLearn --name mypl prairielearn/prairielearn";
     };

@@ -1,6 +1,6 @@
 { ... }:
 {
   imports = [
-    ./messaging.nix
+    ./discord.nix
   ];
 }

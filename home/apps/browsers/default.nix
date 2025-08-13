@@ -1,14 +1,26 @@
-{ lib, ... }:
 {
-  options = with lib; {
+  config,
+  lib,
+  utils,
+  ...
+}:
+{
+  options = {
     browsers = {
-      default = mkOption {
-        type = types.enum [
-          "firefox"
-          "chromium"
-          "qutebrowser"
-        ];
-        default = "firefox";
+      default = utils.mkDefaultOption config.browsers;
+
+      firefox = {
+        enable = lib.mkEnableOption {
+          description = "intall configured firefox";
+          default = false;
+        };
+      };
+
+      qutebrowser = {
+        enable = lib.mkEnableOption {
+          description = "intall configured qutebrowser";
+          default = false;
+        };
       };
     };
   };

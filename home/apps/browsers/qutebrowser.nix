@@ -1,6 +1,11 @@
-{ user, lib, ... }:
 {
-  config = {
+  config,
+  lib,
+  user,
+  ...
+}:
+{
+  config = lib.mkIf (config.browsers.qutebrowser.enable) {
     programs.qutebrowser = {
       enable = true;
       keyBindings = {

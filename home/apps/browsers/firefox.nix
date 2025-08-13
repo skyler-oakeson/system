@@ -1,16 +1,17 @@
-{ user, lib, ... }:
 {
-  config = {
+  config,
+  lib,
+  user,
+  ...
+}:
+{
+  config = lib.mkIf (config.browsers.firefox.enable) {
     programs.firefox = {
       enable = true;
       policies = {
         BlockAboutConfig = true;
+        DefaultDownloadDirectory = user.locations.downloads or "$HOME/downloads";
       };
-    }
-    // lib.mkMerge [
-      (lib.mkIf (user ? locations.downloads) {
-        policies.DefaultDownloadDirectory = user.locations.downloads;
-      })
-    ];
+    };
   };
 }

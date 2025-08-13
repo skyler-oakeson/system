@@ -2,7 +2,8 @@
 {
   imports = [
     ./lsp.nix
-    ./shells.nix
+    ./zsh.nix
     ./languages.nix
+    ./lazygit.nix
   ];
 }

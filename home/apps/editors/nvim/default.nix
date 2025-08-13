@@ -1,9 +1,11 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
 {
-  config = {
+  config = lib.mkIf (config.editors.nvim.enable) {
     programs.neovim =
       let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
@@ -58,7 +60,7 @@
 
           blink-ripgrep-nvim
           {
-            plugin = nvim-blink;
+            plugin = blink-cmp;
             config = toLuaFile ./plugins/blink.lua;
           }
 

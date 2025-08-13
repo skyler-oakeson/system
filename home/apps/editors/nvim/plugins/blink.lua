@@ -25,6 +25,11 @@ require('blink.cmp').setup({
       menu = {
         auto_show = true
       },
+      list = {
+        selection = {
+          preselect = false, auto_insert = true
+        }
+      }
     },
   },
 
@@ -82,5 +87,5 @@ require('blink.cmp').setup({
     }
   },
 
-  fuzzy = { implementation = "lua" }
+  fuzzy = { implementation = "rust" }
 })

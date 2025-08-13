@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ user, ... }:
 {
   programs.tofi = {
     enable = true;
@@ -7,7 +7,6 @@
       font = "monospace";
       text-cursor-style = "block";
       drun-launch = true;
-      terminal = "${config.terminals.default}";
       font-size = 12;
       outline-width = 0;
       border-width = 1;

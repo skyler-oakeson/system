@@ -6,18 +6,19 @@
 }:
 {
   options = with lib; {
-    editors = {
-      default = utils.mkDefaultOption config.editors;
-      helix = {
+    terminals = {
+      default = utils.mkDefaultOption config.terminals;
+
+      kitty = {
         enable = mkEnableOption {
-          description = "intall configured helix";
+          description = "intall configured kitty";
           default = false;
         };
       };
 
-      nvim = {
+      ghostty = {
         enable = mkEnableOption {
-          description = "intall configured nvim";
+          description = "intall configured ghostty";
           default = false;
         };
       };
@@ -25,7 +26,7 @@
   };
 
   imports = [
-    ./nvim
-    ./helix
+    ./kitty.nix
+    ./ghostty.nix
   ];
 }

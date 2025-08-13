@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
-    ./communicators
+    ./messaging
     ./editors
     ./viewers
     ./browsers
-    ./explorers/file-explorers.nix
-    ./terminals/terminals.nix
+    ./explorers
+    ./terminals
   ];
 }

@@ -71,9 +71,9 @@ in
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         ];
 
-        "$terminal" = user.default.terminal or "kitty";
-        "$fileManager" = user.default.fileExplorer or "ranger";
-        "$browser" = user.default.browser or "qutebrowser";
+        "$terminal" = config.terminals.default or "";
+        "$fileManager" = config.explorers.default or "";
+        "$browser" = config.browsers.default or "";
         "$menu" = "${config.launchers.${config.launchers.default}.cmd}";
         "$mod" = "MOD4";
 
