@@ -1,10 +1,10 @@
-{ user, ... }:
+{ config, ... }:
 {
   services.hyprpaper = {
-    enable = user.services.hyprpaper or true;
+    enable = true;
     settings = {
-      preload = [ "~/.config/wallpapers/trees_river_painting.jpg" ];
-      wallpaper = [ ",~/.config/wallpapers/trees_river_painting.jpg" ];
+      preload = [ "${config.xdg.configHome}/wallpapers/trees_river_painting.jpg" ];
+      wallpaper = [ ",${config.xdg.configHome}/wallpapers/trees_river_painting.jpg" ];
     };
   };
 }

@@ -20,7 +20,6 @@
     locations = {
       downloads = "/home/${username}/dwn";
       theme = "/home/${username}/.cache/wallust";
-      wallpapers = "/home/${username}/.config/wallpapers";
     };
   };
 }

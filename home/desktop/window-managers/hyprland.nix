@@ -79,12 +79,6 @@ in
 
         "exec-once" = [
           "waybar"
-          "mako"
-        ];
-
-        "exec" = [
-          "pkill hyprpaper"
-          "hyprpaper"
         ];
 
         input = {
