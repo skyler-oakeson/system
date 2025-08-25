@@ -8,7 +8,7 @@
   ...
 }:
 let
-  templates = "/home/skyler/.config/system/home/desktop/theming/wallust/templates";
+  templates = ./templates;
 
   current = notTooBright;
   notTooBright = {
