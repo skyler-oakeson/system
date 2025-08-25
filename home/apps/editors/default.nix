@@ -27,5 +27,6 @@
   imports = [
     ./nvim
     ./helix
+    ./lsp
   ];
 }

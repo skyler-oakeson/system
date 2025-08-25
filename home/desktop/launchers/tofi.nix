@@ -1,6 +1,11 @@
-{ user, ... }:
 {
-  programs.tofi = {
+  config,
+  user,
+  lib,
+  ...
+}:
+{
+  programs.tofi = lib.mkIf (config.launchers.tofi.enable) {
     enable = true;
     settings = {
       include = "${user.locations.theme}/colors_tofi";

@@ -1,7 +1,12 @@
-{ config, user, ... }:
 {
-  programs.wofi = {
-    enable = false;
+  config,
+  lib,
+  user,
+  ...
+}:
+{
+  programs.wofi = lib.mkIf (config.launchers.wofi.enable) {
+    enable = true;
     settings = {
       hide_scroll = true;
       normal_window = true;

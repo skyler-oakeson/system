@@ -29,7 +29,8 @@
   explorers.ranger.enable = false;
 
   # LAUNCHERS
-  launchers.default = "tofi";
+  launchers.default = "wofi";
+  launchers.wofi.enable = true;
 
   # EDITORS
   editors.default = "nvim";
