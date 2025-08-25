@@ -6,13 +6,21 @@
 }:
 {
   config = lib.mkIf (config.editors.nvim.enable) {
+
+    xdg.configFile."nvim/".source =
+      config.lib.file.mkOutOfStoreSymlink "/home/skyler/system/home/apps/editors/nvim/dots";
+
+    home.packages = with pkgs; [
+      neovim
+    ];
+
     programs.neovim =
       let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
         toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
       in
       {
-        enable = true;
+        enable = false;
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;

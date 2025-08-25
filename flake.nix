@@ -15,6 +15,8 @@
       url = "github:RedsXDD/neopywal.nvim";
       flake = false;
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
@@ -36,6 +38,8 @@
           let
             host = hosts.host0;
             system = host.system;
+            user = users.user0;
+            utils = import ./utils { inherit lib; };
             pkgs = import nixpkgs {
               inherit system;
               config = {
@@ -43,11 +47,10 @@
               };
               overlays = [
                 overlays.nvim-neopywal
+                inputs.neovim-nightly-overlay.overlays.default
               ];
             };
-            user = users.user0;
             lib = nixpkgs.lib;
-            utils = import ./utils { inherit lib; };
           in
           lib.nixosSystem {
             inherit system pkgs;
@@ -55,6 +58,8 @@
               inherit
                 inputs
                 host
+
+                # TRANSFER THIS TO USERS SO YOU CAN ITERATE THROUGH IT TO CREATE ALL OF THEM
                 user
                 ;
             };

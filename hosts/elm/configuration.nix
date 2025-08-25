@@ -19,6 +19,8 @@
     ../../nixos/services
   ];
 
+  nix.package = pkgs.lix;
+
   networking.hostName = host.hostname or "nixos";
   programs.dconf.enable = true;
 
@@ -30,8 +32,8 @@
     deleteOlderThan = "10d";
   };
 
-  users.groups."${user.username}" = { };
-  users.users."${user.username}" = {
+  users.groups.${user.username} = { };
+  users.users.${user.username} = {
     home = "/home/${user.username}";
     isSystemUser = user.isSystemUser;
     isNormalUser = user.isNormalUser;
@@ -41,7 +43,10 @@
       "networkmanager"
       "wheel"
     ];
+    useDefaultShell = false;
+    shell = pkgs.${user.preferences.default.shell};
   };
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 

@@ -12,6 +12,7 @@
     ../../home/utils
     ../../home/services
     ../../home/desktop
+    ../../home/shells
   ];
 
   # TERMINALS

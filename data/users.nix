@@ -11,6 +11,10 @@
         border = true;
         borderSize = 1;
       };
+
+      default = {
+        shell = "nushell";
+      };
     };
 
     locations = {
