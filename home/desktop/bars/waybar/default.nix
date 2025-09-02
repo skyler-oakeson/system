@@ -141,7 +141,7 @@
         }
 
         button {
-          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
+          border: solid ${toString (user.preferences.ui.borderSize)}px;
           border-radius: ${toString user.preferences.ui.radius}px;
           border-color: @color0;
         }
@@ -162,16 +162,16 @@
         }
 
         #workspaces button.active {
-            background-color: @color13;
+            background-color: @color2;
         }
 
         #workspaces button {
           background-color: @background;
-          border-color: @color8;
+          border-color: @color0;
           color: @foreground;
           margin-left: 2px;
           margin-right: 2px;
-          box-shadow: 5px 5px rgba(0, 0, 0, .50);
+          box-shadow: 5px 5px rgba(0, 0, 0, .25);
         }
 
         #workspaces button.focused {
@@ -180,15 +180,15 @@
         }
 
         #window {
-          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
-          border-color: @bakground;
+          border: solid ${toString (user.preferences.ui.borderSize)}px;
+          border-color: @color0;
         }
 
         menu {
           border-radius: ${toString user.preferences.ui.radius}px;
           background: @background;
           color: @foreground;
-          box-shadow: 5px 5px rgba(0, 0, 0, .50);
+          box-shadow: 5px 5px rgba(0, 0, 0, .25);
           border-color: @color0;
         }
 
@@ -208,10 +208,10 @@
         #pulseaudio {
           color: @foreground;
           background: @background;
-          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
-          border-color: @color8;
+          border: solid ${toString (user.preferences.ui.borderSize)}px;
+          border-color: @color0;
           margin-right: 10px;
-          box-shadow: 5px 5px rgba(0, 0, 0, .50);
+          box-shadow: 5px 5px rgba(0, 0, 0, .25);
           padding: 5px 5px;
           border-radius: ${toString user.preferences.ui.radius}px;
         }

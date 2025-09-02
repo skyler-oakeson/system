@@ -183,7 +183,7 @@ in
             render_power = 4;
             sharp = true;
             ignore_window = true;
-            color = "rgba(00000080)";
+            color = "rgba(00000045)";
             offset = "8 8";
             scale = 1.0;
           };

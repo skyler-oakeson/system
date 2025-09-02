@@ -8,7 +8,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- clear search --
-vim.keymap.set('n', '<C-CR>', vim.cmd.nohl)
+vim.keymap.set('n', '<leader>n', vim.cmd.nohl)
 
 -- paste clipboard --
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')

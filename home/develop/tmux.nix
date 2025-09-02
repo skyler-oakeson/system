@@ -7,6 +7,7 @@
       extraConfig = ''
         set -a terminal-features "tmux-256color:RGB"
         set -g base-index 1
+        set-option -g prefix C-b
         set -g renumber-windows on   
         set -g mode-keys vi
         set -g status-position top

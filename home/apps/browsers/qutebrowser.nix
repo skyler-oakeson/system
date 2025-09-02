@@ -66,14 +66,20 @@
         "hints.radius" = 30;
         "hints.uppercase" = true;
         "scrolling.smooth" = false;
+
+        # This is crashing qutebrowser figure out what is crashing it
         # "qt.args" = [
         #   "enable-gpu-rasterization"
         #   "ignore-gpu-blocklist"
         #   "use-gl=egl"
         #   "enable-accelerated-video-decode"
         # ];
+
         "qt.chromium.experimental_web_platform_features" = "always";
+
+        # This is not working for some reason
         # "qt.workarounds.disable_hangouts_extension" = true;
+
         "statusbar.widgets" = [
           "keypress"
           "search_match"
@@ -88,7 +94,7 @@
         "fonts.downloads" = "14pt monospace";
         "fonts.prompts" = "14pt Victor monospace";
         "fonts.keyhint" = "14pt monospace";
-        "fonts.hints" = "14pt monospace";
+        "fonts.hints" = "12pt monospace";
         "fonts.contextmenu" = "14pt monospace";
         "fonts.completion.category" = "bold 14pt monospace";
         "fonts.tooltip" = "14pt monospace";
@@ -103,8 +109,8 @@
         "window.title_format" = "{perc}{current_title}";
         "tabs.last_close" = "close";
         "tabs.mode_on_change" = "restore";
-        "tabs.indicator.width" = 0;
-        "tabs.favicons.scale" = 1;
+        "tabs.indicator.width" = 2;
+        "tabs.favicons.scale" = 0.5;
         "tabs.show_switching_delay" = 700;
         "tabs.pinned.frozen" = false;
         "completion.shrink" = true;

@@ -9,11 +9,23 @@
 }:
 let
   current = notTooBright;
+
   notTooBright = {
     backend = "wal";
     color_space = "lch";
     palette = "dark16";
     saturation = 40;
+    check_contrast = true;
+    dynamic_threshold = true;
+    fallback_generator = "interpolate";
+    alpha = 100;
+  };
+
+  brighter = {
+    backend = "wal";
+    color_space = "lch";
+    palette = "dark16";
+    saturation = 70;
     check_contrast = true;
     dynamic_threshold = true;
     fallback_generator = "interpolate";
