@@ -1,6 +1,10 @@
-{ config, ... }:
 {
-  config = {
+  config,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf (config.display.drivers.nvidia.enable) {
     hardware.graphics = {
       enable = true;
     };

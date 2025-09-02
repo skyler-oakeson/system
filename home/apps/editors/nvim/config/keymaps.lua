@@ -46,5 +46,5 @@ vim.keymap.set("n", "<C-p>", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>`", ":so ~/.config/nvim/init.lua<CR>")
 
-vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { remap = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)

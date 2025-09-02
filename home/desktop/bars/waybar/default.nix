@@ -1,5 +1,6 @@
 {
   user,
+  lib,
   ...
 }:
 {
@@ -126,7 +127,7 @@
         };
       };
 
-      style = ''
+      style = with lib; ''
         @import "${user.locations.theme}/colors_waybar.css";
 
         * {
@@ -140,7 +141,7 @@
         }
 
         button {
-          border: solid 1;
+          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
           border-radius: ${toString user.preferences.ui.radius}px;
           border-color: @color0;
         }
@@ -179,8 +180,8 @@
         }
 
         #window {
-          border: solid 1px;
-          border-color: @color0;
+          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
+          border-color: @bakground;
         }
 
         menu {
@@ -207,7 +208,7 @@
         #pulseaudio {
           color: @foreground;
           background: @background;
-          border: solid 1px;
+          border: solid ${toString (user.preferences.ui.borderSize - 1)}px;
           border-color: @color8;
           margin-right: 10px;
           box-shadow: 5px 5px rgba(0, 0, 0, .50);
@@ -222,6 +223,11 @@
           /* background: radial-gradient(@background .5px,transparent 2px) 0 0/5px 5px, transparent; */
           margin-bottom: 10px;
           border-radius: ${toString user.preferences.ui.radius}px;
+          color: @color14;
+        }
+
+        .modules-left {
+          color: @color13;
         }
 
         #pulseaudio.muted {

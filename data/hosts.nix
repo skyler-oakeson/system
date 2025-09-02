@@ -13,7 +13,7 @@
         scale = 1.25;
       };
       secondary = {
-        id = "DP-2";
+        id = "DP-3";
         resolution = "2560x1440";
         refreshRate = "144";
         scale = 1.0;

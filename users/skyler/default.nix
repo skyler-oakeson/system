@@ -22,7 +22,7 @@
   # BROWSERS
   browsers.default = "qutebrowser";
   browsers.qutebrowser.enable = true;
-  browsers.firefox.enable = false;
+  browsers.firefox.enable = true;
 
   explorers.default = "yazi";
   explorers.yazi.enable = true;

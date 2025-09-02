@@ -25,18 +25,96 @@
       settings = {
         "colors.webpage.darkmode.enabled" = true;
         "confirm_quit" = [ "always" ];
-        "input.insert_mode.auto_enter" = true;
         "search.incremental" = true;
-        "tabs.position" = "bottom";
-        "tabs.show" = "always";
-        "tabs.show_switching_delay" = 10000;
-        "completion.height" = "25%";
-        "tabs.last_close" = "close";
-        "keyhint.delay" = 0;
-        "prompt.radius" = user.preferences.ui.radius or 8;
-        "keyhint.radius" = user.preferences.ui.radius or 8;
+
         "downloads.location.directory" = user.locations.downloads or "$HOME/downloads";
+        "prompt.filebrowser" = false;
+
+        "tabs.show" = "always";
+
+        "keyhint.radius" = user.preferences.ui.radius or 8;
+        "keyhint.delay" = 0;
+
+        "prompt.radius" = user.preferences.ui.radius or 8;
+        "completion.height" = "30%";
+
+        "input.insert_mode.auto_load" = true;
+        "input.insert_mode.auto_leave" = true;
+        "downloads.prevent_mixed_content" = true;
+        "downloads.position" = "bottom";
+        "window.transparent" = true;
+        "completion.web_history.max_items" = 20;
+        "completion.timestamp_format" = "%a, %b %d %H:%M:%S";
+        "completion.scrollbar.width" = 18;
+        "content.default_encoding" = "utf-8";
+        "content.blocking.method" = "adblock";
+        "content.cookies.accept" = "all";
+        "content.media.video_capture" = true;
+        "content.media.audio_capture" = true;
+        "content.media.audio_video_capture" = true;
+        "content.notifications.enabled" = true;
+        "content.notifications.presenter" = "libnotify";
+        "content.webgl" = true;
+        "content.pdfjs" = true;
+        "content.xss_auditing" = false;
+        "content.local_content_can_access_remote_urls" = true;
+        "content.plugins" = true;
+        "content.tls.certificate_errors" = "load-insecurely";
+        "content.geolocation" = false;
+        "content.javascript.clipboard" = "access";
+        "content.prefers_reduced_motion" = true;
+        "hints.radius" = 30;
+        "hints.uppercase" = true;
+        "scrolling.smooth" = false;
+        # "qt.args" = [
+        #   "enable-gpu-rasterization"
+        #   "ignore-gpu-blocklist"
+        #   "use-gl=egl"
+        #   "enable-accelerated-video-decode"
+        # ];
+        "qt.chromium.experimental_web_platform_features" = "always";
+        # "qt.workarounds.disable_hangouts_extension" = true;
+        "statusbar.widgets" = [
+          "keypress"
+          "search_match"
+          "url"
+          "progress"
+          "clock"
+        ];
+
+        "fonts.default_family" = "monospace";
+        "fonts.default_size" = "14pt";
+        "fonts.statusbar" = "14pt monospace";
+        "fonts.downloads" = "14pt monospace";
+        "fonts.prompts" = "14pt Victor monospace";
+        "fonts.keyhint" = "14pt monospace";
+        "fonts.hints" = "14pt monospace";
+        "fonts.contextmenu" = "14pt monospace";
+        "fonts.completion.category" = "bold 14pt monospace";
+        "fonts.tooltip" = "14pt monospace";
+        "fonts.completion.entry" = "14pt monospace";
+        "fonts.tabs.selected" = "italic 14pt monospace";
+        "fonts.tabs.unselected" = "14pt monospace";
+        "fonts.messages.info" = "italic 14pt monospace";
+        "fonts.messages.error" = "italic 14pt monospace";
+        "fonts.messages.warning" = "italic 14pt monospace";
+        "tabs.title.format" = "{audio}{current_title}";
+        "tabs.title.format_pinned" = "{audio}{index}";
+        "window.title_format" = "{perc}{current_title}";
+        "tabs.last_close" = "close";
+        "tabs.mode_on_change" = "restore";
+        "tabs.indicator.width" = 0;
+        "tabs.favicons.scale" = 1;
+        "tabs.show_switching_delay" = 700;
+        "tabs.pinned.frozen" = false;
+        "completion.shrink" = true;
+        "auto_save.interval" = 20000;
       };
+
+      # This is to run the generated colors file
+      extraConfig = ''
+        config.source("../../.cache/wallust/colors_qutebrowser_config.py")
+      '';
     };
   };
 }

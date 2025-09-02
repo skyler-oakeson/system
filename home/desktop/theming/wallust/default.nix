@@ -8,8 +8,6 @@
   ...
 }:
 let
-  templates = ./templates;
-
   current = notTooBright;
   notTooBright = {
     backend = "wal";
@@ -24,27 +22,34 @@ let
 in
 {
   config = {
-    programs.wallust = {
-      enable = true;
-      settings = {
-        templates = {
-          kitty.template = "${templates}/colors_kitty.conf";
-          kitty.target = "${user.locations.theme}/colors_kitty.conf";
-          waybar.template = "${templates}/colors_waybar.css";
-          waybar.target = "${user.locations.theme}/colors_waybar.css";
-          hypr.template = "${templates}/colors_hypr.conf";
-          hypr.target = "${user.locations.theme}/colors_hypr.conf";
-          gtk.template = "${templates}/colors_gtk.css";
-          gtk.target = "${user.locations.theme}/colors_gtk.css";
-          nvim.template = "${templates}/colors_neopywal.vim";
-          nvim.target = "${user.locations.theme}/colors_neopywal.vim";
-          mako.template = "${templates}/colors_mako.conf";
-          mako.target = "${user.locations.theme}/colors_mako.conf";
-          ghostty.template = "${templates}/colors_ghostty";
-          ghostty.target = "${user.locations.theme}/colors_ghostty";
-        };
-      }
-      // current;
-    };
+    programs.wallust =
+      let
+        templates = ./templates;
+        targets = user.locations.theme;
+      in
+      {
+        enable = true;
+        settings = {
+          templates = {
+            kitty.template = "${templates}/colors_kitty.conf";
+            kitty.target = "${targets}/colors_kitty.conf";
+            waybar.template = "${templates}/colors_waybar.css";
+            waybar.target = "${targets}/colors_waybar.css";
+            hypr.template = "${templates}/colors_hypr.conf";
+            hypr.target = "${targets}/colors_hypr.conf";
+            gtk.template = "${templates}/colors_gtk.css";
+            gtk.target = "${targets}/colors_gtk.css";
+            nvim.template = "${templates}/colors_neopywal.vim";
+            nvim.target = "${targets}/colors_neopywal.vim";
+            mako.template = "${templates}/colors_mako.conf";
+            mako.target = "${targets}/colors_mako.conf";
+            ghostty.template = "${templates}/colors_ghostty";
+            ghostty.target = "${targets}/colors_ghostty";
+            qutebrowser.template = "${templates}/colors_qutebrowser_config.py";
+            qutebrowser.target = "${targets}/colors_qutebrowser_config.py";
+          };
+        }
+        // current;
+      };
   };
 }

@@ -31,9 +31,10 @@ in
       size = cursorSize;
     };
 
-    wayland.windowManager.hyprland = with pkgs; {
+    wayland.windowManager.hyprland = {
       enable = true;
-      package = hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       xwayland.enable = true;
 
       # Whether to enable hyprland-session.target on hyprland startup
@@ -42,6 +43,11 @@ in
         enableXdgAutostart = true;
         variables = [ "--all" ];
       };
+
+      plugins = [
+        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+        # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
+      ];
 
       settings = {
         source = "${user.locations.theme}/colors_hypr.conf";
@@ -56,8 +62,9 @@ in
         );
 
         dwindle = {
-          pseudotile = "yes";
-          preserve_split = "yes";
+          pseudotile = true;
+          preserve_split = false;
+          smart_resizing = true;
         };
 
         env = [
@@ -99,17 +106,25 @@ in
           sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
         };
 
-        gestures = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          workspace_swipe = "on";
-          workspace_swipe_fingers = 4;
+        plugin = {
+          hyprbars = {
+            bar_text_align = "left";
+            bar_text_size = 14;
+            bar_height = 38;
+            "col.text" = "$color1";
+            bar_color = "$background";
+            bar_text_font = "monospace";
+            bar_precedence_over_border = false;
+            bar_part_of_window = true;
+            bar_padding = 400;
+          };
         };
 
         general = {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
           gaps_in = 10;
           gaps_out = "0, 20, 20, 20";
-          border_size = 1;
+          border_size = user.preferences.ui.borderSize;
           "col.active_border" = "$color8";
 
           # Use this when you want borders
@@ -158,7 +173,7 @@ in
 
           active_opacity = 1.0;
           inactive_opacity = 0.90;
-          border_part_of_window = false;
+          border_part_of_window = true;
 
           # screen_shader = builtins.readFile ./shaders/bluelight.frag;
 
@@ -221,14 +236,8 @@ in
           "center,class:(dotfiles-floating)"
           "pin, class:(dotfiles-floating)"
 
-          # Pavucontrol floating
-          "float,class:(.*org.pulseaudio.pavucontrol.*)"
-          "size 700 600,class:(.*org.pulseaudio.pavucontrol.*)"
-          "center,class:(.*org.pulseaudio.pavucontrol.*)"
-          "pin,class:(.*org.pulseaudio.pavucontrol.*)"
-
           # Spotify floating special
-          "workspace:special, float, size 1000 1000, class:^(spotify)$"
+          "workspace special, floating:1, size 1000 1000, class:Spotify"
         ];
 
         layerrule = [
@@ -263,6 +272,7 @@ in
           "$mod, F, fullscreen, 0"
           "$mod, SPACE, exec, pkill $menu || $menu"
           "$mod, ESCAPE, exec, systemctl suspend"
+          "$mod, M, exec, $terminal -e btop"
 
           "$mod, V, togglefloating,"
           "$mod, T, togglesplit, # dwindle"

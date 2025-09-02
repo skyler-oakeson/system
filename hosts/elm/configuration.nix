@@ -25,6 +25,7 @@
   programs.dconf.enable = true;
 
   games.steam.enable = true;
+  display.drivers.amd.enable = true;
 
   maintenance.garbageCollection = {
     enable = true;

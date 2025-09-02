@@ -3,13 +3,13 @@ vim.lsp.enable("ts_ls")
 vim.lsp.enable("nixd")
 vim.lsp.enable("nil_ls")
 vim.lsp.config("nil_ls", {
-    settings = {
-        ['nil'] = {
-            formatting = {
-                command = { "nixfmt" }
-            },
-        }
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixfmt" }
+      },
     }
+  }
 })
 
 vim.lsp.enable("jdtls")
@@ -18,13 +18,13 @@ vim.lsp.enable("csharp_ls")
 
 vim.lsp.enable("rust_analyzer")
 vim.lsp.config("rust_analyzer", {
-    settings = {
-        ['rust-analyzer'] = {
-            diagnostics = {
-                enable = true,
-            }
-        }
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true,
+      }
     }
+  }
 })
 
 vim.lsp.enable("lua_ls")
@@ -47,21 +47,20 @@ vim.lsp.enable("texlab")
 vim.lsp.enable("basedpyright")
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if not client then return end
-        if client.supports_method('textDocument/formatting', args.buf) then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = args.buf,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then return end
+    if client.supports_method('textDocument/formatting', args.buf) then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
 
-                    -- set lsp keymaps here --
-                    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-                    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-                    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-                end
-            })
+          -- set lsp keymaps here --
+          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
         end
-    end,
+      })
+    end
+  end,
 })

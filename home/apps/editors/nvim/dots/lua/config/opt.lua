@@ -14,32 +14,47 @@ vim.opt.undofile = true;
 vim.opt.iskeyword:append("-")
 vim.opt.path:append("**")
 vim.o.winborder = 'single'
-vim.cmd(":hi statusline guibg=NONE")
+vim.cmd(":hi StatusLine guibg=NONE<cr>")
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight text on yank.",
-    group = augroup,
-    callback = function()
-        vim.highlight.on_yank()
-    end
+  desc = "Highlight text on yank.",
+  group = augroup,
+  callback = function()
+    vim.highlight.on_yank()
+  end
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-    group = augroup,
-    callback = function()
-        local mark = vim.api.nvim_buf_get_mark(0, '"')
-        local lcount = vim.api.nvim_buf_line_count(0)
-        if mark[1] > 0 and mark[1] <= lcount then
-            pcall(vim.api.nvim_win_set_cursor, 0, mark)
-        end
+  group = augroup,
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
+  end
 })
 
 vim.api.nvim_create_autocmd("VimResized", {
-    group = augroup,
-    callback = function()
-        vim.cmd("tabdo wincmd =")
+  group = augroup,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then return end
+    if client.supports_method('textDocument/formatting', args.buf) then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+        end
+      })
     end
+  end,
 })

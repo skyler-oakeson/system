@@ -9,7 +9,8 @@
       ui = {
         radius = 0;
         border = true;
-        borderSize = 1;
+        # Waybar set at 1 lower than hyprland
+        borderSize = 2;
       };
 
       default = {
