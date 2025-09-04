@@ -31,15 +31,27 @@ def gbd [] {
   }
 }
 
-def --env cdf [] {
-  let dir = fd -t d | fzf
-  cd $dir
-  ""
+alias sc = cd ($env.HOME | append .config/system | str join "/")
+def switch [-f] {
+    sc
+    if $f {
+      nix fmt
+    }
+    sudo nixos-rebuild switch --flake .
 }
 
-def lg [] {
-  lazygit
+def test [-f] {
+    sc
+    if $f {
+      nix fmt
+    }
+    sudo nixos-rebuild test --flake .
 }
+
+
+alias cdf = cd (fd -t d | fzf)
+alias ll = ls -l
+alias lg = lazygit
 
 source ~/.cache/carapace/init.nu
 

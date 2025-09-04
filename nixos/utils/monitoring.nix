@@ -8,6 +8,6 @@
     nmon # system monitoring tool
     psmisc # killall, pstree, etc.
     lm_sensors # tools for reading hardware sensors
-    fastfetch # faster neofetch
+    neofetch # system details
   ];
 }

@@ -38,6 +38,7 @@
       overlays = import ./overlays { inherit inputs; };
     in
     {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.${hosts.host0.system}.nixfmt-tree;
       nixosConfigurations = {
         ${hosts.host0.hostname} =
           let
