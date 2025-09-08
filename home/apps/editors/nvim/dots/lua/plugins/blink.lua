@@ -76,16 +76,15 @@ require('blink.cmp').setup({
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline', "ripgrep" },
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline' },
 
-    providers = {
-      ripgrep = {
-        module = "blink-ripgrep",
-        name = "Ripgrep",
-
-        opts = {},
-      },
-    }
+    -- providers = {
+    --   ripgrep = {
+    --     module = "blink-ripgrep",
+    --     name = "Ripgrep",
+    --     opts = {},
+    --   },
+    -- }
   },
 
   fuzzy = { implementation = "lua" }

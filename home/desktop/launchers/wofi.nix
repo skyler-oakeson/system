@@ -19,7 +19,7 @@
       @import "${user.locations.theme}/colors_waybar.css";
 
       #window {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "monospace";
         font-size: 16px;
         background: @background;
         color: @color13;

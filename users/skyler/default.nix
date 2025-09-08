@@ -24,9 +24,8 @@
   browsers.qutebrowser.enable = true;
   browsers.firefox.enable = true;
 
-  explorers.default = "yazi";
-  explorers.yazi.enable = true;
-  explorers.ranger.enable = false;
+  explorers.default = "ranger";
+  explorers.ranger.enable = true;
 
   # LAUNCHERS
   launchers.default = "wofi";

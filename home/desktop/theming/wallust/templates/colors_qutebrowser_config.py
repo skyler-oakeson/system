@@ -154,76 +154,76 @@ c.colors.messages.info.bg = base00
 c.colors.messages.info.border = base00
 
 # Foreground color for prompts.
-c.colors.prompts.fg = base05
+c.colors.prompts.fg = foreground
 
 # Border used around UI elements in prompts.
-c.colors.prompts.border = base00
+c.colors.prompts.border = foreground
 
 # Background color for prompts.
-c.colors.prompts.bg = base00
+c.colors.prompts.bg = background
 
 # Background color for the selected item in filename prompts.
-c.colors.prompts.selected.bg = base02
+c.colors.prompts.selected.bg = base05
 
 # Foreground color for the selected item in filename prompts.
-c.colors.prompts.selected.fg = base05
+c.colors.prompts.selected.fg = background
 
 # Foreground color of the statusbar.
-c.colors.statusbar.normal.fg = base05
+c.colors.statusbar.normal.fg = foreground
 
 # Background color of the statusbar.
-c.colors.statusbar.normal.bg = base00
+c.colors.statusbar.normal.bg = background
 
 # Foreground color of the statusbar in insert mode.
 c.colors.statusbar.insert.fg = base0C
 
 # Background color of the statusbar in insert mode.
-c.colors.statusbar.insert.bg = base00
+c.colors.statusbar.insert.bg = background
 
 # Foreground color of the statusbar in passthrough mode.
 c.colors.statusbar.passthrough.fg = base0A
 
 # Background color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.bg = base00
+c.colors.statusbar.passthrough.bg = background
 
 # Foreground color of the statusbar in private browsing mode.
 c.colors.statusbar.private.fg = base0E
 
 # Background color of the statusbar in private browsing mode.
-c.colors.statusbar.private.bg = base00
+c.colors.statusbar.private.bg = background
 
 # Foreground color of the statusbar in command mode.
 c.colors.statusbar.command.fg = base04
 
 # Background color of the statusbar in command mode.
-c.colors.statusbar.command.bg = base01
+c.colors.statusbar.command.bg = background
 
 # Foreground color of the statusbar in private browsing + command mode.
 c.colors.statusbar.command.private.fg = base0E
 
 # Background color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.bg = base01
+c.colors.statusbar.command.private.bg = background
 
 # Foreground color of the statusbar in caret mode.
 c.colors.statusbar.caret.fg = base0D
 
 # Background color of the statusbar in caret mode.
-c.colors.statusbar.caret.bg = base00
+c.colors.statusbar.caret.bg = background
 
 # Foreground color of the statusbar in caret mode with a selection.
 c.colors.statusbar.caret.selection.fg = base0D
 
 # Background color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.bg = base00
+c.colors.statusbar.caret.selection.bg = background
 
 # Background color of the progress bar.
 c.colors.statusbar.progress.bg = base0D
 
 # Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = base05
+c.colors.statusbar.url.fg = base0A
 
 # Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = base08
+c.colors.statusbar.url.error.fg = base0B
 
 # Foreground color of the URL in the statusbar for hovered links.
 c.colors.statusbar.url.hover.fg = base09

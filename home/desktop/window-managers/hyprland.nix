@@ -46,10 +46,11 @@ in
 
       plugins = [
         # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
+        inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
       ];
 
       settings = {
+
         source = "${user.locations.theme}/colors_hypr.conf";
 
         monitor = lib.imap1 (
@@ -107,6 +108,13 @@ in
         };
 
         plugin = {
+          borders-plus-plus = {
+            add_borders = 0;
+            "col.border_1" = "$background";
+            border_size_1 = 5;
+            natural_rounding = "yes";
+          };
+
           hyprbars = {
             bar_text_align = "left";
             bar_text_size = 14;

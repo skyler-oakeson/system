@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', 'gn', vim.lsp.buf.rename)
 -- focus windows --
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
@@ -8,7 +7,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- clear search --
-vim.keymap.set('n', '<leader>n', vim.cmd.nohl)
+vim.keymap.set('n', ',n', vim.cmd.nohl)
 
 -- paste clipboard --
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
@@ -26,8 +25,9 @@ vim.keymap.set('n', '<leader>x', '"_x')
 vim.keymap.set('n', '<leader>r', '<cmd>set relativenumber!<cr>')
 
 -- gitsigns commands --
-vim.keymap.set('n', ']c', '<cmd>Gitsigns next_hunk<cr>')
-vim.keymap.set('n', '[c', '<cmd>Gitsigns prev_hunk<cr>')
+vim.keymap.set('n', ']h', '<cmd>Gitsigns next_hunk<cr>')
+vim.keymap.set('n', '[h', '<cmd>Gitsigns prev_hunk<cr>')
+
 vim.keymap.set('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<cr>')
 vim.keymap.set('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<cr>')
 vim.keymap.set('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<cr>')
@@ -41,8 +41,8 @@ vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Prev jump (centered)" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { desc = "Next Jump (centered)" })
 
 -- move through buffers --
-vim.keymap.set("n", "<C-n>", ":bnext<CR>")
-vim.keymap.set("n", "<C-p>", ":bprevious<CR>")
+vim.keymap.set("n", "[b", ":bnext<CR>")
+vim.keymap.set("n", "]b", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>`", ":so ~/.config/nvim/init.lua<CR>")
 

@@ -12,7 +12,7 @@
       settings = {
         include = "${user.locations.theme}/colors_kitty.conf";
         font_family = "monospace";
-        font_size = 14.0;
+        font_size = 16.0;
         window_padding_width = 10;
         bold_font = "auto";
         italic_font = "auto";

@@ -9,12 +9,16 @@
       ui = {
         radius = 0;
         border = true;
-        # Waybar set at 1 lower than hyprland
         borderSize = 2;
       };
 
       default = {
         shell = "nushell";
+      };
+
+      theme = {
+        borderColor = "$color8";
+        inactiveBorderColor = "$color0";
       };
     };
 

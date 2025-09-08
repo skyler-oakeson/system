@@ -1,9 +1,11 @@
-{ ... }:
+{ user, ... }:
 {
   config = {
     programs.nushell = {
       enable = true;
-      configFile.source = ./config.nu;
+      extraConfig = ''
+        source $HOME/.config/system/home/shells/nushell/config.nu
+      '';
     };
 
     programs.carapace = {

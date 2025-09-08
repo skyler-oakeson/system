@@ -1,6 +1,5 @@
 vim.pack.add({ "https://github.com/echasnovski/mini.pick" })
 
-
 local pickers = {
   registry = function()
     local picker = require('mini.pick')
@@ -90,22 +89,7 @@ local pickers = {
       }
     })
   end,
-  quickfix = function()
-    require('mini.pick').start({
-      source = {
-        items = vim.fn.getqflist(),
-        name = 'Quickfix List'
-      }
-    })
-  end,
-  loclist = function()
-    require('mini.pick').start({
-      source = {
-        items = vim.fn.getloclist(0),
-        name = 'Location List'
-      }
-    })
-  end,
+
   oldfiles = function()
     local items = {}
     local cwd = vim.fn.getcwd()
@@ -143,26 +127,14 @@ local pick = require('mini.pick')
 pickers = vim.tbl_extend('force', pickers, pick.builtin)
 pick.registry = pickers
 
--- Bind keys enabling quick access to pickers
--- vim.keymap.set('n', '<F1>', pickers.help)
--- vim.keymap.set('n', ',o', pickers.oldfiles)
--- vim.keymap.set('n', '<leader>,', pickers.resume)
--- vim.keymap.set('n', '<leader>f', pickers.files)
--- vim.keymap.set('n', '<leader>b', pickers.buffers)
--- vim.keymap.set('n', '<leader>s', pickers.grep_live)
--- vim.keymap.set('n', '<leader>f', pickers.all_files)
--- vim.keymap.set('n', '<leader>g', pickers.git_status)
--- vim.keymap.set('n', '<leader>p', pickers.registry)
--- vim.keymap.set('n', '<leader>q', pickers.quickfix)
--- vim.keymap.set('n', '<leader>l', pickers.loclist)
-vim.keymap.set('n', 'gs', '<cmd>Pick files<cr>', {})
-vim.keymap.set('n', 'gh', '<cmd>Pick help<cr>', {})
-vim.keymap.set('n', 'gl', '<cmd>Pick grep_live<cr>', {})
-vim.keymap.set('n', 'gb', '<cmd>Pick buffers<cr>', {})
-
-
--- <C-qe> Adds to quickfix errors for buffer
--- <C-qp> Adds to quickfix errors for project
+vim.keymap.set('n', '<leader>h', pickers.help)
+vim.keymap.set('n', '<leader>o', pickers.oldfiles)
+vim.keymap.set('n', '<leader>r', pickers.resume)
+vim.keymap.set('n', '<leader>f', pickers.files)
+vim.keymap.set('n', '<leader>b', pickers.buffers)
+vim.keymap.set('n', '<leader>s', pickers.grep_live)
+vim.keymap.set('n', '<leader>a', pickers.all_files)
+vim.keymap.set('n', '<leader>g', pickers.git_status)
 
 pick.setup({
   pick.setup({ source = { show = pick.default_show } }),
@@ -199,28 +171,14 @@ pick.setup({
   },
   window = {
     config = function()
-      local height, width, starts, ends
-      local win_width = vim.o.columns
-      local win_height = vim.o.lines
-
-      if win_height <= 25 then
-        height = math.min(win_height, 18)
-        width = win_width
-        starts = 1
-        ends = win_height
-      else
-        width = math.floor(win_width * 0.5)   -- 50%
-        height = math.floor(win_height * 0.5) -- 30%
-        -- center prompt: height * (50% + 30%)
-        -- center window: height * [50% + (30% / 2)]
-      end
-
+      local height = math.floor(0.618 * vim.o.lines)
+      local width = math.floor(0.618 * vim.o.columns)
       return {
-        col = starts,
-        row = ends,
+        anchor = 'NW',
         height = height,
         width = width,
-        style = 'minimal',
+        row = math.floor(0.5 * (vim.o.lines - height)),
+        col = math.floor(0.5 * (vim.o.columns - width)),
       }
     end,
   }

@@ -1,6 +1,5 @@
 {
   user,
-  lib,
   ...
 }:
 {
@@ -127,12 +126,12 @@
         };
       };
 
-      style = with lib; ''
+      style = ''
         @import "${user.locations.theme}/colors_waybar.css";
 
         * {
           font-family: "monospace";
-          font-size: 16px;
+          font-size: 20px;
         }
 
         window#waybar {
@@ -141,9 +140,9 @@
         }
 
         button {
-          border: solid ${toString (user.preferences.ui.borderSize)}px;
+          border: solid ${toString user.preferences.ui.borderSize}px;
           border-radius: ${toString user.preferences.ui.radius}px;
-          border-color: @color0;
+          border-color: @foreground;
         }
 
         button:hover {
@@ -162,12 +161,12 @@
         }
 
         #workspaces button.active {
-            background-color: @color2;
+            color: @color8;
         }
 
         #workspaces button {
           background-color: @background;
-          border-color: @color0;
+          border-color: @color8;
           color: @foreground;
           margin-left: 2px;
           margin-right: 2px;
@@ -180,16 +179,16 @@
         }
 
         #window {
-          border: solid ${toString (user.preferences.ui.borderSize)}px;
-          border-color: @color0;
+          border: solid ${toString user.preferences.ui.borderSize}px;
+          border-color: @color8;
         }
 
         menu {
           border-radius: ${toString user.preferences.ui.radius}px;
           background: @background;
-          color: @foreground;
+          color: @color8;
           box-shadow: 5px 5px rgba(0, 0, 0, .25);
-          border-color: @color0;
+          border-color: @foreground;
         }
 
         menuitem {
@@ -206,10 +205,10 @@
         #network,
         #backlight,
         #pulseaudio {
-          color: @foreground;
+          color: @color8;
           background: @background;
-          border: solid ${toString (user.preferences.ui.borderSize)}px;
-          border-color: @color0;
+          border: solid ${toString user.preferences.ui.borderSize}px;
+          border-color: @color8;
           margin-right: 10px;
           box-shadow: 5px 5px rgba(0, 0, 0, .25);
           padding: 5px 5px;
@@ -223,11 +222,6 @@
           /* background: radial-gradient(@background .5px,transparent 2px) 0 0/5px 5px, transparent; */
           margin-bottom: 10px;
           border-radius: ${toString user.preferences.ui.radius}px;
-          color: @color14;
-        }
-
-        .modules-left {
-          color: @color13;
         }
 
         #pulseaudio.muted {
