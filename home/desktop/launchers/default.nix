@@ -24,7 +24,7 @@
         };
         cmd = mkOption {
           type = types.str;
-          default = "wofi --width=30% --height=30% --show drun";
+          default = "wofi --width=30% --height=30% --show drun --matching=fuzzy";
         };
       };
 

@@ -14,15 +14,15 @@
       allow_markup = true;
       key_up = "Ctrl-k";
       key_down = "Ctrl-j";
+      show_all = false;
     };
     style = ''
       @import "${user.locations.theme}/colors_waybar.css";
 
       #window {
         font-family: "monospace";
-        font-size: 16px;
         background: @background;
-        color: @color13;
+        color: @foreground;
         font-style: oblique;
         border-bottom: none;
         outline: none;
@@ -30,8 +30,9 @@
 
       #input {
         border-radius: ${toString user.preferences.ui.radius}px;
-        outline: none;
+        outline: 2px;
         padding: 5;
+        font-size: 20px;
         border: 0px;
         background: @background;
         color: @foreground;
@@ -45,9 +46,10 @@
       #entry {
         padding: 5px;
         margin: 0px 10px;
+        font-size: 20px;
         border-radius: ${toString user.preferences.ui.radius}px;
         outline: none;
-        color: @color2;
+        color: @foreground;
       }
 
       #entry:innerbox {
@@ -55,7 +57,7 @@
       }
 
       #entry:selected {
-        background: @color2;
+        background: @color0;
         foreground: @foreground;
       }
 

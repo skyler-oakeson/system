@@ -175,43 +175,43 @@ c.colors.statusbar.normal.fg = foreground
 c.colors.statusbar.normal.bg = background
 
 # Foreground color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = base0C
+c.colors.statusbar.insert.fg = foreground
 
 # Background color of the statusbar in insert mode.
 c.colors.statusbar.insert.bg = background
 
 # Foreground color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = base0A
+c.colors.statusbar.passthrough.fg = foreground
 
 # Background color of the statusbar in passthrough mode.
 c.colors.statusbar.passthrough.bg = background
 
 # Foreground color of the statusbar in private browsing mode.
-c.colors.statusbar.private.fg = base0E
+c.colors.statusbar.private.fg = foreground
 
 # Background color of the statusbar in private browsing mode.
 c.colors.statusbar.private.bg = background
 
 # Foreground color of the statusbar in command mode.
-c.colors.statusbar.command.fg = base04
+c.colors.statusbar.command.fg = foreground
 
 # Background color of the statusbar in command mode.
 c.colors.statusbar.command.bg = background
 
 # Foreground color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.fg = base0E
+c.colors.statusbar.command.private.fg = foreground
 
 # Background color of the statusbar in private browsing + command mode.
 c.colors.statusbar.command.private.bg = background
 
 # Foreground color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = base0D
+c.colors.statusbar.caret.fg = foreground
 
 # Background color of the statusbar in caret mode.
 c.colors.statusbar.caret.bg = background
 
 # Foreground color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = base0D
+c.colors.statusbar.caret.selection.fg = foreground
 
 # Background color of the statusbar in caret mode with a selection.
 c.colors.statusbar.caret.selection.bg = background
@@ -220,24 +220,24 @@ c.colors.statusbar.caret.selection.bg = background
 c.colors.statusbar.progress.bg = base0D
 
 # Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = base0A
+c.colors.statusbar.url.fg = foreground
 
 # Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = base0B
+c.colors.statusbar.url.error.fg = foreground
 
 # Foreground color of the URL in the statusbar for hovered links.
-c.colors.statusbar.url.hover.fg = base09
+c.colors.statusbar.url.hover.fg = base0D
 
 # Foreground color of the URL in the statusbar on successful load
 # (http).
-c.colors.statusbar.url.success.http.fg = base0B
+c.colors.statusbar.url.success.http.fg = foreground
 
 # Foreground color of the URL in the statusbar on successful load
 # (https).
-c.colors.statusbar.url.success.https.fg = base0B
+c.colors.statusbar.url.success.https.fg = foreground
 
 # Foreground color of the URL in the statusbar when there's a warning.
-c.colors.statusbar.url.warn.fg = base0E
+c.colors.statusbar.url.warn.fg = foreground
 
 # Background color of the tab bar.
 c.colors.tabs.bar.bg = background

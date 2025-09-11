@@ -34,10 +34,12 @@
   };
 
   users.groups.${user.username} = { };
+  users.mutableUsers = false;
   users.users.${user.username} = {
     home = "/home/${user.username}";
     isSystemUser = user.isSystemUser;
     isNormalUser = user.isNormalUser;
+    hashedPassword = user.hashedPassword;
     description = user.username;
     group = user.username;
     extraGroups = [

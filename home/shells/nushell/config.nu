@@ -48,7 +48,6 @@ def test [-f] {
     sudo nixos-rebuild test --flake .
 }
 
-
 alias cdf = cd (fd -t d | fzf)
 alias ll = ls -l
 alias lg = lazygit

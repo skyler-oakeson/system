@@ -1,9 +1,14 @@
 {
   user0 = rec {
     username = "skyler";
-    password = "$y$j9T$GvFH.glheNSCw5Ppegi/4.$6OLZfi.F/NSoPQ8IlyygO0yuLcGvk188TKo1OYkc6DD";
+    hashedPassword = "$y$j9T$31mA5FUM9TmnW8QQ..tfE/$HhS.b0lJsptxlb7243Qg2duXua/FRgKjZaCT3s4wYn5";
     isNormalUser = true;
     isSystemUser = false;
+
+    git = {
+      userEmail = "skyler.oakeson@gmail.com";
+      userName = "skyler-oakeson";
+    };
 
     preferences = {
       ui = {
@@ -19,6 +24,11 @@
       theme = {
         borderColor = "$color8";
         inactiveBorderColor = "$color0";
+      };
+
+      wallpaper = {
+        repo = "https://github.com/skyler-oakeson/wallpapers.git";
+        file = "trees_river_painting.jpg";
       };
     };
 

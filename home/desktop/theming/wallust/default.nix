@@ -4,7 +4,10 @@
 # Search: https://search.nixos.org for more pkgs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {
+  pkgs,
+  config,
   user,
+  lib,
   ...
 }:
 let
@@ -63,5 +66,13 @@ in
         }
         // current;
       };
+
+    home.activation = {
+      mkColorScheme =
+        lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" "git" "wallust" "mkWallpapers" ]
+          ''
+            ${pkgs.wallust}/bin/wallust run ${config.xdg.configHome}/wallpapers/${user.preferences.wallpaper.file}
+          '';
+    };
   };
 }

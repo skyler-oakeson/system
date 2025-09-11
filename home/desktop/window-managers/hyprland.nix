@@ -44,13 +44,7 @@ in
         variables = [ "--all" ];
       };
 
-      plugins = [
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-        inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
-      ];
-
       settings = {
-
         source = "${user.locations.theme}/colors_hypr.conf";
 
         monitor = lib.imap1 (
@@ -64,7 +58,7 @@ in
 
         dwindle = {
           pseudotile = true;
-          preserve_split = false;
+          preserve_split = true;
           smart_resizing = true;
         };
 
@@ -87,6 +81,7 @@ in
 
         "exec-once" = [
           "waybar"
+          "[workspace special:magic; float; move 20 80] kitty btop"
         ];
 
         input = {
@@ -105,27 +100,6 @@ in
           };
 
           sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
-        };
-
-        plugin = {
-          borders-plus-plus = {
-            add_borders = 0;
-            "col.border_1" = "$background";
-            border_size_1 = 5;
-            natural_rounding = "yes";
-          };
-
-          hyprbars = {
-            bar_text_align = "left";
-            bar_text_size = 14;
-            bar_height = 38;
-            "col.text" = "$color1";
-            bar_color = "$background";
-            bar_text_font = "monospace";
-            bar_precedence_over_border = false;
-            bar_part_of_window = true;
-            bar_padding = 400;
-          };
         };
 
         general = {
@@ -182,8 +156,6 @@ in
           active_opacity = 1.0;
           inactive_opacity = 0.90;
           border_part_of_window = true;
-
-          # screen_shader = builtins.readFile ./shaders/bluelight.frag;
 
           shadow = {
             enabled = true;
@@ -243,9 +215,6 @@ in
           "size 1000 700,class:(dotfiles-floating)"
           "center,class:(dotfiles-floating)"
           "pin, class:(dotfiles-floating)"
-
-          # Spotify floating special
-          "workspace special, floating:1, size 1000 1000, class:Spotify"
         ];
 
         layerrule = [

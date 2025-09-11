@@ -22,7 +22,7 @@
 
         bind r source-file "~/.config/tmux/tmux.conf"
         bind b set -g status
-        bind G neww -n "lazygit" lazygit
+        bind g neww -n "lazygit" lazygit
         bind E show-environment -g
       '';
     };

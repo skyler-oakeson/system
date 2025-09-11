@@ -15,7 +15,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.path:append("**")
 vim.o.winborder = 'single'
 vim.o.swapfile = false;
-vim.cmd(":hi StatusLine guibg=NONE")
+-- vim.cmd(":hi StatusLine guibg=NONE")
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 

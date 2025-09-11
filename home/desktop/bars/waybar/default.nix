@@ -108,7 +108,7 @@
             "format" = "{volume}%";
             "format-bluetooth" = "{volume}% {icon} {format_source}";
             "format-bluetooth-muted" = " {icon} {format_source}";
-            "format-muted" = "_%";
+            "format-muted" = "__%";
             "on-click" = "pwvucontrol";
             "tooltip" = false;
           };
@@ -215,6 +215,27 @@
           border-radius: ${toString user.preferences.ui.radius}px;
         }
 
+        #pulseaudio {
+          color: @color4;
+        }
+
+        #network {
+          color: @color14;
+        }
+
+
+        #temperature {
+          color: @color11;
+        }
+
+        #clock {
+          color: @color13;
+        }
+
+        #custom-power {
+          color: @color5;
+        }
+
         .modules-left,
         .modules-center,
         .modules-right {
@@ -222,11 +243,6 @@
           /* background: radial-gradient(@background .5px,transparent 2px) 0 0/5px 5px, transparent; */
           margin-bottom: 10px;
           border-radius: ${toString user.preferences.ui.radius}px;
-        }
-
-        #pulseaudio.muted {
-          color: @background;
-          background-color: @color13;
         }
       '';
     };

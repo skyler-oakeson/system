@@ -23,10 +23,6 @@
         };
       };
 
-      keyBindings = {
-        ",p" = "spawn --userscript qute-pass";
-      };
-
       settings = {
         "colors.webpage.darkmode.enabled" = true;
         "confirm_quit" = [ "always" ];
@@ -67,6 +63,23 @@
         "hints.uppercase" = true;
         "scrolling.smooth" = false;
 
+        "fileselect.handler" = "external";
+        "fileselect.single_file.command" = [
+          "kitty"
+          "ranger"
+          "--choosefile={}"
+        ];
+        "fileselect.multiple_files.command" = [
+          "kitty"
+          "ranger"
+          "--choosefiles={}"
+        ];
+        "fileselect.folder.command" = [
+          "kitty"
+          "ranger"
+          "--choosefiles={}"
+        ];
+
         # This is crashing qutebrowser figure out what is crashing it
         # "qt.args" = [
         #   "enable-gpu-rasterization"
@@ -87,12 +100,12 @@
         "fonts.default_size" = "14pt";
         "fonts.statusbar" = "14pt monospace";
         "fonts.downloads" = "14pt monospace";
-        "fonts.prompts" = "14pt Victor monospace";
+        "fonts.prompts" = "14pt monospace";
         "fonts.keyhint" = "14pt monospace";
         "fonts.hints" = "12pt monospace";
-        "fonts.contextmenu" = "14pt monospace";
-        "fonts.completion.category" = "bold 14pt monospace";
-        "fonts.tooltip" = "14pt monospace";
+        "fonts.contextmenu" = "12pt monospace";
+        "fonts.completion.category" = "bold 12pt monospace";
+        "fonts.tooltip" = "12pt monospace";
         "fonts.completion.entry" = "14pt monospace";
         "fonts.tabs.selected" = "italic 14pt monospace";
         "fonts.tabs.unselected" = "14pt monospace";
@@ -101,21 +114,23 @@
         "fonts.messages.warning" = "italic 14pt monospace";
         "tabs.title.format" = "{audio}{current_title}";
         "tabs.title.format_pinned" = "{audio}{index}";
-        "tabs.position" = "left";
+        "tabs.position" = "top";
         "window.title_format" = "{perc}{current_title}";
         "tabs.last_close" = "close";
         "tabs.mode_on_change" = "restore";
         "tabs.indicator.width" = 2;
         "tabs.favicons.scale" = 1;
-        "tabs.show_switching_delay" = 700;
+        "tabs.show_switching_delay" = 10000;
         "tabs.pinned.frozen" = false;
         "completion.shrink" = true;
         "auto_save.interval" = 20000;
       };
 
-      # This runs the generated colors file
       extraConfig = ''
+        # This runs the generated colors file 
         config.source("../../.cache/wallust/colors_qutebrowser_config.py")
+        config.set("statusbar.padding", { "left": 10, "right": 10, "top": 1, "bottom": 10})
+        config.set("tabs.padding", { "left": 3, "right": 3, "top": 1, "bottom": 1})
       '';
     };
   };
