@@ -25,11 +25,13 @@
 
       settings = {
         "colors.webpage.darkmode.enabled" = true;
+        "colors.webpate.darkmode.algorithm" = "lightness-cielab";
+        "colors.webpage.darkmod.policy.images" = "smart";
         "confirm_quit" = [ "always" ];
         "search.incremental" = true;
         "downloads.location.directory" = user.locations.downloads or "$HOME/downloads";
         "prompt.filebrowser" = false;
-        "tabs.show" = "switching";
+        "tabs.show" = "always";
         "keyhint.radius" = user.preferences.ui.radius or 8;
         "keyhint.delay" = 0;
         "prompt.radius" = user.preferences.ui.radius or 8;
@@ -60,25 +62,25 @@
         "content.javascript.clipboard" = "access";
         "content.prefers_reduced_motion" = true;
         "hints.radius" = 30;
-        "hints.uppercase" = true;
+        "hints.uppercase" = false;
         "scrolling.smooth" = false;
 
-        "fileselect.handler" = "external";
-        "fileselect.single_file.command" = [
-          "kitty"
-          "ranger"
-          "--choosefile={}"
-        ];
-        "fileselect.multiple_files.command" = [
-          "kitty"
-          "ranger"
-          "--choosefiles={}"
-        ];
-        "fileselect.folder.command" = [
-          "kitty"
-          "ranger"
-          "--choosefiles={}"
-        ];
+        # "fileselect.handler" = "external";
+        # "fileselect.single_file.command" = [
+        #   "kitty"
+        #   "ranger"
+        #   "--choosefile={}"
+        # ];
+        # "fileselect.multiple_files.command" = [
+        #   "kitty"
+        #   "ranger"
+        #   "--choosefiles={}"
+        # ];
+        # "fileselect.folder.command" = [
+        #   "kitty"
+        #   "ranger"
+        #   "--choosefiles={}"
+        # ];
 
         # This is crashing qutebrowser figure out what is crashing it
         # "qt.args" = [
@@ -112,9 +114,10 @@
         "fonts.messages.info" = "italic 14pt monospace";
         "fonts.messages.error" = "italic 14pt monospace";
         "fonts.messages.warning" = "italic 14pt monospace";
+
         "tabs.title.format" = "{audio}{current_title}";
         "tabs.title.format_pinned" = "{audio}{index}";
-        "tabs.position" = "top";
+        "tabs.position" = "left";
         "window.title_format" = "{perc}{current_title}";
         "tabs.last_close" = "close";
         "tabs.mode_on_change" = "restore";
@@ -124,12 +127,19 @@
         "tabs.pinned.frozen" = false;
         "completion.shrink" = true;
         "auto_save.interval" = 20000;
+        "tabs.width" = "15%";
       };
 
+      quickmarks = {
+        nixpkgs = "https://search.nixos.org/packages";
+        home-manager-manual = "https://github.com/nix-community/home-manager";
+        prairie-learn-docs = "https://prairielearn.readthedocs.io/en/latest/#getting-started";
+      };
+
+      # This runs the generated colors file
       extraConfig = ''
-        # This runs the generated colors file 
         config.source("../../.cache/wallust/colors_qutebrowser_config.py")
-        config.set("statusbar.padding", { "left": 10, "right": 10, "top": 1, "bottom": 10})
+        config.set("statusbar.padding", { "left": 10, "right": 10, "top": 1, "bottom": 1})
         config.set("tabs.padding", { "left": 3, "right": 3, "top": 1, "bottom": 1})
       '';
     };

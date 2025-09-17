@@ -71,7 +71,8 @@ in
       mkColorScheme =
         lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" "git" "wallust" "mkWallpapers" ]
           ''
-            ${pkgs.wallust}/bin/wallust run ${config.xdg.configHome}/wallpapers/${user.preferences.wallpaper.file}
+            ${pkgs.wallust}/bin/wallust run \
+            ${config.xdg.configHome}/wallpapers/${user.preferences.wallpaper.file}
           '';
     };
   };

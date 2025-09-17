@@ -15,9 +15,9 @@
     csharp-ls
     basedpyright
     vscode-langservers-extracted
-    (pkgs.python3.withPackages (p: [
-      p.python-lsp-server
-      p.python-lsp-ruff
-    ]))
+    # (pkgs.python3.withPackages (p: [
+    #   p.python-lsp-server
+    #   p.python-lsp-ruff
+    # ]))
   ];
 }

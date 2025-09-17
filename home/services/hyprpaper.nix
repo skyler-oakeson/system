@@ -17,7 +17,8 @@
   home.activation = {
     mkWallpaper = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" "git" ] ''
       if [ ! -d "${config.xdg.configHome}/wallpapers" ]; then
-        ${pkgs.git}/bin/git clone ${user.preferences.wallpaper.repo} ${config.xdg.configHome}/wallpapers
+          ${pkgs.git}/bin/git clone ${user.preferences.wallpaper.repo}
+          ${config.xdg.configHome}/wallpapers
       fi
     '';
   };

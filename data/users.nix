@@ -14,11 +14,11 @@
       ui = {
         radius = 0;
         border = true;
-        borderSize = 2;
+        borderSize = 1;
       };
 
       default = {
-        shell = "nushell";
+        shell = "zsh";
       };
 
       theme = {
