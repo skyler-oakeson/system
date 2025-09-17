@@ -1,4 +1,6 @@
 vim.pack.add({ "https://github.com/RedsXDD/neopywal.nvim" })
+local C = require("neopywal").get_colors()
+print("HELLO")
 require("neopywal").setup({
   -- Uses a template file `~/.cache/wallust/colors_neopywal.vim` instead of the
   -- regular pywal template at `~/.cache/wal/colors-wal.vim`.
@@ -23,11 +25,9 @@ require("neopywal").setup({
 
   -- With this option you can overwrite any highlight groups set by the colorscheme.
   -- For more information take a look at `https://github.com/RedsXDD/neopywal.nvim#Customizing-Highlights`
-  custom_highlights = function(C)
-    return {
-      FloatBorder = { bg = C.color0 }
-    }
-  end,
+  custom_highlights = {
+    TreeSitterContextSeperator = { fg = C.color0 }
+  },
 
   -- Dims the background when another window is focused.
   dim_inactive = false,
