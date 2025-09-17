@@ -11,7 +11,7 @@
         default-timeout = 10000;
         anchor = "top-right";
         actions = true;
-        border-size = 1;
+        border-size = user.preferences.ui.borderSize;
         markup = true;
         icons = true;
         margin = "10, 30, 0";
