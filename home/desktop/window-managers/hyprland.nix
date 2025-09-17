@@ -81,7 +81,8 @@ in
 
         "exec-once" = [
           "waybar"
-          "[workspace special:magic; float; move 20 80] kitty btop"
+          "[workspace special:magic] kitty btop"
+          "[workspace special:magic] kitty spotify_player"
         ];
 
         input = {
