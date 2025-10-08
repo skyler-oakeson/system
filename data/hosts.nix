@@ -1,8 +1,6 @@
 {
-  host0 = {
+  elm = {
     hostname = "elm";
-    timeZone = "America/Denver";
-    locale = "en_US.UTF-8";
     system = "x86_64-linux";
     description = "Desktop";
     monitors = {

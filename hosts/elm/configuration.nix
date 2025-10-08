@@ -8,24 +8,32 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../nixos/display
-    ../../nixos/virtual
-    ../../nixos/fonts/fonts.nix
-    ../../nixos/games
-    ../../nixos/utils
-    ../../nixos/maintenance
-    ../../nixos/boot
-    ../../nixos/network
-    ../../nixos/services
+    ../../modules/nixos/deskenv
+    ../../modules/nixos/virtual
+    ../../modules/nixos/fonts
+    ../../modules/nixos/games
+    ../../modules/nixos/utils
+    ../../modules/nixos/maintenance
+    ../../modules/nixos/boot
+    ../../modules/nixos/network
+    ../../modules/nixos/services
+    ../../modules/nixos/hardware
   ];
 
   nix.package = pkgs.lix;
 
-  networking.hostName = host.hostname or "nixos";
+  networking = {
+    hostName = "elm";
+    locale = "en_US.UTF-8";
+    timeZone = "America/Denver";
+  };
+
+  deskenv.hyprland.enable = true;
+
   programs.dconf.enable = true;
 
   games.steam.enable = true;
-  display.drivers.amd.enable = true;
+  hardware.drivers.amd.enable = true;
 
   maintenance.garbageCollection = {
     enable = true;

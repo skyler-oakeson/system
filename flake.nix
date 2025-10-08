@@ -22,6 +22,11 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,11 +43,11 @@
       overlays = import ./overlays { inherit inputs; };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.${hosts.host0.system}.nixfmt-tree;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.${hosts.elm.system}.nixfmt-tree;
       nixosConfigurations = {
-        ${hosts.host0.hostname} =
+        ${hosts.elm.hostname} =
           let
-            host = hosts.host0;
+            host = hosts.elm;
             system = host.system;
             user = users.user0;
             utils = import ./utils { inherit lib; };
@@ -64,8 +69,6 @@
               inherit
                 inputs
                 host
-
-                # TRANSFER THIS TO USERS SO YOU CAN ITERATE THROUGH IT TO CREATE ALL OF THEM
                 user
                 ;
             };
@@ -84,29 +87,11 @@
                       utils
                       ;
                   };
-                  users.${user.username} = import ./users/${user.username}; # give it home.nix
+                  users.${user.username} = import ./modules/home; # give it home.nix
                 };
               }
             ];
           };
-
-        # homeConfigurations = {
-        #   skyler = home-manager.lib.homeManagerConfiguration {
-        #     inherit pkgs;
-        #     extraSpecialArgs = {
-        #       inherit
-        #         inputs
-        #         username
-        #         system
-        #         ;
-        #       colors = "/home/${username}/.cache/wallust";
-        #     };
-        #     modules = [
-        #       ./home/home.nix
-        #       spicetify-nix.homeManagerModules.default
-        #     ];
-        #   };
-        # };
       };
     };
 }

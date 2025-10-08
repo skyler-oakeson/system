@@ -14,7 +14,7 @@
       ui = {
         radius = 0;
         border = true;
-        borderSize = 1;
+        borderSize = 0;
       };
 
       default = {
@@ -33,8 +33,8 @@
     };
 
     locations = {
-      downloads = "/home/${username}/dwn";
       theme = "/home/${username}/.cache/wallust";
+      downloads = "/home/skyler/dwn";
     };
   };
 }
