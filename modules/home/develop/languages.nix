@@ -15,6 +15,7 @@
     dotnet-sdk_9
     texliveFull
     typescript
-    haskell.compiler.native-bignum.ghcHEAD
+    haskell.compiler.native-bignum.ghc984
+    stack
   ];
 }
