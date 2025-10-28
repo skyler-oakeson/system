@@ -15,7 +15,11 @@
     dotnet-sdk_9
     texliveFull
     typescript
-    haskell.compiler.native-bignum.ghc984
-    stack
+    bun
+    (haskellPackages.ghcWithPackages (
+      self: with self; [
+        haskell-language-server
+      ]
+    ))
   ];
 }

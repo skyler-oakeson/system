@@ -32,6 +32,7 @@
         extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           pywalfox
           bitwarden
+          vimium
         ];
 
         userContent = '''';

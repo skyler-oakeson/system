@@ -6,6 +6,15 @@
 }:
 {
   config = lib.mkIf (config.browsers.qutebrowser.enable) {
+    xdg.mimeApps.enable = true;
+    xdg.mimeApps.defaultApplications = {
+      "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+    };
+
     programs.qutebrowser = {
       enable = true;
       keyBindings = {
@@ -26,7 +35,7 @@
       settings = {
         "colors.webpage.darkmode.enabled" = true;
         "colors.webpage.darkmode.algorithm" = "lightness-cielab";
-        "colors.webpage.darkmode.policy.images" = "smart";
+        "colors.webpage.darkmode.policy.images" = "never";
         "confirm_quit" = [ "always" ];
         "search.incremental" = true;
         "downloads.location.directory" = user.locations.downloads or "$HOME/dwn";
@@ -127,7 +136,7 @@
         "tabs.pinned.frozen" = false;
         "completion.shrink" = true;
         "auto_save.interval" = 20000;
-        "tabs.width" = "15%";
+        "tabs.width" = "10%";
       };
 
       quickmarks = {

@@ -30,8 +30,8 @@ require('oil').setup({
     -- Padding around the floating window
     padding = 0,
     -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-    max_height = math.floor(0.618 * vim.o.lines),
-    max_width = math.floor(0.618 * vim.o.columns),
+    max_height = math.floor(0.75 * vim.o.lines),
+    max_width = math.floor(0.75 * vim.o.columns),
     win_options = {
       winblend = 0,
     },

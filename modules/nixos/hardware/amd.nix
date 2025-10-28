@@ -26,7 +26,7 @@ with lib;
     environment.systemPackages = with pkgs; [ lact ];
 
     # Enable for wayland and xorg
-    services.xserver.videoDrivers = [ "ati_unfree" ];
+    services.xserver.videoDrivers = [ "amdgpu" ];
 
     # For 32 bit applications
     hardware.graphics = {

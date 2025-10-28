@@ -22,8 +22,8 @@
   # BROWSERS
   browsers.default = "qutebrowser";
   browsers.qutebrowser.enable = true;
-  browsers.firefox.enable = true;
-  browsers.librewolf.enable = true;
+  browsers.firefox.enable = false;
+  browsers.librewolf.enable = false;
 
   # LAUNCHERS
   launchers.default = "wofi";
@@ -37,9 +37,20 @@
   home.file = {
   };
 
+  # Move this into the same file as mime types
   home.sessionVariables = {
     EDITOR = "nvim";
+    BROWSER = "qutebrowser";
   };
+
+  xdg.mimeApps.enable = true;
+  # xdg.mimeApps.defaultApplications = {
+  #   "text/html" = "org.qutebrowser.qutebrowser.desktop";
+  #   "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+  #   "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+  #   "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+  #   "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
