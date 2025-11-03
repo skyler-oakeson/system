@@ -8,7 +8,7 @@
       nerd-fonts._3270
       lato
       spleen
-      orbitron
+      newcomputermodern
     ];
 
     fontconfig = {
