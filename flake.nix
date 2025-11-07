@@ -44,6 +44,24 @@
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.${hosts.elm.system}.nixfmt-tree;
+
+      devShell.x86_64-linux.python = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        packages = [
+          (nixpkgs.x86_64-linux.python3.withPackages (
+            python-pkgs: with python-pkgs; [
+              pip
+            ]
+          ))
+        ];
+        shellHook = ''
+          if [ ! -d ".venv" ]; then
+            python -m venv .venv
+          fi
+          source .venv/bin/activate
+          pip install -r requirements.txt
+        '';
+      };
+
       nixosConfigurations = {
         ${hosts.elm.hostname} =
           let
